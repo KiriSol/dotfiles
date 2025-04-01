@@ -1,0 +1,316 @@
+{
+	//* Эти расширения должны быть установлены:
+	//*	- ms-python.python
+	//*	- ms-python.vscode-pylance
+	//*	- ms-python.black-formatter
+	//*	- ms-vscode.cpptools
+	//*	- ms-vscode.powershell
+	//*	- esbenp.prettier-vscode
+
+	//! Global settings
+
+	//* Editor
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.minimap.enabled": false,
+	"editor.minimap.size": "fill",
+	"editor.renderWhitespace": "selection", // отображение пробелов
+	"editor.unicodeHighlight.ambiguousCharacters": true, // подсветка неизвестных символов
+	"editor.wordWrap": "on", // перенос строк по словам
+	"editor.smoothScrolling": true,
+	"editor.cursorSmoothCaretAnimation": "explicit", // плавное движение курсора
+	"editor.cursorBlinking": "expand", // стиль мигания курсора
+	"editor.padding.top": 7, // отступ сверху кода
+	"editor.linkedEditing": true,
+	"editor.glyphMargin": false, // Поля глифа для отладки
+
+	//* Font
+	"terminal.integrated.fontSize": 16,
+	"terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+	"editor.fontFamily": "JetBrainsMono Nerd Font",
+	"editor.fontSize": 18,
+	"editor.lineHeight": 23, // line spacing
+	"editor.fontWeight": "430", // bold
+	"editor.fontLigatures": true, // ligatures
+
+	//* Terminal
+	"terminal.integrated.defaultProfile.windows": "PowerShell",
+	"terminal.integrated.defaultProfile.linux": "zsh",
+	"terminal.integrated.cursorStyle": "block",
+	"terminal.integrated.cursorBlinking": true,
+	"terminal.integrated.smoothScrolling": true,
+
+	"terminal.integrated.enableVisualBell": true,
+	"accessibility.signals.terminalBell": {
+		"sound": "on"
+	},
+
+	//* Explorer
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.autoReveal": true,
+	"explorer.compactFolders": false,
+
+	//* Workbench
+	"workbench.list.smoothScrolling": true,
+	"workbench.startupEditor": "none",
+	"workbench.settings.applyToAllProfiles": [],
+
+	//* Files
+	"files.autoSave": "afterDelay",
+	// "files.autoSaveDelay": 5000,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.idea": true,
+		"**/__pycache__": true,
+
+		"**/.venv/": true,
+		"**/.buildozer": true,
+		"**/node_modules": true,
+
+		// ruff && uv
+		"**/.ruff_cache": true,
+		"**/uv.lock": true,
+		"**/.python_version": true
+	},
+	"files.readonlyInclude": {
+		"**/.git": true,
+		"**/.idea": true,
+
+		"**/.venv": true,
+		"**/.buildozer": true,
+		"**/uv.lock": true,
+
+		"**/node_modules": true
+	},
+
+	//* Window
+	"window.zoomLevel": 0,
+	// TODO: Настроить окно
+	"window.titleBarStyle": "custom",
+
+	//* Search
+	"search.exclude": {
+		"**/.git/**": true,
+		"**/.idea/**": true,
+		"**/__pycache__/**": true,
+
+		"**/.venv/**": true,
+		"**/.buildozer/**": true,
+		"**/node_modules/**": true,
+
+		// ruff && uv
+		"**/.ruff_cache/**": true,
+		"**/uv.lock": true,
+		"**/.python_version": true
+	},
+
+	//* Security
+	"security.workspace.trust.untrustedFiles": "open",
+	"security.workspace.trust.message": "never",
+
+	//* Хлебные крошки
+	"breadcrumbs.enabled": true,
+	// Отключение ненужных
+	// TODO: Переработать
+	"breadcrumbs.icons": true,
+	"breadcrumbs.showKeys": false,
+	"breadcrumbs.showFiles": false,
+	"breadcrumbs.symbolPath": "off",
+	"breadcrumbs.showArrays": false,
+	"breadcrumbs.showBooleans": false,
+	"breadcrumbs.showClasses": false,
+	"breadcrumbs.showConstants": false,
+	"breadcrumbs.showConstructors": false,
+	"breadcrumbs.showEnumMembers": false,
+	"breadcrumbs.showEvents": false,
+	"breadcrumbs.showFields": false,
+	"breadcrumbs.showEnums": false,
+	"breadcrumbs.showFunctions": false,
+	"breadcrumbs.showInterfaces": false,
+	"breadcrumbs.showMethods": false,
+	"breadcrumbs.showModules": false,
+	"breadcrumbs.showNamespaces": false,
+	"breadcrumbs.showNull": false,
+	"breadcrumbs.showNumbers": false,
+	"breadcrumbs.showObjects": false,
+	"breadcrumbs.showOperators": false,
+	"breadcrumbs.showPackages": false,
+	"breadcrumbs.showProperties": false,
+	"breadcrumbs.showStrings": false,
+	"breadcrumbs.showStructs": false,
+	"breadcrumbs.showTypeParameters": false,
+	"breadcrumbs.showVariables": false,
+
+	//! Plugins settings
+
+	//* Python
+	"python.defaultInterpreterPath": "C:\\Windows\\py.exe",
+	"python.languageServer": "Pylance",
+
+	"python.analysis.diagnosticMode": "openFilesOnly",
+	"python.analysis.autoSearchPaths": true,
+	"python.analysis.autoImportCompletions": false,
+	"python.analysis.completeFunctionParens": false,
+
+	"python.analysis.typeCheckingMode": "standard",
+	"python.analysis.inlayHints.variableTypes": true,
+	"python.analysis.inlayHints.functionReturnTypes": true,
+
+	"python.analysis.importFormat": "absolute",
+	"python.analysis.enablePytestSupport": true,
+	"python.analysis.indexing": true,
+
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter"
+	},
+
+	// Добавление автокомплита bpy (blender api for python)
+	// "python.autoComplete.extraPaths": [
+	// 	"C:\\Users\\rbhbk\\IdeExtensions\\blender_autocomplete\\4.1"
+	// ],
+	// "python.analysis.extraPaths": [
+	// 	"C:\\Users\\rbhbk\\IdeExtensions\\blender_autocomplete\\4.1"
+	// ],
+
+	// Ruff
+	"ruff.lineLength": 79,
+
+	//* C & C++
+	"[c]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+
+	//* PowerShell
+	"[powershell]": {
+		"editor.defaultFormatter": "ms-vscode.powershell"
+	},
+	"powershell.promptToUpdatePowerShell": false,
+
+	//* Markdown
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	//* Prettier
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+
+	"prettier.useTabs": true,
+	"prettier.semi": false,
+	"prettier.jsxSingleQuote": true,
+	"prettier.singleQuote": true,
+	"prettier.arrowParens": "avoid",
+
+	//* IndentRainbow
+	"indentRainbow.colorOnWhiteSpaceOnly": false,
+	"indentRainbow.indicatorStyle": "light",
+	"indentRainbow.lightIndicatorStyleLineWidth": 1,
+	"indentRainbow.errorColor": "rgba(128,32,32,0.4)",
+	"indentRainbow.colors": [
+		"rgba(79,236,236,0.3)",
+		"rgba(127,255,127,0.3)",
+		"rgba(255,127,255,0.3)",
+		"rgba(255,255,64,0.3)"
+	],
+	"indentRainbow.tabmixColor": "rgba(128,32,96,0.4)",
+
+	//* Spellchecker
+	"cSpell.language": "en,ru",
+	"cSpell.dictionaries": [],
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		".venv",
+		".git",
+		".buildozer"
+	],
+	"cSpell.userWords": [
+		"скролл",
+		"pycache",
+		"codeium",
+		"Consolas",
+		"cpptools",
+		"endregion",
+		"Pylance",
+		"rbhbk",
+		"venv",
+		"buildozer",
+		"uv",
+		"ruff",
+		"rgba",
+		"catppuccin"
+	],
+
+	//* Codeium
+	"codeium.enableConfig": {
+		"*": true,
+		"plaintext": true,
+		"kv": true,
+		"markdown": true,
+		"ignore": true
+	},
+
+	//! Themes
+	"workbench.colorTheme": "Catppuccin Frappé",
+	"workbench.productIconTheme": "fluent-icons",
+	"workbench.iconTheme": "symbols"
+
+	// "workbench.colorCustomizations": {
+	// 	"[Atom One Dark]": {
+	// 		"terminal.ansiBlack": "#3F4354",
+	// 		"terminal.ansiBrightBlack": "#626880",
+	// 		"terminal.ansiBlue": "#8CAAEE",
+	// 		"terminal.ansiBrightBlue": "#8CAAEE",
+	// 		"terminal.ansiBrightCyan": "#81C8BE",
+	// 		"terminal.ansiCyan": "#81C8BE",
+	// 		"terminal.ansiBrightGreen": "#A6D189",
+	// 		"terminal.ansiGreen": "#A6D189",
+	// 		"terminal.ansiRed": "#E78284",
+	// 		"terminal.ansiBrightRed": "#E78284",
+	// 		"terminal.ansiYellow": "#E5C890",
+	// 		"terminal.ansiBrightYellow": "#E5C890",
+	// 		"terminal.ansiWhite": "#B5BFE2",
+	// 		"terminal.ansiBrightWhite": "#B5BFE2",
+	// 		"terminal.ansiMagenta": "#F4B8E4",
+	// 		"terminal.ansiBrightMagenta": "#F4B8E4",
+	// 		"terminal.selectionBackground": "#626880",
+	// 		"terminal.foreground": "#cad2ec"
+	// 	}
+	// },
+
+	// "editor.tokenColorCustomizations": {
+	// 	"[Atom One Dark]": {
+	// 		"textMateRules": [
+	// 			{
+	// 				"scope": [
+	// 					"meta.function-call.generic.python",
+	// 					"punctuation.separator.pointer-access.cpp"
+	// 				],
+	// 				"settings": {
+	// 					"foreground": "#5ab1e4f5"
+	// 				}
+	// 			},
+	// 			{
+	// 				"scope": ["variable"],
+	// 				"settings": {
+	// 					"foreground": "#ABB2BF"
+	// 				}
+	// 			},
+	// 			{
+	// 				"scope": [
+	// 					"variable.language.special.self",
+	// 					"variable.parameter.function.language.special.self",
+	// 					"variable.language.this.cpp"
+	// 				],
+	// 				"settings": {
+	// 					"foreground": "#C678DD"
+	// 				}
+	// 			}
+	// 		]
+	// 	}
+	// }
+}
+
