@@ -1,11 +1,16 @@
+# NOTE: используются git-bash утилиты
+
 # Переменные
 $DotFiles = "$env:USERPROFILE/.dotfiles"
 
 $env:BAT_THEME = "OneHalfDark"
+$env:LESS = "-r"
 $env:PY_PYTHON = "3.10"
 
 # Append to PATH (only for PowerShell)
-$env:PATH += ";C:\Program Files\Git\usr\bin" # GNU tools
+if (Get-Command git.exe -ErrorAction Ignore) {
+    $env:PATH += ";C:\Program Files\Git\usr\bin" # GNU tools
+}
 
 
 clear.exe -x
@@ -168,14 +173,14 @@ else {
 
 
 # Приложения
-# function Open-Obsidian { & 'C:\Users\rbhbk\AppData\Local\Programs\Obsidian\Obsidian.exe' $args }
 
 
 # Append to Path
-#
+
 
 # # PSReadLine
 Set-PSReadLineOption -PredictionSource History
+
 
 # Complections
 (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression

@@ -6,6 +6,7 @@ call plug#begin()  " Между этих строк добавлять плаг�
 " Функционал
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
+Plug 'neoclide/coc.nvim' " AutoComplete
 
 " Красиво
 Plug 'itchyny/lightline.vim'
@@ -25,12 +26,12 @@ call plug#end()
 "      Настройка плагинов
 " ============================
 
-
+let g:NERDSpaceDelims = 1
 
 " ============================
 "       Настройка темы
 " ============================
-set background=dark            " Тёмная тема
+set background=dark " Тёмная тема
 set laststatus=2
 
 let g:lightline = {
@@ -40,7 +41,6 @@ let g:lightline = {
 colorscheme onedark
 
 let g:onedark_termcolors=256
-"let g:catppuccin_termcolors=256
 
 " ==============
 "    Функции
@@ -74,7 +74,7 @@ endfunction
 " ===============
 "  Автокоманды
 " ===============
-augroup Start
+augroup SetBackgroundAtStart
     au!
     au VimEnter * call BGToggleTransparency() " Прозрачный фон при входе
 augroup END
@@ -110,12 +110,18 @@ nnoremap <C-s> :wa<CR>
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 
+" Autocomplete
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 
-" Не планируется редактировать
 " ===============================================================================================
 
 " Настройка NerdTree
 " ==========================
+
+" Автоматическое открытие NERDTree
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * NERDTree | wincmd p
+
 " Юникодные иконки папок (Работает только с плагином vim-devicons)
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " Показывает количество строк в файлах
@@ -138,7 +144,7 @@ set nocompatible               " Отключаем совместимость �
 filetype plugin indent on      " Включаем поддержку плагинов
 
 set scrolloff=5                " Отступ от края экрана при прокрутке
-
+" set so=30                      " Курсор во время скроллинга будет всегда в середине экрана
 
 " ====================================
 "  Настройки отображения, Внешний вид
@@ -152,12 +158,11 @@ set cursorline
 syntax on " Включаем подсветку синтаксиса
 
 " Автодоболнения в command-mode
-"set rnu nu
 set wildmode=longest,list,full
 set wildmenu
 
 highlight LineNr ctermfg=NONE guifg=NONE  " Отключаем цвет для номеров строк
-"highlight CursorLineNr ctermfg=NONE guifg=NONE  " Отключаем цвет для текущего номера строки
+" highlight CursorLineNr ctermfg=NONE guifg=NONE  " Отключаем цвет для текущего номера строки
 
 " ======================
 "  Отображеие TrueColor
@@ -223,8 +228,5 @@ set ic                         " Игнорировать регистр при 
 set smartcase                  " Игнорировать регистр, если нет заглавных букв
 
 " Буфер обмена
-"set clipboard=unnamedplus
-
-" Autocomplete
-"inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
+" set clipboard=unnamedplus
 

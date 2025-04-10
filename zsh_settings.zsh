@@ -3,30 +3,34 @@ export ZSH_SETTINGS="${0:a}"
 
 export BAT_THEME="OneHalfDark"
 
-# Aliases
 alias cls="clear"
 
-alias v="vim"
-alias nv="nvim"
-alias y="yazi"
+if (( $+commands[vim] )); then; alias v="vim"; fi
+if (( $+commands[nvim] )); then; alias nv="nvim"; fi
 
-alias fetch="fastfetch --load-config examples/8.jsonc"
-alias ff="fastfetch --load-config examples/17.jsonc"
-alias fff="fastfetch --load-config examples/13.jsonc --logo none"
+if (( $+commands[fastfetch] )); then
+    alias fetch="fastfetch --load-config examples/8.jsonc"
+    alias ff="fastfetch --load-config examples/17.jsonc"
+    alias fff="fastfetch --load-config examples/13.jsonc --logo none"
+fi
 
-alias bpy="bpython"
+if (( $+commands[bpython] )); then; alias bpy="bpython"; fi
 
-alias fd="fdfind"; alias bat="batcat" # for Debian-like system (apt)
+# For Debian-like system (apt)
+if (( $+commands[fdfind] )); then; alias fd="fdfind"; fi
+if (( $+commands[batcat] )); then; alias bat="batcat"; fi
 
-# Functions
-function yy() { # for yazi
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+if (( $+commands[batcat] )); then
+    alias y="yazi"
+    function yy() { # for yazi
+	    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	    yazi "$@" --cwd-file="$tmp"
+	    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		    builtin cd -- "$cwd"
+	    fi
+	    rm -f -- "$tmp"
+    }
+fi
 
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="yazi ~/.oh-my-zsh"
