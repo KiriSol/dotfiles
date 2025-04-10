@@ -6,7 +6,7 @@ call plug#begin()  " Между этих строк добавлять плаг�
 " Функционал
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
-Plug 'neoclide/coc.nvim' " AutoComplete
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'} " AutoComplete
 
 " Красиво
 Plug 'itchyny/lightline.vim'
