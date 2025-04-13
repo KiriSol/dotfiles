@@ -1,7 +1,7 @@
 " ===========================
 "          Плагины
 " ===========================
-call plug#begin()  " Между этих строк добавлять плагины для установки.
+call plug#begin() " Между этих строк добавлять плагины для установки.
 
 " Функционал
 Plug 'preservim/nerdtree'
@@ -22,11 +22,6 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
 
-" ============================
-"      Настройка плагинов
-" ============================
-
-let g:NERDSpaceDelims = 1
 
 " ============================
 "       Настройка темы
@@ -42,9 +37,9 @@ colorscheme onedark
 
 let g:onedark_termcolors=256
 
-" ==============
-"    Функции
-" ==============
+" ============================
+"          Функции
+" ============================
 
 " Включение/отключение прозрачного фона
 let t:isTransparent = 1
@@ -71,16 +66,17 @@ function! SearchToggleHilighting()
 endfunction
 
 
-" ===============
-"  Автокоманды
-" ===============
+" ============================
+"       Автокоманды
+" ============================
 augroup SetBackgroundAtStart
     au!
     au VimEnter * call BGToggleTransparency() " Прозрачный фон при входе
 augroup END
 
 
-" Клавиши
+" ===========================
+"          Клавиши
 " ===========================
 
 " Изменяем leader
@@ -112,24 +108,6 @@ vnoremap <leader>y "+y
 
 " Autocomplete
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
-
-" ===============================================================================================
-
-" Настройка NerdTree
-" ==========================
-
-" Автоматическое открытие NERDTree
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * NERDTree | wincmd p
-
-" Юникодные иконки папок (Работает только с плагином vim-devicons)
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-" Показывает количество строк в файлах
-let g:NERDTreeFileLines = 1
-" Игнорировать указанные папки
-let g:NERDTreeIgnore = ['^node_modules$', '^__pycache__$', '^.git$', '^.buildozer$']
-" Закрыть vim, если единственная вкладка - это NERDTree
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
 " ===========================
@@ -230,3 +208,135 @@ set smartcase                  " Игнорировать регистр, есл
 " Буфер обмена
 " set clipboard=unnamedplus
 
+" ======================================================================
+"      Настройка плагинов
+" ============================
+
+" добавляние пробела при коммунтировании (NerdCommenter)
+let g:NERDSpaceDelims = 1
+
+"    Настройка NerdTree
+
+" Автоматическое открытие NERDTree
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * NERDTree | wincmd p
+
+" Юникодные иконки папок (Работает только с плагином vim-devicons)
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" Показывает количество строк в файлах
+let g:NERDTreeFileLines = 1
+" Игнорировать указанные папки
+let g:NERDTreeIgnore = ['^node_modules$', '^__pycache__$', '^.git$', '^.buildozer$']
+" Закрыть vim, если единственная вкладка - это NERDTree
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+
+"    Coc.nvim (Автодоболнения)
+
+" https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
+
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion
+inoremap <silent><expr> <c-@> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent><nowait> [g <Plug>(coc-diagnostic-prev)
+nmap <silent><nowait> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent><nowait> gd <Plug>(coc-definition)
+nmap <silent><nowait> gy <Plug>(coc-type-definition)
+nmap <silent><nowait> gi <Plug>(coc-implementation)
+nmap <silent><nowait> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s)
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+augroup end
+
+" Applying code actions to the selected code block
+" Example: `<leader>aap` for current paragraph
+xmap <leader>aa  <Plug>(coc-codeaction-selected)
+nmap <leader>aa  <Plug>(coc-codeaction-selected)
+
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>rr  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>rr  <Plug>(coc-codeaction-refactor-selected)
+
+" Add `:Format` command to format current buffer
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
+" ======================================================================
