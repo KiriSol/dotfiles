@@ -5,6 +5,8 @@
 
 export BAT_THEME="Catppuccin Mocha" # theme for bat
 
+export FZF_PREVIEW=1
+
 export EZA_DEFAULT_OPTS=(
   '--git'                     # Информация о git status
   '--hyperlink'               # Гиперссылки на открытие программой по умолчанию
