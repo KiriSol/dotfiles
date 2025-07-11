@@ -19,15 +19,8 @@ if (( $+commands[fzf] )); then
 
   # Preview configuration
   if [ "$FZF_PREVIEW" -ne 0 ]; then
-    if (( $+commands[fzf-preview.sh] )); then
-      local reader="fzf-preview.sh {}"
-    else
-      local reader="bat -n --color=always --line-range :500 {}"
-    fi
-    export FZF_CTRL_T_OPTS="\
-    --preview='$reader'"
-    export FZF_ALT_C_OPTS="\
-    --preview='eza $EZA_DEFAULT_OPTS {}'"
+    export FZF_CTRL_T_OPTS="--preview='_fzf_complete_preview_realpath {}'"
+    export FZF_ALT_C_OPTS="--preview='eza $EZA_DEFAULT_OPTS {}'"
 
     _fzf_comprun() {
       local command="$1"
