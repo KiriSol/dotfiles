@@ -1,0 +1,25 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+      type: hardlink
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+
+- link:
+    # Binaries
+
+    # Shell
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: windows/PowerShell.ps1
+
+    # cli utils
+    ~/.vimrc: config/vimrc
+    ~/AppData/Roaming/bottom/bottom.toml: config/bottom.toml
+
+- create:
+    - ~/Dev
+    - ~/tmp
