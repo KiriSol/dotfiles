@@ -8,6 +8,10 @@
 
 [url "git@github.com:"]
     inteadOf = "gh:"
+[url "https://github.com/"]
+    inteadOf = "gh/"
 
 [url "git@github.com:KiriSol/"]
     inteadOf = "my:"
+[url "https://github.com/KiriSol/"]
+    inteadOf = "my/"

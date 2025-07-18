@@ -21,6 +21,10 @@
     ~/.oh-my-zsh/custom/utils.zsh: shell/utils.zsh
     ~/.oh-my-zsh/custom/aliases.zsh: shell/aliases.zsh
 
+    # Git
+    ~/.config/git/config: config/gitconfig
+    ~/.config/git/ignore: config/gitignore
+
     # cli utils
     ~/.vimrc: config/vimrc
     ~/.tmux.conf: config/tmux.conf
