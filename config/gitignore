@@ -1,0 +1,27 @@
+.cache/
+
+# Byte-compiled / optimized / DLL files / Compilations
+__pycache__/
+*.py[cod]
+build/
+dist/
+wheels/
+*.egg
+*.egg-info
+.mypy_cache/
+.ruff_cache/
+
+# Packages / Virtual environments
+node_modules/
+.venv/
+venv/
+.env/
+
+# C/C++
+*.so
+
+# dotenv
+.env
+
+# Logs
+*.log

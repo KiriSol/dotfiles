@@ -1,0 +1,13 @@
+[user]
+	email = kirasolovey09@gmail.com
+	name = Kirill Solovey
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+
+[url "git@github.com:"]
+    inteadOf = "gh:"
+
+[url "git@github.com:KiriSol/"]
+    inteadOf = "my:"
