@@ -35,3 +35,10 @@ if (( $+commands[bpython] )); then; alias bpy="bpython"; fi
 if (( $+commands[fdfind] )); then; alias fd="fdfind"; fi
 if (( $+commands[batcat] )); then; alias bat="batcat"; fi
 
+# Neovim configurations
+if [[ -d "~/.config/nvchad" ]]; then
+    alias nvchad="NVIM_APPNAME=nvchad nvim"
+fi
+if [[ -d "~/.config/lazyvim" ]]; then
+    alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+fi

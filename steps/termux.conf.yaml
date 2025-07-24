@@ -1,0 +1,39 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+      type: symlink
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+
+- link:
+    # Binaries
+    ~/.local/bin/fzf-preview.sh: bin/fzf-preview.sh
+
+    # Shell
+    ~/.local/bin/env: shell/env
+    ~/.zshrc: shell/zshrc
+    ~/.zshenv: shell/zshenv
+    ~/.oh-my-zsh/custom/utils.zsh: shell/utils.zsh
+    ~/.oh-my-zsh/custom/aliases.zsh: shell/aliases.zsh
+
+    # Git
+    ~/.config/git/config: config/gitconfig
+    ~/.config/git/ignore: config/gitignore
+
+    # cli utils
+    ~/.vimrc: config/vimrc
+    ~/.tmux.conf: config/tmux.conf
+    ~/.config/bat/config: config/bat.conf
+    ~/.config/eza/theme.yaml: config/eza.theme.yaml
+    ~/.config/htop/htoprc: config/htoprc
+    ~/.config/bottom/bottom.toml: config/bottom.toml
+
+- create:
+    - ~/downloads
+    - ~/dev
+    - ~/tmp
