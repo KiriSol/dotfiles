@@ -3,7 +3,7 @@
       relink: true
       create: true
       force: true
-      type: hardlink
+      type: symlink
 
 - clean:
     ~/:
