@@ -7,6 +7,7 @@
 
 - clean: ["~"]
 
-- link:
-    ~/.termux: termux/termux
-    ~/.shortcuts: termux/shortcuts
+- shell:
+  - [rm -rf ~/.termux ~/.shortcuts]
+  - [cp -r termux/termux ~/.termux]
+  - [cp -r termux/shortcuts ~/.shortcuts]
