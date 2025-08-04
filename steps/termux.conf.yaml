@@ -11,3 +11,5 @@
   - [rm -rf ~/.termux ~/.shortcuts]
   - [cp -r termux/termux ~/.termux]
   - [cp -r termux/shortcuts ~/.shortcuts]
+  - [rm -f ~/.termux/shell]
+  - [ln -s "$SHELL" ~/.termux/shell]
