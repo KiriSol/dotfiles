@@ -3,12 +3,10 @@
       relink: true
       create: true
       force: true
-      type: hardlink
+      type: symlink
 
 - clean:
     ~/:
-    ~/.config:
-      recursive: true
 
 - link:
     # Binaries

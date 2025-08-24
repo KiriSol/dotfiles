@@ -1,10 +1,11 @@
-" ========== Plugins ========== 
+" ========== Plugins ==========
 
 call plug#begin()
 
 " Functional
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Appearance
 Plug 'itchyny/lightline.vim'
@@ -39,9 +40,6 @@ endif
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[2 q"
 let &t_SR = "\<Esc>[4 q"
-
-" highlight LineNr ctermfg=NONE guifg=NONE  " Disable color for line number
-" highlight CursorLineNr ctermfg=NONE guifg=NONE  " Disable color for current line number
 
 
 " ========== Main settings ==========
@@ -90,7 +88,6 @@ set updatetime=300
 set signcolumn=yes
 
 " Search
-set hlsearch " Enable search highlight
 set incsearch " Search as you type
 set ignorecase " Ignore register
 set smartcase " Ignore register if no capital letters
@@ -102,24 +99,12 @@ set clipboard=unnamedplus
 " Toggle background transparency
 let t:isTransparent = 1
 function! ToggleBGTransparency()
-  if t:isTransparent == 0
-    hi Normal guibg=#2E3440 ctermbg=black
-    let t:isTransparent = 1
-  else
-    hi Normal guibg=NONE ctermbg=NONE
-    let t:isTransparent = 0
-  endif
-endfunction
-
-" Toggle search highlight
-let t:isSearchHilighting = 1
-function! ToggleSearchHilighting()
-    if t:isSearchHilighting
-        set nohlsearch
-        let t:isSearchHilighting = 0
+    if t:isTransparent == 0
+        hi Normal guibg=#2E3440 ctermbg=black
+        let t:isTransparent = 1
     else
-        set hlsearch
-        let t:isSearchHilighting = 1
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:isTransparent = 0
     endif
 endfunction
 
@@ -139,6 +124,7 @@ endfunction
 " ========== Autocommands ==========
 au VimEnter * call ToggleBGTransparency() " Transparent background
 au VimEnter * call ToggleWordWrap() " Disable wrap
+au CmdlineEnter /,? set hlsearch " Enable hlsearch
 
 
 " ========== Keys ==========
@@ -147,13 +133,15 @@ au VimEnter * call ToggleWordWrap() " Disable wrap
 let mapleader = " "
 let maplocalleader = "\\"
 
-nnoremap <leader>E :NERDTreeClose<CR>
-nnoremap <leader>e :NERDTreeFocus<CR>
+nnoremap <Esc> <cmd> set nohlsearch <CR>
 
-nnoremap <localleader>tb :call ToggleBGTransparency()<CR>
-nnoremap <localleader>ts :call ToggleSearchHilighting()<CR>
-nnoremap <localleader>tw :call ToggleWordWrap()<CR>
-nnoremap <localleader>ts :setlocal spell!<CR>
+nnoremap <leader>E <cmd> NERDTreeClose <CR>
+nnoremap <leader>e <cmd> NERDTreeFocus <CR>
+
+nnoremap <leader>sb :call ToggleBGTransparency()<CR>
+nnoremap <leader>ss :call ToggleSearchHilighting()<CR>
+nnoremap <leader>sw :call ToggleWordWrap()<CR>
+nnoremap <leader>ss :setlocal spell!<CR>
 
 " nnoremap <C-D> <C-D>zz
 " nnoremap <C-U> <C-U>zz
@@ -182,4 +170,11 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 let g:NERDTreeFileLines = 1
 let g:NERDTreeIgnore = ['^.git$', '^__pycache__$', '^.venv$', '^node_modules$', '^.ruff_cache$']
+
+
+" ========== Change Highlight ==========
+
+" highlight LineNr ctermfg=NONE guifg=NONE  " Disable color for line number
+" highlight CursorLineNr ctermfg=NONE guifg=NONE  " Disable color for current line number
+highlight SignColumn ctermbg=NONE guibg=NONE
 
