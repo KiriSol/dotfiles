@@ -4,26 +4,24 @@
 $env:BAT_THEME = "OneHalfDark"
 $env:LESS = "-R -r --raw-control-chars"
 
-### Append to PATH
+## Append to PATH
 if (Get-Command git.exe -ErrorAction Ignore) {
     $env:PATH += ";C:\Program Files\Git\usr\bin" # GNU tools
 }
 
-### Pretty start
-clear.exe -x
-fastfetch.exe --load-config examples/8.jsonc
 
-### Theme
-if (Get-Command oh-my-posh -ErrorAction Ignore) {
-    Set-Alias -Name omp -Value 'oh-my-posh'
-    function Set-Theme ($theme) { oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$theme.omp.json" | Invoke-Expression }
-    Set-Theme night-owl
+### Pretty start
+if (Get-Command fastfetch.exe -ErrorAction Ignore) {
+    clear.exe -x
+    fastfetch.exe --load-config examples/8.jsonc
 }
+
 
 ### Modules
 Import-module -Name Terminal-Icons
-# Import-Module -Name Microsoft.WinGet.CommandNotFound
+Import-Module -Name Microsoft.WinGet.CommandNotFound
 # Import-Module -Name PowerShellProTools
+# Import-Module -Name oh-my-posh
 
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
@@ -32,7 +30,18 @@ if (Test-Path($ChocolateyProfile)) {
 
 
 # PSReadLine
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionSource History # IntelliSense suggestions
+Set-PSReadlineOption -HistorySearchCursorMovesToEnd # Move cursor to end at search
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete # Completions like zsh
+Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
+
+
+### Theme
+if (Get-Command oh-my-posh -ErrorAction Ignore) {
+    Set-Alias -Name omp -Value 'oh-my-posh'
+    function Set-Theme ($theme) { oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$theme.omp.json" | Invoke-Expression }
+    Set-Theme night-owl
+}
 
 
 ### Completions
@@ -117,6 +126,7 @@ if (Get-Command eza.exe -ErrorAction Ignore) {
 
     function ls1 { ls --tree --level=1 @args }
     function ls2 { ls --tree --level=2 @args }
+    function ls2 { ls --tree --level=3 @args }
 
     # Others
     function ltt { tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
@@ -131,7 +141,7 @@ if (Get-Command eza.exe -ErrorAction Ignore) {
 ## Fastfetch
 if (Get-Command fastfetch.exe -ErrorAction Ignore) {
     function ff { fastfetch.exe --load-config examples/17.jsonc @args }
-    function fff { fastfetch.exe --load-config examples/13.jsonc @args --logo none }
+    function fff { fastfetch.exe --load-config examples/13.jsonc --logo none @args }
 
     function paleofetch { fastfetch.exe --load-config paleofetch.jsonc @args }
     function neofetch { fastfetch.exe --load-config neofetch.jsonc @args }
