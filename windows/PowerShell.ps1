@@ -2,7 +2,7 @@
 
 ### Variables
 $env:BAT_THEME = "OneHalfDark"
-$env:LESS = "-R -r --raw-control-chars"
+$env:LESS = "-R -r --raw-control-chars --quit-if-one-screen --mouse"
 
 ## Append to PATH
 if (Get-Command git.exe -ErrorAction Ignore) {
@@ -17,15 +17,33 @@ if (Get-Command fastfetch.exe -ErrorAction Ignore) {
 }
 
 
-### Modules
+### Modules & Completions
 Import-module -Name Terminal-Icons
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 # Import-Module -Name PowerShellProTools
-# Import-Module -Name oh-my-posh
+Import-Module -Name posh-git
+# Import-Module -Name oh-my-posh # I usually install separately
 
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
+}
+
+## Uv (python package and environment manager)
+if (Get-Command uv -ErrorAction Ignore) {
+    (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
+    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
+}
+
+## Winget
+Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+    param($wordToComplete, $commandAst, $cursorPosition)
+        [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+        $Local:word = $wordToComplete.Replace('"', '""')
+        $Local:ast = $commandAst.ToString().Replace('"', '""')
+        winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
 }
 
 
@@ -41,13 +59,6 @@ if (Get-Command oh-my-posh -ErrorAction Ignore) {
     Set-Alias -Name omp -Value 'oh-my-posh'
     function Set-Theme ($theme) { oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$theme.omp.json" | Invoke-Expression }
     Set-Theme night-owl
-}
-
-
-### Completions
-if (Get-Command uv -ErrorAction Ignore) {
-    (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
-    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
 }
 
 
