@@ -126,7 +126,7 @@ if (Get-Command eza.exe -ErrorAction Ignore) {
 
     function ls1 { ls --tree --level=1 @args }
     function ls2 { ls --tree --level=2 @args }
-    function ls2 { ls --tree --level=3 @args }
+    function ls3 { ls --tree --level=3 @args }
 
     # Others
     function ltt { tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
