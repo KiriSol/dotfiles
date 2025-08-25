@@ -1,77 +1,65 @@
-# NOTE: используются git-bash утилиты
+# NOTE: use git bash utils
 
-# Переменные
-$DotFiles = "$env:USERPROFILE/.dotfiles"
-
+### Variables
 $env:BAT_THEME = "OneHalfDark"
-$env:LESS = "-r"
-$env:PY_PYTHON = "3.10"
+$env:LESS = "-R -r --raw-control-chars"
 
-# Append to PATH (only for PowerShell)
+### Append to PATH
 if (Get-Command git.exe -ErrorAction Ignore) {
     $env:PATH += ";C:\Program Files\Git\usr\bin" # GNU tools
 }
 
-
+### Pretty start
 clear.exe -x
-fastfetch.exe --load-config examples/8.jsonc # красивый старт
+fastfetch.exe --load-config examples/8.jsonc
 
+### Theme
 if (Get-Command oh-my-posh -ErrorAction Ignore) {
-    # Тема для PowerShell и функция для смены
+    Set-Alias -Name omp -Value 'oh-my-posh'
     function Set-Theme ($theme) { oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$theme.omp.json" | Invoke-Expression }
     Set-Theme night-owl
-
-    Set-Alias -Name omp -Value 'oh-my-posh'
 }
 
 
-# Модули
+### Modules
 Import-module -Name Terminal-Icons
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 Import-Module -Name PowerShellProTools
 
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
-    Import-Module "$ChocolateyProfile" # Автозаполнение для Chocolatey
+    Import-Module "$ChocolateyProfile"
 }
 
 
-# Aliases
+# PSReadLine
+Set-PSReadLineOption -PredictionSource History
+
+
+### Completions
+(& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
+(& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
+
+
+### Aliases
 Set-Alias -Name touch -Value 'New-Item'
 
+function .. { Set-Location -Path .. }
+function ... { Set-Location -Path ..\.. }
+function .... { Set-Location -Path ..\..\.. }
 
-# Keybindings
-Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit # Выход
-
-
-# Python
-#region
-# ==============================================================
-
-# ==============================================================
-#endregion
+if (Get-Command scoop.ps1 -ErrorAction Ignore) { function which ($command) { scoop.ps1 which $command } }
+else { function which ($command) { Get-Command $command } }
 
 
-# Смена директории
-#region
-function Set-ParentDirectory { Set-Location -Path .. }
-Set-Alias -Name .. -Value Set-ParentDirectory
-function Set-ParentDirectory2 { Set-Location -Path ../.. }
-Set-Alias -Name ... -Value Set-ParentDirectory2
-function Set-ParentDirectory3 { Set-Location -Path ../../.. }
-Set-Alias -Name .... -Value Set-ParentDirectory3
-
-function Set-Location-DotFiles { Set-Location -Path $DotFiles }
-
-#endregion
+### Keybindings
+Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 
 
-# Утилиты
-# ==============================================================
+### Utils
 
 # Yazi
 if (Get-Command yazi.exe -ErrorAction Ignore) {
-    Set-Alias -Name y -Value yazi
     function yy {
         $tmp = [System.IO.Path]::GetTempFileName()
         yazi $args --cwd-file="$tmp"
@@ -85,64 +73,68 @@ if (Get-Command yazi.exe -ErrorAction Ignore) {
 
 # Eza
 if (Get-Command eza.exe -ErrorAction Ignore) {
-    $eza_params = ( # standard settings
-        "--icons=always", # все иконки
-        "--color=always", # все цвета
-        "--classify=always", # символы показывающие тип элемента
-        "--header", # заголовок для --long
-        "--hyperlink", # гиперссылки
-        "--time-style=long-iso", # нормальный стиль времени
-        "--group-directories-first", # сначала директории
-        "--git" # информация о git status
+    $EZA_DEFAULT_OPTS = (
+        '--git',
+        '--hyperlink',
+        '--color=always',
+        '--icons=always',
+        '--group-directories-first',
+        '--sort=type',
+        '--time-style=long-iso',
+        '--header',
+        '--classify=always'
     )
 
-    # Базовые
-    function ListItems { eza.exe $eza_params --sort=type $args } # eza с приятными параметрами
-    function TreeItems { eza.exe $eza_params --tree $args } # дерево элементов
+    $EZA_IGNORE_GLOB = ".git|.venv|venv|node_modules|__pycache__|.idea|.buildozer|.ruff_cache"
 
-    function la { eza.exe $eza_params --sort=name --all $args } # ls со скрытыми элементами
-    function l { eza.exe $eza_params --long --group $args } # полная информация о файлах
-    function ll { eza.exe $eza_params --long --group --all $args } # l со скрытыми элементами
-    function lla { eza.exe $eza_params -lbhHigUmuSa $args } # увеличенная полная информация
-    # function llx { base_list -lbhHigUmuSa@ $args }
+    # Standard aliases
+    function ListItems { eza.exe $EZA_DEFAULT_OPTS @args }
+    Set-Alias -Name ls -Value ListItems
 
-    # С сортировкой
-    function ltree { eza.exe $eza_params --tree --long --no-user $args } # Дерево с полной информацией
-    function lgit { eza.exe $eza_params --long --no-user --git-ignore --git-repos $args } # без элементов, указанных в .gitignore
-    function labs { eza.exe $eza_params --absolute=on $args } # абсолютный путь
+    function tree { eza.exe $EZA_DEFAULT_OPTS --tree @args }
 
-    function ldir { eza.exe $eza_params --only-dirs $args } # только директории
-    function lfile { eza.exe $eza_params --only-files $args } # только файлы
+    function la { eza.exe $EZA_DEFAULT_OPTS --sort=Name --all @args }
+    function l { eza.exe $EZA_DEFAULT_OPTS --header --long @args }
+    function ll { eza.exe $EZA_DEFAULT_OPTS --all --header --long @args }
 
-    function lx { eza.exe $eza_params --across $args } # вывод в таблицу не по столбикам, а по строкам
-    function lr { eza.exe $eza_params --recurse $args } # рекурсия по директориям
+    # Full information about files
+    function lla { eza.exe $EZA_DEFAULT_OPTS -lbhHigUmuSa @args }
+    function llx { eza.exe $EZA_DEFAULT_OPTS -lbhHigUmuSa@ @args }
 
-    # Сортировка
-    function lsize { eza.exe $eza_params --long --sort=size $args } # по размеру
+    # Ls with sorting
+    function lgit { eza.exe $EZA_DEFAULT_OPTS --all --git-ignore @args }
+    function lmod { eza.exe $EZA_DEFAULT_OPTS --all --header --long --sort=modified @args }
+    function lcreate { eza.exe $EZA_DEFAULT_OPTS --all --header --long --sort=created @args }
+    function lsize { eza.exe $EZA_DEFAULT_OPTS --all --header --long --sort=size @args }
+    function ldirs { eza.exe $EZA_DEFAULT_OPTS --only-dirs @args }
+    function lfiles { eza.exe $EZA_DEFAULT_OPTS --only-files @args }
 
-    function lmod { eza.exe $eza_params --long --time=modified --sort=modified $args } # по дате модификации
-    function lacc { eza.exe $eza_params --long --time=accessed --sort=accessed $args } # по дате 
-    function lcreate { eza.exe $eza_params --long --time=created --sort=created $args } # по дате создания
-
+    # Tree with level (first argument)
     function lt {
-        # Дерево с устанавливаемым первым аргументом уровнем рекурсии
-        param ( $level = 1 ) # по умолчанию 1
-        eza.exe $eza_params --tree --level=$level $args
+        $level = if ($args.Count -eq 0) { "1" } else { $args[0] }
+        $args = if ($args.Count -le 1) { "." } else { $args[1..($args.Count-1)] }
+
+        tree --level=$level @args
     }
 
-    function ls1 { eza.exe $eza_params --tree --level=1 $args } # быстрый lt 1
-    function ls2 { eza.exe $eza_params --tree --level=2 $args } # быстрый lt 2
+    function ls1 { eza.exe $EZA_DEFAULT_OPTS --tree --level=1 @args }
+    function ls2 { eza.exe $EZA_DEFAULT_OPTS --tree --level=2 @args }
 
-    Set-Alias -Name ls -Value ListItems # Замена ls
-    Set-Alias -Name tree -Value TreeItems # Замена tree
+    # Others
+    function lT { eza.exe $EZA_DEFAULT_OPTS --tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
+    function lS { eza.exe $EZA_DEFAULT_OPTS --oneline @args }
+    function lX { eza.exe $EZA_DEFAULT_OPTS --across @args }
+    function lR { eza.exe $EZA_DEFAULT_OPTS --recurse @args }
 
+    function labs { eza.exe $EZA_DEFAULT_OPTS --absolute=on @args }
+    function lpwd { eza.exe $EZA_DEFAULT_OPTS --absolute=on -d . @args }
 }
 
 # Fastfetch
 if (Get-Command fastfetch.exe -ErrorAction Ignore) {
     function ff { fastfetch.exe --load-config examples/17.jsonc $args }
     function fff { fastfetch.exe --load-config examples/13.jsonc $args --logo none }
-    
+
     function paleofetch { fastfetch.exe --load-config paleofetch.jsonc $args }
     function neofetch { fastfetch.exe --load-config neofetch.jsonc $args }
     function archey { fastfetch.exe --load-config archey.jsonc --logo arch2 $args }
@@ -153,36 +145,13 @@ if (Get-Command fastfetch.exe -ErrorAction Ignore) {
     }
 }
 
-# git
+# Git
 if (Get-Command git.exe -ErrorAction Ignore) {
     Set-Alias -Name g -Value git
     function gst { git.exe status $args }
     function glog { git.exe log --oneline --decorate --graph $args }
 }
 
-# ==============================================================
 
-
-# Поиск
-if (Get-Command scoop.ps1 -ErrorAction Ignore) {
-    function which ($command) { scoop.ps1 which $command }
-}
-else {
-    function which ($command) { Get-Command $command }
-}
-
-
-# Приложения
-
-
-# Append to Path
-
-
-# # PSReadLine
-Set-PSReadLineOption -PredictionSource History
-
-
-# Complections
-(& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
-(& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
+### Applications
 
