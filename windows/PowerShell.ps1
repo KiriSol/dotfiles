@@ -22,6 +22,7 @@ Import-module -Name Terminal-Icons
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 # Import-Module -Name PowerShellProTools
 Import-Module -Name posh-git
+Import-Module -Name z
 # Import-Module -Name oh-my-posh # I usually install separately
 
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
