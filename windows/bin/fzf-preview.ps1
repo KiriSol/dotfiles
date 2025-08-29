@@ -34,24 +34,24 @@ function Get-MimeType {
         # Fallback
         $ext = [System.IO.Path]::GetExtension($File).ToLower()
         switch ($ext) {
-            '.txt'  { return 'text/plain' }
-            '.md'   { return 'text/markdown' }
+            '.txt' { return 'text/plain' }
+            '.md' { return 'text/markdown' }
             '.json' { return 'application/json' }
-            '.xml'  { return 'application/xml' }
-            '.ps1'  { return 'text/x-powershell' }
-            '.cmd'  { return 'text/x-msdos-batch' }
-            '.c'    { return 'text/x-c' }
-            '.cpp'  { return 'text/x-cpp' }
-            '.py'   { return 'text/plain' }
-            '.js'   { return 'text/plain' }
-            '.jpg'  { return 'image/jpeg' }
+            '.xml' { return 'application/xml' }
+            '.ps1' { return 'text/x-powershell' }
+            '.cmd' { return 'text/x-msdos-batch' }
+            '.c' { return 'text/x-c' }
+            '.cpp' { return 'text/x-cpp' }
+            '.py' { return 'text/plain' }
+            '.js' { return 'text/plain' }
+            '.jpg' { return 'image/jpeg' }
             '.jpeg' { return 'image/jpeg' }
-            '.png'  { return 'image/png' }
-            '.gif'  { return 'image/gif' }
-            '.mp4'  { return 'video/mp4' }
-            '.avi'  { return 'video/x-msvideo' }
-            '.zip'  { return 'application/zip' }
-            '.7z'   { return 'application/x-7z-compressed' }
+            '.png' { return 'image/png' }
+            '.gif' { return 'image/gif' }
+            '.mp4' { return 'video/mp4' }
+            '.avi' { return 'video/x-msvideo' }
+            '.zip' { return 'application/zip' }
+            '.7z' { return 'application/x-7z-compressed' }
             default { return 'application/octet-stream' }
         }
     }
@@ -103,22 +103,23 @@ if ($mimeType -eq 'inode/x-empty') {
 }
 elseif ($mimeType -like 'text/*' -or $mimeType -like 'application/json*' -or $mimeType -like 'application/xml*') {
     if (Get-Command -Name bat.exe -ErrorAction SilentlyContinue) {
-        bat --style=numbers --color=always --pager=never --highlight-line=0 -- "$Path"
+        bat.exe --style=numbers --color=always --pager=never --highlight-line=0 -- "$Path"
     }
     else {
         Get-Content -Path $Path -TotalCount 50 | ForEach-Object {
             $line = $_
             if ($line.Length -gt 120) {
                 $line.Substring(0, 117) + "..."
-            } else {
+            }
+            else {
                 $line
             }
         }
     }
 }
 elseif ($mimeType -like 'image/*' -or $mimeType -like 'video/*') {
-    if (Get-Command -Name chafa -ErrorAction SilentlyContinue) {
-        chafa --size=$(
+    if (Get-Command -Name chafa.exe -ErrorAction SilentlyContinue) {
+        chafa.exe --size=$(
             if ($Host.UI.RawUI.WindowSize.Width)
                 { $Host.UI.RawUI.WindowSize.Width - 3 }
             else
@@ -133,8 +134,9 @@ elseif ($mimeType -like 'image/*' -or $mimeType -like 'video/*') {
 elseif ($mimeType -like 'application/*zip*' -or $mimeType -like 'application/*rar*') {
     if (Get-Command -Name 7z.exe -ErrorAction SilentlyContinue) {
         Write-Host "📦 Archive content:"
-        7z l "$Path" | Select-Object -First 50
-    } else {
+        7z.exe l "$Path" | Select-Object -First 50
+    }
+    else {
         Write-Host "📦 Archive, please install 7zip"
     }
 }
@@ -148,7 +150,7 @@ else {
     }
     else {
         $bytes = [System.IO.File]::ReadAllBytes($Path)
-        $hex = [System.BitConverter]::ToString($bytes[0..15]) -replace '-',' '
+        $hex = [System.BitConverter]::ToString($bytes[0..15]) -replace '-', ' '
         Write-Host "$hex"
     }
 }
