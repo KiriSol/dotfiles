@@ -1,50 +1,85 @@
-# NOTE: use git bash utils
-
 ### Variables
 $env:BAT_THEME = "OneHalfDark"
 $env:LESS = "-R -r --raw-control-chars --quit-if-one-screen --mouse"
 
+$env:FZF_DEFAULT_OPTS = @"
+--color=bg+:#414559,spinner:#8CAAEE,hl:#E78284
+--color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#8CAAEE
+--color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284
+--color=selected-bg:#51577D
+--color=border:#6C6F85,label:#C6D0F5
+--bind='F2:toggle-preview'
+--bind='shift-up:preview-page-up,shift-down:preview-page-down'
+"@
+
+if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
+    $env:FZF_ALT_C_OPTS = "--preview='powershell -File fzf-preview.ps1 {}'"
+    $env:FZF_CTRL_T_OPTS = "--preview='powershell -File fzf-preview.ps1 {}'"
+}
+
 ## Append to PATH
-if (Get-Command git.exe -ErrorAction Ignore) {
-    $env:PATH += ";C:\Program Files\Git\usr\bin" # GNU tools
+
+# GNU tools
+if (Get-Command -Name git.exe -ErrorAction Ignore) {
+    $GitBashBinaries = "$($(Get-Item $(Get-Command git.exe).Path).Directory.Parent.FullName)\usr\bin"
+    if (Test-Path -Path $GitBashBinaries) {
+        $env:PATH += ";$GitBashBinaries"
+    }
 }
 
 
 ### Pretty start
-if (Get-Command fastfetch.exe -ErrorAction Ignore) {
-    clear.exe -x
-    fastfetch.exe --load-config examples/8.jsonc
+if (Get-Command -Name fastfetch.exe -ErrorAction Ignore) {
+    fastfetch.exe --config examples/8.jsonc
 }
 
 
-### Modules & Completions
-Import-module -Name Terminal-Icons
-Import-Module -Name Microsoft.WinGet.CommandNotFound
-# Import-Module -Name PowerShellProTools
-Import-Module -Name posh-git
-Import-Module -Name z
-# Import-Module -Name oh-my-posh # I usually install separately
+### Modules & Plugins
+Import-module -Name Terminal-Icons -ErrorAction SilentlyContinue
+Import-Module -Name Microsoft.WinGet.CommandNotFound -ErrorAction SilentlyContinue
+# Import-Module -Name PowerShellProTools -ErrorAction SilentlyContinue
+Import-Module -Name posh-git -ErrorAction SilentlyContinue
 
+## Z (modern cd)
+if (Get-Command -Name zoxide -ErrorAction Ignore) { Invoke-Expression (& { (zoxide init powershell | Out-String) }) }
+else { Import-Module -Name z -ErrorAction SilentlyContinue }
+
+## Fzf
+if (Get-Command -Name fzf -ErrorAction Ignore) {
+    Import-Module -Name PSFzf -ErrorAction SilentlyContinue
+    if (Get-Command -Name Set-PsFzfOption -ErrorAction Ignore) {
+        Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordSetLocation 'Alt+c'
+        Set-PsFzfOption -TabExpansion
+    }
+}
+
+## Chocolatey
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-    Import-Module "$ChocolateyProfile"
-}
+if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
 
-## Uv (python package and environment manager)
-if (Get-Command uv -ErrorAction Ignore) {
-    (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
-    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
+## Scoop
+if (Get-Command -Name scoop.ps1 -ErrorAction Ignore) {
+    $ScoopCompletion = "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
+    if (Test-Path -Path $ScoopCompletion) {
+        Import-Module -Name $ScoopCompletion
+    }
 }
 
 ## Winget
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
-    param($wordToComplete, $commandAst, $cursorPosition)
+    param ($wordToComplete, $commandAst, $cursorPosition)
         [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
         $Local:word = $wordToComplete.Replace('"', '""')
         $Local:ast = $commandAst.ToString().Replace('"', '""')
         winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
             [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
         }
+}
+
+## Uv (python package and environment manager)
+if (Get-Command -Name uv -ErrorAction Ignore) {
+    (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
+    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
 }
 
 
@@ -56,8 +91,8 @@ Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
 
 
 ### Theme
-if (Get-Command oh-my-posh -ErrorAction Ignore) {
-    Set-Alias -Name omp -Value 'oh-my-posh'
+if (Get-Command -Name oh-my-posh -ErrorAction Ignore) {
+    Set-Alias -Name omp -Value oh-my-posh
     function Set-Theme ($theme) { oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$theme.omp.json" | Invoke-Expression }
     Set-Theme night-owl
 }
@@ -70,8 +105,11 @@ function .. { Set-Location -Path .. }
 function ... { Set-Location -Path ..\.. }
 function .... { Set-Location -Path ..\..\.. }
 
-if (Get-Command scoop.ps1 -ErrorAction Ignore) { function which ($command) { scoop.ps1 which $command } }
-else { function which ($command) { Get-Command $command } }
+if (Get-Command -Name nvim.exe -ErrorAction Ignore) { Set-Alias -Name nv -Value nvim.exe -Force }
+
+if (Get-Command -Name scoop.ps1 -ErrorAction Ignore) { function which ($command) { scoop.ps1 which $command } }
+else { function which ($command) { Write-Output -InputObject $(Get-Command $command).Path } }
+Set-Alias -Name w -Value Get-Command
 
 
 ### Keybindings
@@ -81,10 +119,10 @@ Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 ### Utils
 
 ## Yazi
-if (Get-Command yazi.exe -ErrorAction Ignore) {
+if (Get-Command -Name yazi.exe -ErrorAction Ignore) {
     function yy {
         $tmp = [System.IO.Path]::GetTempFileName()
-        yazi $args --cwd-file="$tmp"
+        yazi @args --cwd-file="$tmp"
         $cwd = Get-Content -Path $tmp -Encoding UTF8
         if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
             Set-Location -LiteralPath ([System.IO.Path]::GetFullPath($cwd))
@@ -94,7 +132,7 @@ if (Get-Command yazi.exe -ErrorAction Ignore) {
 }
 
 ## Eza
-if (Get-Command eza.exe -ErrorAction Ignore) {
+if (Get-Command -Name eza.exe -ErrorAction Ignore) {
     $EZA_DEFAULT_OPTS = (
         '--git',
         '--hyperlink',
@@ -110,8 +148,8 @@ if (Get-Command eza.exe -ErrorAction Ignore) {
     $EZA_IGNORE_GLOB = ".git|.venv|venv|node_modules|__pycache__|.idea|.buildozer|.ruff_cache"
 
     # Standard aliases
-    function ListItems { eza.exe $EZA_DEFAULT_OPTS @args }
-    Set-Alias -Name ls -Value ListItems
+    function ListItems { eza.exe @EZA_DEFAULT_OPTS @args }
+    Set-Alias -Name ls -Value ListItems -Force
 
     function tree { ls --tree @args }
 
@@ -151,25 +189,27 @@ if (Get-Command eza.exe -ErrorAction Ignore) {
 }
 
 ## Fastfetch
-if (Get-Command fastfetch.exe -ErrorAction Ignore) {
-    function ff { fastfetch.exe --load-config examples/17.jsonc @args }
-    function fff { fastfetch.exe --load-config examples/13.jsonc --logo none @args }
+if (Get-Command -Name fastfetch.exe -ErrorAction Ignore) {
+    function ff { fastfetch.exe --config examples/17.jsonc @args }
+    function fff { fastfetch.exe --config examples/13.jsonc --logo none @args }
 
-    function paleofetch { fastfetch.exe --load-config paleofetch.jsonc @args }
-    function neofetch { fastfetch.exe --load-config neofetch.jsonc @args }
-    function archey { fastfetch.exe --load-config archey.jsonc @args }
+    function paleofetch { fastfetch.exe --config paleofetch.jsonc @args }
+    function neofetch { fastfetch.exe --config neofetch.jsonc @args }
+    function archey { fastfetch.exe --config archey.jsonc @args }
 
-    function ffc {
-        param ( $number_config = 13 )
-        fastfetch.exe --load-config examples/$number_config.jsonc @args
+    function ffc ($number_config = 13) {
+        fastfetch.exe --config examples/$number_config.jsonc @args
     }
 }
 
 ## Git
-if (Get-Command git.exe -ErrorAction Ignore) {
+if (Get-Command -Name git.exe -ErrorAction Ignore) {
     Set-Alias -Name g -Value git
+    function ga { git.exe add @args }
     function gst { git.exe status @args }
+    function gcl { git.exe clone --recurse-submodules @args }
     function glog { git.exe log --oneline --decorate --graph @args }
+    function gcam { git.exe commit --all --message @args }
 }
 
 
