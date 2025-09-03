@@ -36,7 +36,7 @@ if (Get-Command -Name fastfetch.exe -ErrorAction Ignore) {
 
 ### Modules & Plugins
 Import-module -Name Terminal-Icons -ErrorAction SilentlyContinue
-Import-Module -Name Microsoft.WinGet.CommandNotFound -ErrorAction SilentlyContinue
+# Import-Module -Name Microsoft.WinGet.CommandNotFound -ErrorAction SilentlyContinue
 # Import-Module -Name PowerShellProTools -ErrorAction SilentlyContinue
 Import-Module -Name posh-git -ErrorAction SilentlyContinue
 
@@ -133,22 +133,26 @@ if (Get-Command -Name yazi.exe -ErrorAction Ignore) {
 
 ## Eza
 if (Get-Command -Name eza.exe -ErrorAction Ignore) {
-    $EZA_DEFAULT_OPTS = (
-        '--git',
-        '--hyperlink',
-        '--color=always',
-        '--icons=always',
-        '--group-directories-first',
-        '--sort=type',
-        '--time-style=long-iso',
-        '--header',
-        '--classify=always'
-    )
+    if (-not $env:EZA_DEFAULT_OPTS) {
+        $env:EZA_DEFAULT_OPTS = (
+            '--git',
+            '--hyperlink',
+            '--color=always',
+            '--icons=always',
+            '--group-directories-first',
+            '--sort=type',
+            '--time-style=long-iso',
+            '--header',
+            '--classify=always'
+        )
+    }
 
-    $EZA_IGNORE_GLOB = ".git|.venv|venv|node_modules|__pycache__|.idea|.buildozer|.ruff_cache"
+    if (-not $env:EZA_IGNORE_GLOB) {
+        $env:EZA_IGNORE_GLOB = ".git|.venv|venv|node_modules|__pycache__|.idea|.buildozer|.ruff_cache"
+    }
 
     # Standard aliases
-    function ListItems { eza.exe @EZA_DEFAULT_OPTS @args }
+    function ListItems { eza.exe @env:EZA_DEFAULT_OPTS @args }
     Set-Alias -Name ls -Value ListItems -Force
 
     function tree { ls --tree @args }
@@ -179,7 +183,7 @@ if (Get-Command -Name eza.exe -ErrorAction Ignore) {
     function ls3 { ls --tree --level=3 @args }
 
     # Others
-    function ltt { tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
+    function ltt { tree --no-user --all --ignore-glob=$env:EZA_IGNORE_GLOB @args }
     function lss { ls --oneline @args }
     function lxx { ls --across @args }
     function lrr { ls --recurse @args }
