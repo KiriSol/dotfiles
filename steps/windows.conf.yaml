@@ -10,6 +10,7 @@
 
 - link:
     # Binaries
+    ~/.local/bin/fzf-preview.ps1: windows/bin/fzf-preview.ps1
 
     # Shell
     ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: windows/PowerShell.ps1
@@ -17,6 +18,8 @@
     # cli utils
     ~/.vimrc: config/vimrc
     ~/AppData/Roaming/bottom/bottom.toml: config/bottom.toml
+
+    # Apps
 
 - create:
     - ~/Dev
