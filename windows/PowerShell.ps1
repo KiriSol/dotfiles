@@ -8,13 +8,14 @@ $env:FZF_DEFAULT_OPTS = @"
 --color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284
 --color=selected-bg:#51577D
 --color=border:#6C6F85,label:#C6D0F5
+--preview-window=border:rounded
 --bind='F2:toggle-preview'
 --bind='shift-up:preview-page-up,shift-down:preview-page-down'
 "@
 
 if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
-    $env:FZF_ALT_C_OPTS = "--preview='powershell -File fzf-preview.ps1 {}'"
-    $env:FZF_CTRL_T_OPTS = "--preview='powershell -File fzf-preview.ps1 {}'"
+    $env:FZF_ALT_C_OPTS = "--preview='powershell -File $($(Get-Command -Name fzf-preview.ps1).Path) {}'"
+    $env:FZF_CTRL_T_OPTS = "--preview='powershell -File $($(Get-Command -Name fzf-preview.ps1).Path) {}'"
 }
 
 ## Append to PATH
@@ -134,7 +135,18 @@ if (Get-Command -Name yazi.exe -ErrorAction Ignore) {
 ## Eza
 if (Get-Command -Name eza.exe -ErrorAction Ignore) {
     if (-not $env:EZA_DEFAULT_OPTS) {
-        $env:EZA_DEFAULT_OPTS = (
+        $env:EZA_DEFAULT_OPTS = @(
+            '--git',
+            '--hyperlink',
+            '--color=always',
+            '--icons=always',
+            '--group-directories-first',
+            '--sort=type',
+            '--time-style=long-iso',
+            '--header',
+            '--classify=always'
+        )
+        $EZA_DEFAULT_OPTS = @(
             '--git',
             '--hyperlink',
             '--color=always',
@@ -152,7 +164,7 @@ if (Get-Command -Name eza.exe -ErrorAction Ignore) {
     }
 
     # Standard aliases
-    function ListItems { eza.exe @env:EZA_DEFAULT_OPTS @args }
+    function ListItems { eza.exe @EZA_DEFAULT_OPTS @args }
     Set-Alias -Name ls -Value ListItems -Force
 
     function tree { ls --tree @args }

@@ -18,9 +18,9 @@ function Get-MimeType {
     try {
         # Cache DB for best performance
         if (-not $global:MimeDbCache) {
-            $global:MimeDbCache = Invoke-RestMethod -Uri "https://cdn.jsdelivr.net/gh/jshttp/mime-db@master/db.json"
+            $Global:MimeDbCache = Invoke-RestMethod -Uri "https://cdn.jsdelivr.net/gh/jshttp/mime-db@master/db.json"
         }
-        $MediaTypes = $global:MimeDbCache.psobject.Properties
+        $MediaTypes = $Global:MimeDbCache.psobject.Properties
         $MatchingMediaType = $mediaTypes.Where(
             { $_.Value.extensions -contains [IO.Path]::GetExtension($FileName).Substring(1) },
             'First'
@@ -69,7 +69,7 @@ catch {
 if ($item.PSIsContainer) {
     Write-Host "📁 '$($item.Name)' directory content:"
     if (Get-Command -Name eza.exe -ErrorAction SilentlyContinue) {
-        eza.exe $env:EZA_DEFAULT_OPTS --header --long --no-time --no-permissions -- $Path
+        eza.exe --icons=always --color=always --header --long --no-time --no-permissions -- $Path
     }
     else {
         Get-ChildItem -Path $Path -Force | Format-Table -AutoSize Name, Length, LastWriteTime
@@ -82,7 +82,7 @@ $mimeType = Get-MimeType $Path
 if ($mimeType -eq 'inode/directory') {
     Write-Host "📁 '$($item.Name)' directory content:"
     if (Get-Command -Name eza.exe -ErrorAction SilentlyContinue) {
-        eza.exe $env:EZA_DEFAULT_OPTS --header --long --no-time --no-permissions -- $Path
+        eza.exe --icons=always --color=always --header --long --no-time --no-permissions -- $Path
     }
     else {
         Get-ChildItem -Path $Path -Force | Format-Table -AutoSize Name, Length, LastWriteTime
