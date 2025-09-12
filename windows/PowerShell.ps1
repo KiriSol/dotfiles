@@ -10,7 +10,6 @@ $env:FZF_DEFAULT_OPTS = @"
 --color=border:#6C6F85,label:#C6D0F5
 --preview-window=border:rounded
 --bind='F2:toggle-preview'
---bind='shift-up:preview-page-up,shift-down:preview-page-down'
 "@
 
 if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
@@ -135,7 +134,7 @@ if (Get-Command -Name yazi.exe -ErrorAction Ignore) {
 ## Eza
 if (Get-Command -Name eza.exe -ErrorAction Ignore) {
     if (-not $env:EZA_DEFAULT_OPTS) {
-        $env:EZA_DEFAULT_OPTS = @(
+        $env:EZA_DEFAULT_OPTS = (
             '--git',
             '--hyperlink',
             '--color=always',
@@ -146,7 +145,7 @@ if (Get-Command -Name eza.exe -ErrorAction Ignore) {
             '--header',
             '--classify=always'
         )
-        $EZA_DEFAULT_OPTS = @(
+        $EZA_DEFAULT_OPTS = (
             '--git',
             '--hyperlink',
             '--color=always',
