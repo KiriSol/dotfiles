@@ -67,12 +67,10 @@
       {
         "name": "Windows PowerShell",
         "commandline": "powershell.exe",
-        "scrollbarState": "visible"
       },
       {
         "name": "Command Prompt",
         "commandline": "cmd.exe",
-        "scrollbarState": "visible"
       },
       {
         "name": "Python",

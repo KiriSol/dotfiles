@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-# add binaries to PATH if they aren't added yet
-# affix colons on either side of $PATH to simplify matching
-if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"

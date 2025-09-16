@@ -2,32 +2,20 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-if [[ -d "$ZSH/custom/themes/powerlevel10k" ]]; then
-  ZSH_THEME="powerlevel10k/powerlevel10k"
+# Set name of the theme to load
+if [ -d "$ZSH/custom/themes/powerlevel10k" ]; then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
 else
-  ZSH_THEME="robbyrussell"
+    ZSH_THEME="robbyrussell"
 fi
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
+# Use case-sensitive completion.
 CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -82,22 +70,22 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # Standard
-  history
-  git
-  docker
-  python
-  uv
-  fzf
-  zoxide
+    # Standard
+    history
+    git
+    docker
+    python
+    uv
+    fzf
+    zoxide
 
-  # Custom
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  fzf-tab
+    # Custom
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    fzf-tab
 
-  # My plugins
-  eza-zsh
+    # My plugins
+    eza-zsh
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Configuration fzf-tab completion
-zstyle ':completion:*' ignored-patterns '.|..|**/.|**/..|**/.git'
+zstyle ':completion:*' ignored-patterns '**/.|**/..|**/.git'
 
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # zstyle ':completion:*:descriptions' format '[%d]'
@@ -120,7 +108,13 @@ fi
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='nvim'
+if (( $+commands[nvim] )); then
+    export EDITOR='nvim'
+elif (( $+commands[vim] )); then
+    export EDITOR='vim'
+elif (( $+commands[vi] )); then
+    export EDITOR='vi'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -129,8 +123,8 @@ export EDITOR='nvim'
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
 # the $ZSH_CUSTOM folder, with .zsh extension.
-# $ZSH_CUSTOM/utils.zsh
 # $ZSH_CUSTOM/aliases.zsh
+# $ZSH_CUSTOM/utils.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
