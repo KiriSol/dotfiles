@@ -15,11 +15,12 @@
     ~/.local/bin/fzf-preview.sh: bin/fzf-preview.sh
 
     # Shell
-    ~/.local/bin/env: shell/env
-    ~/.zshrc: shell/zshrc
-    ~/.zshenv: shell/zshenv
-    ~/.oh-my-zsh/custom/utils.zsh: shell/utils.zsh
-    ~/.oh-my-zsh/custom/aliases.zsh: shell/aliases.zsh
+    ~/.local/bin/env: shell/env.sh
+    ~/.bashrc: shell/bash/bashrc.sh
+    ~/.zshrc: shell/zsh/zshrc.zsh
+    ~/.zshenv: shell/zsh/zshenv.zsh
+    ~/.oh-my-zsh/custom/utils.zsh: shell/zsh/utils.zsh
+    ~/.oh-my-zsh/custom/aliases.zsh: shell/zsh/aliases.zsh
 
     # Git
     ~/.config/git/config: config/gitconfig
@@ -34,6 +35,6 @@
     ~/.config/bottom/bottom.toml: config/bottom.toml
 
 - create:
-    - ~/downloads
-    - ~/dev
+    - ~/Downloads
+    - ~/Dev
     - ~/tmp
