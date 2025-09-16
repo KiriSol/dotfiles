@@ -17,27 +17,15 @@ if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
     $env:FZF_CTRL_T_OPTS = "--preview='powershell -File $($(Get-Command -Name fzf-preview.ps1).Path) {}'"
 }
 
-## Append to PATH
-
-# GNU tools
-if (Get-Command -Name git.exe -ErrorAction Ignore) {
-    $GitBashBinaries = "$($(Get-Item $(Get-Command git.exe).Path).Directory.Parent.FullName)\usr\bin"
-    if (Test-Path -Path $GitBashBinaries) {
-        $env:PATH += ";$GitBashBinaries"
-    }
-}
-
 
 ### Pretty start
-if (Get-Command -Name fastfetch.exe -ErrorAction Ignore) {
-    fastfetch.exe --config examples/8.jsonc
+if (Get-Command -Name fastfetch -ErrorAction Ignore) {
+    fastfetch --config examples/8.jsonc
 }
 
 
 ### Modules & Plugins
 Import-module -Name Terminal-Icons -ErrorAction SilentlyContinue
-# Import-Module -Name Microsoft.WinGet.CommandNotFound -ErrorAction SilentlyContinue
-# Import-Module -Name PowerShellProTools -ErrorAction SilentlyContinue
 Import-Module -Name posh-git -ErrorAction SilentlyContinue
 
 ## Z (modern cd)
@@ -54,8 +42,10 @@ if (Get-Command -Name fzf -ErrorAction Ignore) {
 }
 
 ## Chocolatey
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
+if (Get-Command -Name choco -ErrorAction Import-Module) {
+    $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+    if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
+}
 
 ## Scoop
 if (Get-Command -Name scoop.ps1 -ErrorAction Ignore) {
@@ -92,18 +82,15 @@ Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
 
 ### Theme
 if (Get-Command -Name oh-my-posh -ErrorAction Ignore) {
-    Set-Alias -Name omp -Value oh-my-posh
     function Set-Theme ($theme) { oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$theme.omp.json" | Invoke-Expression }
     Set-Theme night-owl
 }
 
 
 ### Aliases
-Set-Alias -Name touch -Value New-Item
 
 function .. { Set-Location -Path .. }
 function ... { Set-Location -Path ..\.. }
-function .... { Set-Location -Path ..\..\.. }
 
 if (Get-Command -Name nvim.exe -ErrorAction Ignore) { Set-Alias -Name nv -Value nvim.exe -Force }
 
@@ -119,7 +106,7 @@ Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 ### Utils
 
 ## Yazi
-if (Get-Command -Name yazi.exe -ErrorAction Ignore) {
+if (Get-Command -Name yazi -ErrorAction Ignore) {
     function yy {
         $tmp = [System.IO.Path]::GetTempFileName()
         yazi @args --cwd-file="$tmp"
@@ -132,7 +119,7 @@ if (Get-Command -Name yazi.exe -ErrorAction Ignore) {
 }
 
 ## Eza
-if (Get-Command -Name eza.exe -ErrorAction Ignore) {
+if (Get-Command -Name eza -ErrorAction Ignore) {
     if (-not $env:EZA_DEFAULT_OPTS) {
         $env:EZA_DEFAULT_OPTS = (
             '--git',
@@ -163,7 +150,7 @@ if (Get-Command -Name eza.exe -ErrorAction Ignore) {
     }
 
     # Standard aliases
-    function ListItems { eza.exe @EZA_DEFAULT_OPTS @args }
+    function ListItems { eza @EZA_DEFAULT_OPTS @args }
     Set-Alias -Name ls -Value ListItems -Force
 
     function tree { ls --tree @args }
@@ -205,26 +192,26 @@ if (Get-Command -Name eza.exe -ErrorAction Ignore) {
 
 ## Fastfetch
 if (Get-Command -Name fastfetch.exe -ErrorAction Ignore) {
-    function ff { fastfetch.exe --config examples/17.jsonc @args }
-    function fff { fastfetch.exe --config examples/13.jsonc --logo none @args }
+    function ff { fastfetch --config examples/17.jsonc @args }
+    function fff { fastfetch --config examples/13.jsonc --logo none @args }
 
-    function paleofetch { fastfetch.exe --config paleofetch.jsonc @args }
-    function neofetch { fastfetch.exe --config neofetch.jsonc @args }
-    function archey { fastfetch.exe --config archey.jsonc @args }
+    function paleofetch { fastfetch --config paleofetch.jsonc @args }
+    function neofetch { fastfetch --config neofetch.jsonc @args }
+    function archey { fastfetch --config archey.jsonc @args }
 
     function ffc ($number_config = 13) {
-        fastfetch.exe --config examples/$number_config.jsonc @args
+        fastfetch --config examples/$number_config.jsonc @args
     }
 }
 
 ## Git
 if (Get-Command -Name git.exe -ErrorAction Ignore) {
     Set-Alias -Name g -Value git
-    function ga { git.exe add @args }
-    function gst { git.exe status @args }
-    function gcl { git.exe clone --recurse-submodules @args }
-    function glog { git.exe log --oneline --decorate --graph @args }
-    function gcam { git.exe commit --all --message @args }
+    function ga { git add @args }
+    function gst { git status @args }
+    function gcl { git clone --recurse-submodules @args }
+    function glog { git log --oneline --decorate --graph @args }
+    function gcam { git commit --all --message @args }
 }
 
 
