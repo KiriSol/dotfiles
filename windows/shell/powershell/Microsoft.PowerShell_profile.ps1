@@ -1,9 +1,3 @@
-### Pretty start
-if (Get-Command -Name fastfetch -ErrorAction Ignore) {
-    fastfetch --config examples/8.jsonc
-}
-
-
 ### Aliases
 
 function .. { Set-Location -Path .. }
