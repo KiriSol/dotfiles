@@ -30,7 +30,7 @@ alias zshconfig="$cmd_for_open_file ${ZDOTDIR:-$HOME}/.zshrc"
 unset cmd_for_open_file
 
 # Choose alias for configure oh-my-zsh
-if (( $+commands[yy] )); then
+if (( $+functions[yy] )); then
     cmd_for_open_dir='yy'
 elif (( $+commands[yazi] )); then
     cmd_for_open_dir='yazi'
