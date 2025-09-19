@@ -55,6 +55,8 @@ if (( $+commands[fastfetch] )); then
         fi
         fastfetch --load-config examples/$1.jsonc "${@:2}"
     }
+    alias neofetch="fastfetch --load-config neofetch.jsonc"
+    alias paleofetch="fastfetch --load-config paleofetch.jsonc"
 fi
 
 # Neovim configurations
