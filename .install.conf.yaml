@@ -51,7 +51,7 @@
       if: '[ -n "$TERMUX_VERSION" ]'
       glob: true
       path: termux/termux/*
-      exclude: [termux/boot]
+      exclude: [termux/termux/boot]
 
 - create:
     - ~/downloads
