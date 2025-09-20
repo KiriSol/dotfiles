@@ -6,6 +6,8 @@
       type: symlink
     create:
       mode: 0700
+    shell:
+      quiet: true
 
 - clean:
     ~/:
@@ -45,6 +47,11 @@
       path: config/Code/User/*
 
     # Termux
+    ~/.termux:
+      if: '[ -n "$TERMUX_VERSION" ]'
+      glob: true
+      path: termux/termux/*
+      exclude: [termux/boot]
 
 - create:
     - ~/downloads
