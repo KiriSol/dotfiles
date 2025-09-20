@@ -20,7 +20,8 @@ cd "${BASEDIR}"
 
 # Termux
 if [ -n "$TERMUX_VERSION" ]; then
-    cp termux/shortcuts ~/.shortcuts -rf --no-target-directory
-    cp termux/termux/boot ~/.termux/boot -rf --no-target-directory
+    rm -rf ~/.shortcuts ~/.termux/boot
+    cp termux/shortcuts ~/.shortcuts -r
+    cp termux/termux/boot ~/.termux/boot -r
     ln -s "$SHELL" ~/.termux/shell -f
 fi
