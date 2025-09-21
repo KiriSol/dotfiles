@@ -42,16 +42,21 @@
       glob: true
       path: config/*
       exclude: [config/Code]
-    ~/.config/Code/User/:
+
+    # Vs Code
+    ~/.config/Code:
       glob: true
-      path: config/Code/User/*
+      path: config/Code/*
+    ~/.config/VSCodium:
+      glob: true
+      path: config/Code/*
 
     # Termux
     ~/.termux:
       if: '[ -n "$TERMUX_VERSION" ]'
       glob: true
       path: termux/termux/*
-      exclude: [termux/termux/boot]
+      exclude: [termux/termux/boot, termux/termux/widget]
 
 - create:
     - ~/downloads
