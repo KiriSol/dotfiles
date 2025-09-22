@@ -36,7 +36,7 @@ if (Get-Command -Name fzf -ErrorAction Ignore) {
 }
 
 ## Chocolatey
-if (Get-Command -Name choco -ErrorAction Import-Module) {
+if (Get-Command -Name choco -ErrorAction Ignore) {
     $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
     if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
 }
@@ -76,7 +76,8 @@ Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
 
 ### Theme
 if (Get-Command -Name oh-my-posh -ErrorAction Ignore) {
-    oh-my-posh init pwsh --config night-owl | Invoke-Expression
+    oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
+    oh-my-posh completion powershell | Out-String | Invoke-Expression
 }
 
 

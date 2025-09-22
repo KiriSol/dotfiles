@@ -5,6 +5,8 @@ function ... { Set-Location -Path ..\.. }
 
 if (Get-Command -Name nvim -ErrorAction Ignore) { Set-Alias -Name nv -Value nvim -Force }
 
+if (Get-Command -Name oh-my-posh -ErrorAction Ignore) { Set-Alias -Name omp -Value oh-my-posh }
+
 if (Get-Command -Name scoop.ps1 -ErrorAction Ignore) { function which ($command) { scoop.ps1 which $command } }
 else { function which ($command) { Write-Output -InputObject $(Get-Command $command).Path } }
 
