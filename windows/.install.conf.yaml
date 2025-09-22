@@ -1,0 +1,28 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+      type: symlink
+    shell:
+      quiet: true
+
+- clean: ["~", "~/.local/bin"]
+
+- link:
+    # Binaries
+    ~/.local/bin:
+      glob: true
+      path: windows/bin/*
+
+    # Shell
+    ~/Documents/PowerShell:
+      glob: true
+      path: windows/shell/powershell/*
+
+    ~/.vimrc: shell/vimrc.vim
+
+- create:
+    - ~/Downloads
+    - ~/Dev
+    - ~/Tmp

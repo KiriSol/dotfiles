@@ -7,12 +7,12 @@ if command -v dotbot >/dev/null; then
     DOTBOT_BIN="dotbot"
 else
     echo "dotbot not found"
-    return 1
+    exit 1
 fi
 
 CONFIG=".install.conf.yaml"
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 cd "${BASEDIR}"
 
 # Run
