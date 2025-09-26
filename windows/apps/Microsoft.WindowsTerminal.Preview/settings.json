@@ -51,12 +51,17 @@
         "colorScheme": "OneDark"
       },
       {
-        "name": "Ubuntu 24.04 LTS",
-        "commandline": "wsl -d Ubuntu-24.04"
+        "name": "Nushell",
+        "commandline": "nu.exe",
+        "colorScheme": "OneDark"
       },
       {
         "name": "FedoraLinux-42",
         "commandline": "wsl -d FedoraLinux-42"
+      },
+      {
+        "name": "Ubuntu 24.04 LTS",
+        "commandline": "wsl -d Ubuntu-24.04"
       },
       {
         "name": "Git Bash",
@@ -66,11 +71,11 @@
       },
       {
         "name": "Windows PowerShell",
-        "commandline": "powershell.exe",
+        "commandline": "powershell.exe"
       },
       {
         "name": "Command Prompt",
-        "commandline": "cmd.exe",
+        "commandline": "cmd.exe"
       },
       {
         "name": "Python",
@@ -289,6 +294,75 @@
       "selectionBackground": "#FFFFFF",
       "white": "#ABB2BF",
       "yellow": "#D19A66"
+    },
+    {
+      "name": "OneHalfDark",
+      "black": "#282c34",
+      "red": "#e06c75",
+      "green": "#98c379",
+      "yellow": "#e5c07b",
+      "blue": "#61afef",
+      "purple": "#c678dd",
+      "cyan": "#56b6c2",
+      "white": "#dcdfe4",
+      "brightBlack": "#282c34",
+      "brightRed": "#e06c75",
+      "brightGreen": "#98c379",
+      "brightYellow": "#e5c07b",
+      "brightBlue": "#61afef",
+      "brightPurple": "#c678dd",
+      "brightCyan": "#56b6c2",
+      "brightWhite": "#dcdfe4",
+      "background": "#282c34",
+      "foreground": "#dcdfe4",
+      "selectionBackground": "#474e5d",
+      "cursorColor": "#a3b3cc"
+    },
+    {
+      "name": "Tokyonight",
+      "black": "#15161e",
+      "red": "#f7768e",
+      "green": "#9ece6a",
+      "yellow": "#e0af68",
+      "blue": "#7aa2f7",
+      "purple": "#bb9af7",
+      "cyan": "#7dcfff",
+      "white": "#a9b1d6",
+      "brightBlack": "#414868",
+      "brightRed": "#f7768e",
+      "brightGreen": "#9ece6a",
+      "brightYellow": "#e0af68",
+      "brightBlue": "#7aa2f7",
+      "brightPurple": "#bb9af7",
+      "brightCyan": "#7dcfff",
+      "brightWhite": "#c0caf5",
+      "background": "#1a1b26",
+      "foreground": "#c0caf5",
+      "selectionBackground": "#33467c",
+      "cursorColor": "#c0caf5"
+    },
+    {
+      "name": "Tokyonight Storm",
+      "black": "#1d202f",
+      "red": "#f7768e",
+      "green": "#9ece6a",
+      "yellow": "#e0af68",
+      "blue": "#7aa2f7",
+      "purple": "#bb9af7",
+      "cyan": "#7dcfff",
+      "white": "#a9b1d6",
+      "brightBlack": "#414868",
+      "brightRed": "#f7768e",
+      "brightGreen": "#9ece6a",
+      "brightYellow": "#e0af68",
+      "brightBlue": "#7aa2f7",
+      "brightPurple": "#bb9af7",
+      "brightCyan": "#7dcfff",
+      "brightWhite": "#c0caf5",
+      "background": "#24283b",
+      "foreground": "#c0caf5",
+      "selectionBackground": "#364a82",
+      "cursorColor": "#c0caf5"
     }
   ],
   "theme": "dark",
