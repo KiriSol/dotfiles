@@ -37,9 +37,9 @@ if command -v yazi >/dev/null; then
 fi
 
 # Neovim distributions
-# if [ -d ~/.config/nvchad ]; then
-#     alias nvchad="NVIM_APPNAME=nvchad nvim"
-# fi
-# if [ -d ~/.config/lazyvim ]; then
-#     alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-# fi
+if [ -d ~/.config/nvchad ]; then
+    alias nvchad="NVIM_APPNAME=nvchad nvim"
+fi
+if [ -d ~/.config/lazyvim ]; then
+    alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+fi
