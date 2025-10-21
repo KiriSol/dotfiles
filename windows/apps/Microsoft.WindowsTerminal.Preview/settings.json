@@ -25,6 +25,7 @@
       "type": "remainingProfiles"
     }
   ],
+  "defaultProfile": "PowerShell",
   "profiles": {
     "defaults": {
       "adjustIndistinguishableColors": "never",
