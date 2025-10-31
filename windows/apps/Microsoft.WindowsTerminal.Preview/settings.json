@@ -44,48 +44,48 @@
       "opacity": 60,
       "padding": "8, 8, 8, 8",
       "scrollbarState": "hidden",
+      "startingDirectory": "~",
       "useAcrylic": true
     },
     "list": [
       {
         "name": "PowerShell",
         "commandline": "pwsh.exe",
-        "colorScheme": "OneDark"
+        "colorScheme": "OneDark",
+        "source": "Windows.Terminal.PowershellCore"
       },
       {
         "name": "Nushell",
         "commandline": "nu.exe",
-        "colorScheme": "OneDark"
+        "colorScheme": "OneDark",
+        "source": "nu"
       },
       {
         "name": "FedoraLinux-42",
-        "commandline": "wsl -d FedoraLinux-42"
+        "commandline": "wsl -d FedoraLinux-42",
+        "pathTranslationStyle": "wsl",
+        "source": "Microsoft.WSL"
       },
       {
         "name": "Ubuntu 24.04 LTS",
-        "commandline": "wsl -d Ubuntu-24.04"
+        "commandline": "wsl -d Ubuntu-24.04",
+        "pathTranslationStyle": "wsl",
+        "source": "Microsoft.WSL"
       },
       {
         "name": "Git Bash",
-        "commandline": "bash.exe",
-        "colorScheme": "Kanagawa",
-        "pathTranslationStyle": "msys2"
+        "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
+        "colorScheme": "OneDark",
+        "pathTranslationStyle": "msys2",
+        "source": "Git"
       },
       {
         "name": "Windows PowerShell",
-        "commandline": "powershell.exe"
+        "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
       },
       {
         "name": "Command Prompt",
-        "commandline": "cmd.exe"
-      },
-      {
-        "name": "Python",
-        "commandline": "py.exe",
-        "backgroundImageAlignment": "right",
-        "backgroundImageOpacity": 0.3,
-        "backgroundImage": null,
-        "hidden": true
+        "commandline": "%SystemRoot%\\System32\\cmd.exe"
       }
     ]
   },
