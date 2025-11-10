@@ -22,6 +22,7 @@
       path: bin/*
 
     # Shell
+    ~/.local/bin/env: shell/env.sh
     ~/.bashrc: shell/bash/bashrc.sh
 
     ~/.zshrc: shell/zsh/zshrc.zsh
