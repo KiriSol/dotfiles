@@ -110,12 +110,8 @@ fi
 # Preferred editor for local and remote sessions
 if (( $+commands[nvim] )); then
     export EDITOR='nvim'
-elif (( $+commands[vim] )); then
-    export EDITOR='vim'
 elif (( $+commands[nano] )); then
     export EDITOR='nano'
-elif (( $+commands[vi] )); then
-    export EDITOR='vi'
 fi
 
 # Compilation flags
