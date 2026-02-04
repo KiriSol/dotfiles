@@ -1,22 +1,20 @@
 " ========== Plugins ==========
 
-call plug#begin()
+"call plug#begin()
 
 " Functional
-Plug 'preservim/nerdtree'
-Plug 'preservim/nerdcommenter'
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'preservim/nerdtree'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " Appearance
-Plug 'itchyny/lightline.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'itchyny/lightline.vim'
+"Plug 'ryanoasis/vim-devicons'
 
 " Themes
-Plug 'joshdick/onedark.vim'
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+"Plug 'joshdick/onedark.vim'
+"Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
-call plug#end()
+"call plug#end()
 
 
 " ========== Appearance ==========
@@ -24,12 +22,13 @@ call plug#end()
 set background=dark
 set laststatus=2
 
-let g:lightline = { 'colorscheme': 'catppuccin_frappe' }
+"let g:lightline = { 'colorscheme': 'catppuccin_frappe' }
 
-colorscheme catppuccin_frappe
+"colorscheme catppuccin_frappe
+colorscheme habamax
 
 if exists('+termguicolors')
-    let g:onedark_termcolors=256
+    "let g:onedark_termcolors=256
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
@@ -40,6 +39,13 @@ endif
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[2 q"
 let &t_SR = "\<Esc>[4 q"
+
+
+" ========== Change Highlight ==========
+
+" highlight LineNr ctermfg=NONE guifg=NONE  " Disable color for line number
+" highlight CursorLineNr ctermfg=NONE guifg=NONE  " Disable color for current line number
+highlight SignColumn ctermbg=NONE guibg=NONE
 
 
 " ========== Main settings ==========
@@ -135,8 +141,8 @@ let maplocalleader = "\\"
 
 nnoremap <Esc> <cmd> set nohlsearch <CR>
 
-nnoremap <leader>E <cmd> NERDTreeClose <CR>
-nnoremap <leader>e <cmd> NERDTreeFocus <CR>
+"nnoremap <leader>E <cmd> NERDTreeClose <CR>
+"nnoremap <leader>e <cmd> NERDTreeFocus <CR>
 
 nnoremap <leader>sb :call ToggleBGTransparency()<CR>
 nnoremap <leader>ss :call ToggleSearchHilighting()<CR>
@@ -153,11 +159,8 @@ vnoremap <localleader>y "+y
 
 " ========== Plugins settings ==========
 
-" - NERDCommenter
-let g:NERDSpaceDelims = 1
-
 " - DevIcons
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " - NERDTree
 
@@ -166,15 +169,8 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " autocmd VimEnter * NERDTree | wincmd p
 
 " Exit if only tab is NERDTree
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-let g:NERDTreeFileLines = 1
-let g:NERDTreeIgnore = ['^.git$', '^__pycache__$', '^.venv$', '^node_modules$', '^.ruff_cache$']
-
-
-" ========== Change Highlight ==========
-
-" highlight LineNr ctermfg=NONE guifg=NONE  " Disable color for line number
-" highlight CursorLineNr ctermfg=NONE guifg=NONE  " Disable color for current line number
-highlight SignColumn ctermbg=NONE guibg=NONE
+"let g:NERDTreeFileLines = 1
+"let g:NERDTreeIgnore = ['^.git$', '^__pycache__$', '^.venv$', '^node_modules$', '^.ruff_cache$']
 
