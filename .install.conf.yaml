@@ -35,7 +35,7 @@
       path: shell/zsh/aliases.zsh
 
     ~/.tmux.conf: shell/tmux.conf.tmux
-    ~/.vimrc: shell/vimrc.vim
+    # ~/.vimrc: shell/vimrc.vim
 
     # Config dir
     ~/.config:
