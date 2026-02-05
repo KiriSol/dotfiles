@@ -20,7 +20,7 @@
       glob: true
       path: windows/shell/powershell/*
 
-    ~/.vimrc: shell/vimrc.vim
+    # ~/.vimrc: shell/vimrc.vim
 
     ~/.config/git: config/git
     ~\AppData\Roaming\bottom: config/bottom
