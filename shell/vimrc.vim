@@ -1,39 +1,18 @@
-" ========== Plugins ==========
-
-"call plug#begin()
-
-" Functional
-"Plug 'preservim/nerdtree'
-"Plug 'christoomey/vim-tmux-navigator'
-
-" Appearance
-"Plug 'itchyny/lightline.vim'
-"Plug 'ryanoasis/vim-devicons'
-
-" Themes
-"Plug 'joshdick/onedark.vim'
-"Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-
-"call plug#end()
-
+" TODO: make theme
 
 " ========== Appearance ==========
 
 set background=dark
 set laststatus=2
 
-"let g:lightline = { 'colorscheme': 'catppuccin_frappe' }
-
-"colorscheme catppuccin_frappe
 colorscheme habamax
 
-if exists('+termguicolors')
-    "let g:onedark_termcolors=256
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-    set t_Co=256
-endif
+"if exists('+termguicolors')
+"    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"    set termguicolors
+"    set t_Co=256
+"endif
 
 " Cursor style
 let &t_SI = "\<Esc>[5 q"
@@ -43,8 +22,8 @@ let &t_SR = "\<Esc>[4 q"
 
 " ========== Change Highlight ==========
 
-" highlight LineNr ctermfg=NONE guifg=NONE  " Disable color for line number
-" highlight CursorLineNr ctermfg=NONE guifg=NONE  " Disable color for current line number
+"highlight LineNr ctermfg=NONE guifg=NONE  " Disable color for line number
+"highlight CursorLineNr ctermfg=NONE guifg=NONE  " Disable color for current line number
 highlight SignColumn ctermbg=NONE guibg=NONE
 
 
@@ -57,7 +36,7 @@ set nocompatible " Disable compatible with vi
 filetype plugin indent on " Enable plugin support
 
 set scrolloff=5 " Scroll offset from edge of screen
-" set so=30 " Cursor always be in middle of screen when scrolling
+"set so=30 " Cursor always be in middle of screen when scrolling
 
 set relativenumber
 set number
@@ -100,13 +79,15 @@ set smartcase " Ignore register if no capital letters
 
 set clipboard=unnamedplus
 
+
 " ========== Functions ==========
 
 " Toggle background transparency
 let t:isTransparent = 1
 function! ToggleBGTransparency()
     if t:isTransparent == 0
-        hi Normal guibg=#2E3440 ctermbg=black
+        "hi Normal guibg=#2E3440 ctermbg=black
+        colorscheme habamax
         let t:isTransparent = 1
     else
         hi Normal guibg=NONE ctermbg=NONE
@@ -139,38 +120,16 @@ au CmdlineEnter /,? set hlsearch " Enable hlsearch
 let mapleader = " "
 let maplocalleader = "\\"
 
-nnoremap <Esc> <cmd> set nohlsearch <CR>
-
-"nnoremap <leader>E <cmd> NERDTreeClose <CR>
-"nnoremap <leader>e <cmd> NERDTreeFocus <CR>
-
 nnoremap <leader>sb :call ToggleBGTransparency()<CR>
 nnoremap <leader>ss :call ToggleSearchHilighting()<CR>
 nnoremap <leader>sw :call ToggleWordWrap()<CR>
 nnoremap <leader>ss :setlocal spell!<CR>
 
-" nnoremap <C-D> <C-D>zz
-" nnoremap <C-U> <C-U>zz
+"nnoremap <C-D> <C-D>zz
+"nnoremap <C-U> <C-U>zz
 
 nnoremap <leader>w :wa<CR>
 
 nnoremap <localleader>y "+y
 vnoremap <localleader>y "+y
-
-" ========== Plugins settings ==========
-
-" - DevIcons
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
-" - NERDTree
-
-" Automatic open NERDTree at enter
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * NERDTree | wincmd p
-
-" Exit if only tab is NERDTree
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-"let g:NERDTreeFileLines = 1
-"let g:NERDTreeIgnore = ['^.git$', '^__pycache__$', '^.venv$', '^node_modules$', '^.ruff_cache$']
 
