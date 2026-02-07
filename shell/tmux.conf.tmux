@@ -2,26 +2,20 @@
 
 # True Colors
 set -g default-terminal "tmux-256color"
-set -ga terminal-overrides ",*256col*:Tc"
+set -ag terminal-overrides ",xterm-256color:RGB"
 
-# Under curl/line
-set-option -as terminal-overrides ",tmux-256color:Tc"
-set -as terminal-overrides ',*:Setulc=\E[58::2::::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
-set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-
-# Hyperlinkshighlight SignColumn ctermbg=NONE guibg=NONE
-set -as terminal-features ",*:hyperlinks"
-
-# Sixel and etc
 set -g allow-passthrough on
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
-
 
 ### ========== Core settings ==========
 
 # Main prefix
 set -g prefix C-a
+
+set -s escape-time 0
+set -g history-limit 10000
+set -g focus-events on
 
 # Sort by name
 bind s choose-tree -sZ -O name
@@ -59,34 +53,3 @@ bind-key -T copy-mode-vi 'y' send -X copy-selection
 
 unbind -T copy-mode-vi MouseDragEnd1Pane
 
-
-### ========== Plugins ==========
-
-set -g @plugin 'tmux-plugins/tpm' # plugin menager
-
-# Core
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'christoomey/vim-tmux-navigator'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @plugin 'tmux-plugins/tmux-sessionist'
-
-# Appearance
-set -g @plugin 'fabioluciano/tmux-tokyo-night'
-
-## Sessions
-
-set -g @resurrect-capture-pane-contents 'on'
-set -g @continuum-restore 'on'
-
-## Tokyo Night Theme configuration
-
-# set -g @theme_variation '' # night, storm, moon
-set -g @theme_left_separator ''
-set -g @theme_transparent_left_separator_inverse ''
-set -g @theme_plugins 'datetime' # datetime, battery, weather
-# set -g @theme_disable_plugins 1
-set -g @theme_transparent_status_bar 'true'
-
-# Start tpm
-run '~/.tmux/plugins/tpm/tpm'
