@@ -1,9 +1,12 @@
+# NOTE: This is a self-contained configuration for bare tmux.
+
 ### ========== Enable features ==========
 
 # True Colors
 set -g default-terminal "tmux-256color"
 set -ag terminal-overrides ",xterm-256color:RGB"
 
+# For images
 set -g allow-passthrough on
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
