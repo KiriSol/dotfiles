@@ -22,6 +22,5 @@ cd "${BASEDIR}"
 if [ -n "$TERMUX_VERSION" ]; then
     rm -rf ~/.shortcuts ~/.termux/boot
     cp termux/shortcuts ~/.shortcuts -r
-    cp termux/termux/boot ~/.termux/boot -r
     ln -s "$SHELL" ~/.termux/shell -f
 fi
