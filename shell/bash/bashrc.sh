@@ -1,5 +1,8 @@
 ### Bashrc
 
+export HISTFILESIZE=0
+unset HISTFILE
+
 ## Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -14,7 +17,7 @@ fi
 
 # Useful
 alias l="ls -l"
-alias la"ls -a"
+alias la="ls -a"
 alias ll="ls -al"
 alias md="mkdir"
 alias cls="clear"
@@ -34,12 +37,4 @@ if command -v yazi >/dev/null; then
         [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
         rm -f -- "$tmp"
     }
-fi
-
-# Neovim distributions
-if [ -d ~/.config/nvchad ]; then
-    alias nvchad="NVIM_APPNAME=nvchad nvim"
-fi
-if [ -d ~/.config/lazyvim ]; then
-    alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 fi

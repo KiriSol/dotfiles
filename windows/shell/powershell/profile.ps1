@@ -1,5 +1,5 @@
 ### Variables
-$env:BAT_THEME = "OneHalfDark"
+$env:BAT_THEME = "ansi"
 $env:LESS = "-R -r --raw-control-chars --quit-if-one-screen --mouse"
 
 $env:FZF_DEFAULT_OPTS = @"

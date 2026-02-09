@@ -4,45 +4,10 @@ alias cls="clear"
 alias e="echo"
 
 if (( $+commands[vim] )); then alias v="vim"; fi
-if (( $+commands[nvim] )); then alias nv="nvim"; fi
-
-if (( $+commands[bpython] )); then alias bpy="bpython"; fi
-
-# For Debian-like system
-# if (( $+commands[fdfind] )); then alias fd="fdfind"; fi
-# if (( $+commands[batcat] )); then alias bat="batcat"; fi
-
-## Zsh
-
-# Choose alias for configure zsh
-if [ -n "${EDITOR+x}" ]; then
-    cmd_for_open_file=$EDITOR
-elif (( $+commands[nvim] )); then
-    cmd_for_open_file='nvim'
-elif (( $+commands[vim] )); then
-    cmd_for_open_file='vim'
-elif (( $+commands[vi] )); then
-    cmd_for_open_file='vi'
-else
-    cmd_for_open_file='cat'
+if (( $+commands[nvim] )); then
+    alias nv="nvim"
+    alias v="nvim"
 fi
-alias zshconfig="$cmd_for_open_file ${ZDOTDIR:-$HOME}/.zshrc"
-unset cmd_for_open_file
-
-# Choose alias for configure oh-my-zsh
-if (( $+functions[yy] )); then
-    cmd_for_open_dir='yy'
-elif (( $+commands[yazi] )); then
-    cmd_for_open_dir='yazi'
-elif (( $+commands[nvim])); then
-    cmd_for_open_dir='nvim'
-elif (( $+commands[vim] )); then
-    cmd_for_open_dir='vim'
-else
-    cmd_for_open_dir='ls'
-fi
-alias ohmyzsh="$cmd_for_open_dir $ZSH"
-unset cmd_for_open_dir
 
 # Fastfetch
 if (( $+commands[fastfetch] )); then
@@ -57,6 +22,7 @@ if (( $+commands[fastfetch] )); then
     }
     alias neofetch="fastfetch --load-config neofetch.jsonc"
     alias paleofetch="fastfetch --load-config paleofetch.jsonc"
+    alias clr="clear && ff"
 fi
 
 # Neovim configurations
