@@ -25,11 +25,10 @@
     ~/.config/git: config/git
     # ~\AppData\Roaming\bottom: config/bottom
     ~\AppData\Roaming\bat: config/bat
-    ~\AppData\Roaming\eza: config/eza
-    ~\AppData\Config\btop: config/btop
+    # ~\AppData\Roaming\eza: config/eza
 
 - create:
-    - ~/Downloads
+    # - ~/Downloads
     - ~/Dev
     - ~/Tmp
 

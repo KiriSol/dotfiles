@@ -107,13 +107,6 @@ fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if (( $+commands[nvim] )); then
-    export EDITOR='nvim'
-elif (( $+commands[nano] )); then
-    export EDITOR='nano'
-fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 

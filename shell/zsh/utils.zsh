@@ -18,9 +18,4 @@ if (( $+commands[fzf] )); then
             esac
         }
     fi
-
-    # Setup fzf-git plugin
-    if [ -f $ZSH_CUSTOM/plugins/fzf-git/fzf-git.sh ]; then
-        source $ZSH_CUSTOM/plugins/fzf-git/fzf-git.sh
-    fi
 fi
