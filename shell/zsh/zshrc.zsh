@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your Oh My Zsh installation.
+# Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load
@@ -43,9 +43,6 @@ HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 COMPLETION_WAITING_DOTS="%F{blue}…"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -61,10 +58,9 @@ COMPLETION_WAITING_DOTS="%F{blue}…"
 # see 'man strftime' for details.
 HIST_STAMPS="dd.mm.yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
+# Use another custom folder than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -104,11 +100,8 @@ if [ "$FZF_PREVIEW" -ne 0 ]; then
     '_fzf_complete_preview_realpath "$realpath"'
 fi
 
-# You may need to manually set your language environment
+# Manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
