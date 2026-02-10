@@ -3,12 +3,12 @@
 function .. { Set-Location -Path .. }
 function ... { Set-Location -Path ..\.. }
 
-if (Get-Command -Name nvim -ErrorAction Ignore) { Set-Alias -Name nv -Value nvim -Force }
+if (Get-Command -Name nvim -ErrorAction Ignore) {
+    Set-Alias -Name nv -Value nvim -Force
+    Set-Alias -Name v -Value nvim -Force
+}
 
-if (Get-Command -Name oh-my-posh -ErrorAction Ignore) { Set-Alias -Name omp -Value oh-my-posh }
-
-if (Get-Command -Name scoop.ps1 -ErrorAction Ignore) { function which ($command) { scoop.ps1 which $command } }
-else { function which ($command) { Write-Output -InputObject $(Get-Command $command).Path } }
+function which ($command) { Write-Output -InputObject $(Get-Command $command).Path }
 
 
 ### Utils
@@ -28,18 +28,7 @@ if (Get-Command -Name yazi -ErrorAction Ignore) {
 
 ## Eza
 if (Get-Command -Name eza -ErrorAction Ignore) {
-    if (-not $env:EZA_DEFAULT_OPTS) {
-        $env:EZA_DEFAULT_OPTS = (
-            '--git',
-            '--hyperlink',
-            '--color=always',
-            '--icons=always',
-            '--group-directories-first',
-            '--sort=type',
-            '--time-style=long-iso',
-            '--header',
-            '--classify=always'
-        )
+    if (-not $EZA_DEFAULT_OPTS) {
         $EZA_DEFAULT_OPTS = (
             '--git',
             '--hyperlink',
@@ -52,9 +41,8 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
             '--classify=always'
         )
     }
-
-    if (-not $env:EZA_IGNORE_GLOB) {
-        $env:EZA_IGNORE_GLOB = ".git|.venv|venv|node_modules|__pycache__|.idea|.buildozer|.ruff_cache"
+    if (-not $EZA_IGNORE_GLOB) {
+        $EZA_IGNORE_GLOB = ".git|.venv|node_modules|__pycache__|.ruff_cache"
     }
 
     # Standard aliases
@@ -89,7 +77,7 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
     function ls3 { ls --tree --level=3 @args }
 
     # Others
-    function ltt { tree --no-user --all --ignore-glob=$env:EZA_IGNORE_GLOB @args }
+    function ltt { tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
     function lss { ls --oneline @args }
     function lxx { ls --across @args }
     function lrr { ls --recurse @args }
@@ -102,6 +90,7 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
 if (Get-Command -Name fastfetch -ErrorAction Ignore) {
     function ff { fastfetch --config examples/17.jsonc @args }
     function fff { fastfetch --config examples/13.jsonc --logo none @args }
+    function clr { Clear-Host && ff }
 
     function paleofetch { fastfetch --config paleofetch.jsonc @args }
     function neofetch { fastfetch --config neofetch.jsonc @args }
@@ -120,7 +109,4 @@ if (Get-Command -Name git -ErrorAction Ignore) {
     function glog { git log --oneline --decorate --graph @args }
     function gcam { git commit --all --message @args }
 }
-
-
-### Applications
 

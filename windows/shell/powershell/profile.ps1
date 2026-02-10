@@ -1,5 +1,4 @@
 ### Variables
-$env:BAT_THEME = "ansi"
 $env:LESS = "-R -r --raw-control-chars --quit-if-one-screen --mouse"
 
 $env:FZF_DEFAULT_OPTS = @"
@@ -19,12 +18,11 @@ if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
 
 
 ### Modules & Plugins
-Import-module -Name Terminal-Icons -ErrorAction SilentlyContinue
+# Import-module -Name Terminal-Icons -ErrorAction SilentlyContinue
 Import-Module -Name posh-git -ErrorAction SilentlyContinue
 
 ## Zoxide
 if (Get-Command -Name zoxide -ErrorAction Ignore) { Invoke-Expression (& { (zoxide init powershell | Out-String) }) }
-else { Import-Module -Name z -ErrorAction SilentlyContinue }
 
 ## Fzf
 if (Get-Command -Name fzf -ErrorAction Ignore) {
@@ -39,14 +37,6 @@ if (Get-Command -Name fzf -ErrorAction Ignore) {
 if (Get-Command -Name choco -ErrorAction Ignore) {
     $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
     if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
-}
-
-## Scoop
-if (Get-Command -Name scoop.ps1 -ErrorAction Ignore) {
-    $ScoopCompletion = "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
-    if (Test-Path -Path $ScoopCompletion) {
-        Import-Module -Name $ScoopCompletion
-    }
 }
 
 ## Winget
@@ -75,10 +65,10 @@ Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
 
 
 ### Theme
-if (Get-Command -Name oh-my-posh -ErrorAction Ignore) {
-    oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
-    oh-my-posh completion powershell | Out-String | Invoke-Expression
-}
+# if (Get-Command -Name oh-my-posh -ErrorAction Ignore) {
+#     oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
+#     oh-my-posh completion powershell | Out-String | Invoke-Expression
+# }
 
 
 ### Keybindings
