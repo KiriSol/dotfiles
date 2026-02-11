@@ -7,7 +7,7 @@
     shell:
       quiet: true
 
-- clean: ["~", "~/.local/bin"]
+- clean: ["~", "~/.local/bin", "~\\AppData\\Roaming"]
 
 - link:
     # Binaries
@@ -18,9 +18,7 @@
     # Shell
     ~/Documents/PowerShell:
       glob: true
-      path: windows/shell/powershell/*
-
-    # ~/.vimrc: shell/vimrc.vim
+      path: config/powershell/*
 
     ~/.config/git: config/git
     # ~\AppData\Roaming\bottom: config/bottom
