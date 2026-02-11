@@ -22,7 +22,6 @@ set encoding=utf-8
 set fileencodings=utf-8
 
 set modelines=0 " Disable CVE-2007-2438 vulnerability
-set viminfofile=NONE
 
 set updatetime=300
 
@@ -59,6 +58,9 @@ filetype plugin indent on
 " Disable backups
 set nobackup
 set nowritebackup
+set noswapfile
+set noundofile
+set viminfofile=NONE
 
 " Search
 set incsearch " Search as you type
