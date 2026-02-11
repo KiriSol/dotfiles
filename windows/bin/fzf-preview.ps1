@@ -9,8 +9,8 @@ if (-not (Test-Path -Path $Path)) {
 
 function Get-MimeType {
     param($FileName)
-    if (Get-Command -Name file.exe -ErrorAction SilentlyContinue) {
-        return "$(file.exe --brief --dereference --mime-type -- $FileName)"
+    if (Get-Command -Name file -ErrorAction SilentlyContinue) {
+        return "$(file --brief --dereference --mime-type -- $FileName)"
     }
     if ($(Get-Item -Path $FileName).PSIsContainer) {
         return 'inode/directory'
@@ -68,8 +68,8 @@ catch {
 
 if ($item.PSIsContainer) {
     Write-Host "📁 '$($item.Name)' directory content:"
-    if (Get-Command -Name eza.exe -ErrorAction SilentlyContinue) {
-        eza.exe --icons=always --color=always --header --long --no-time --no-permissions -- $Path
+    if (Get-Command -Name eza -ErrorAction SilentlyContinue) {
+        eza --icons=always --color=always --header --long --no-time --no-permissions -- $Path
     }
     else {
         Get-ChildItem -Path $Path -Force | Format-Table -AutoSize Name, Length, LastWriteTime
@@ -81,8 +81,8 @@ $mimeType = Get-MimeType $Path
 
 if ($mimeType -eq 'inode/directory') {
     Write-Host "📁 '$($item.Name)' directory content:"
-    if (Get-Command -Name eza.exe -ErrorAction SilentlyContinue) {
-        eza.exe --icons=always --color=always --header --long --no-time --no-permissions -- $Path
+    if (Get-Command -Name eza -ErrorAction SilentlyContinue) {
+        eza --icons=always --color=always --header --long --no-time --no-permissions -- $Path
     }
     else {
         Get-ChildItem -Path $Path -Force | Format-Table -AutoSize Name, Length, LastWriteTime
@@ -102,8 +102,8 @@ if ($mimeType -eq 'inode/x-empty') {
     Write-Host "Empty file"
 }
 elseif ($mimeType -like 'text/*' -or $mimeType -like 'application/json*' -or $mimeType -like 'application/xml*') {
-    if (Get-Command -Name bat.exe -ErrorAction SilentlyContinue) {
-        bat.exe --style=numbers --color=always --pager=never --highlight-line=0 -- "$Path"
+    if (Get-Command -Name bat -ErrorAction SilentlyContinue) {
+        bat --style=numbers --color=always --pager=never --highlight-line=0 -- "$Path"
     }
     else {
         Get-Content -Path $Path -TotalCount 50 | ForEach-Object {
@@ -118,8 +118,8 @@ elseif ($mimeType -like 'text/*' -or $mimeType -like 'application/json*' -or $mi
     }
 }
 elseif ($mimeType -like 'image/*' -or $mimeType -like 'video/*') {
-    if (Get-Command -Name chafa.exe -ErrorAction SilentlyContinue) {
-        chafa.exe --size=$(
+    if (Get-Command -Name chafa -ErrorAction SilentlyContinue) {
+        chafa --size=$(
             if ($Host.UI.RawUI.WindowSize.Width)
                 { $Host.UI.RawUI.WindowSize.Width - 3 }
             else
@@ -128,24 +128,24 @@ elseif ($mimeType -like 'image/*' -or $mimeType -like 'video/*') {
     }
     else {
         Write-Host "🖼️ Media-file, please install chafa"
-        if (Get-Command -Name file.exe -SilentlyContinue) { file.exe $Path }
+        if (Get-Command -Name file -SilentlyContinue) { file $Path }
     }
 }
 elseif ($mimeType -like 'application/*zip*' -or $mimeType -like 'application/*rar*') {
-    if (Get-Command -Name 7z.exe -ErrorAction SilentlyContinue) {
+    if (Get-Command -Name 7z -ErrorAction SilentlyContinue) {
         Write-Host "📦 Archive content:"
-        7z.exe l "$Path" | Select-Object -First 50
+        7z l "$Path" | Select-Object -First 50
     }
     else {
         Write-Host "📦 Archive, please install 7zip"
     }
 }
 else {
-    if (Get-Command -Name file.exe -ErrorAction SilentlyContinue) {
-        file.exe $Path
+    if (Get-Command -Name file -ErrorAction SilentlyContinue) {
+        file $Path
     }
     Write-Host "🔢 HEX:"
-    if (Get-Command -Name strings.exe -ErrorAction SilentlyContinue) {
+    if (Get-Command -Name strings -ErrorAction SilentlyContinue) {
         strings $Path | Select-Object -First 50
     }
     else {
