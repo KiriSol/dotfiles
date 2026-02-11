@@ -18,42 +18,44 @@ if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
 
 
 ### Modules & Plugins
-# Import-module -Name Terminal-Icons -ErrorAction SilentlyContinue
-Import-Module -Name posh-git -ErrorAction SilentlyContinue
+Import-module -Name Terminal-Icons -ErrorAction Ignore
+Import-Module -Name posh-git -ErrorAction Ignore
 
 ## Zoxide
 if (Get-Command -Name zoxide -ErrorAction Ignore) { Invoke-Expression (& { (zoxide init powershell | Out-String) }) }
 
+## Uv (python packages and environment manager)
+if (Get-Command -Name uv -ErrorAction Ignore) {
+    (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
+    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
+}
+
 ## Fzf
 if (Get-Command -Name fzf -ErrorAction Ignore) {
-    Import-Module -Name PSFzf -ErrorAction SilentlyContinue
+    Import-Module -Name PSFzf -ErrorAction Ignore
     if (Get-Command -Name Set-PsFzfOption -ErrorAction Ignore) {
         Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordSetLocation 'Alt+c'
         Set-PsFzfOption -TabExpansion
     }
 }
 
-## Chocolatey
-if (Get-Command -Name choco -ErrorAction Ignore) {
-    $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-    if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
-}
-
-## Winget
-Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
-    param ($wordToComplete, $commandAst, $cursorPosition)
-    [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
-    $Local:word = $wordToComplete.Replace('"', '""')
-    $Local:ast = $commandAst.ToString().Replace('"', '""')
-    winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
-        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+if ($IsWindows) {
+    ## Chocolatey
+    if (Get-Command -Name choco -ErrorAction Ignore) {
+        $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+        if (Test-Path -Path $ChocolateyProfile) { Import-Module -Name $ChocolateyProfile }
     }
-}
 
-## Uv (python package and environment manager)
-if (Get-Command -Name uv -ErrorAction Ignore) {
-    (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
-    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
+    ## Winget
+    Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+        param ($wordToComplete, $commandAst, $cursorPosition)
+        [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+        $Local:word = $wordToComplete.Replace('"', '""')
+        $Local:ast = $commandAst.ToString().Replace('"', '""')
+        winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
+    }
 }
 
 
@@ -65,10 +67,6 @@ Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
 
 
 ### Theme
-# if (Get-Command -Name oh-my-posh -ErrorAction Ignore) {
-#     oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
-#     oh-my-posh completion powershell | Out-String | Invoke-Expression
-# }
 
 
 ### Keybindings
