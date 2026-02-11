@@ -1,5 +1,10 @@
 . "$HOME/.local/bin/env"
 
+export HISTFILE="$HOME/.local/share/zsh/zsh_history"
+mkdir -p "$(dirname "$HISTFILE")"
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
+mkdir -p "$(dirname "$ZSH_COMPDUMP")"
+
 export FZF_PREVIEW=1
 
 export EZA_DEFAULT_OPTS=(
