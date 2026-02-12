@@ -19,7 +19,6 @@ if (Get-Command -Name fzf-preview.ps1 -ErrorAction Ignore) {
 
 ### Modules & Plugins
 Import-module -Name Terminal-Icons -ErrorAction Ignore
-Import-Module -Name posh-git -ErrorAction Ignore
 
 ## Zoxide
 if (Get-Command -Name zoxide -ErrorAction Ignore) { Invoke-Expression (& { (zoxide init powershell | Out-String) }) }
