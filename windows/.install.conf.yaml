@@ -26,9 +26,5 @@
     # ~\AppData\Roaming\eza: config/eza
 
 - create:
-    # - ~/Downloads
     - ~/Dev
     - ~/Tmp
-
-- shell:
-    - [bat cache --build, Reloading bat configs]
