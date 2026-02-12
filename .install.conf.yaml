@@ -49,6 +49,3 @@
     - ~/downloads
     - ~/dev
     - ~/tmp
-
-- shell:
-    - [bat cache --build, Reloading bat configs]
