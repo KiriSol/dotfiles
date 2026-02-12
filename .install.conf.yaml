@@ -46,6 +46,5 @@
       path: termux/termux/*
 
 - create:
-    - ~/downloads
     - ~/dev
     - ~/tmp
