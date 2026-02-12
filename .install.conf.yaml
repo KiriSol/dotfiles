@@ -27,12 +27,9 @@
 
     ~/.zshrc: shell/zsh/zshrc.zsh
     ~/.zshenv: shell/zsh/zshenv.zsh
-    ~/.oh-my-zsh/custom/utils.zsh:
-      if: "[ -d ~/.oh-my-zsh ]"
-      path: shell/zsh/utils.zsh
-    ~/.oh-my-zsh/custom/aliases.zsh:
-      if: "[ -d ~/.oh-my-zsh ]"
-      path: shell/zsh/aliases.zsh
+    ~/.oh-my-zsh/custom:
+      glob: true
+      path: shell/zsh/autoload/*
 
     # Config dir
     ~/.config:
