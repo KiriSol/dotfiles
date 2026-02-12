@@ -7,11 +7,9 @@
       "id": "User.toggleFocusMode"
     }
   ],
-  "alwaysOnTop": true,
-  "centerOnLaunch": false,
+  "centerOnLaunch": true,
   "copyFormatting": "none",
   "initialCols": 124,
-  "initialPosition": "200,2",
   "initialRows": 29,
   "keybindings": [
     {
@@ -51,20 +49,17 @@
       {
         "name": "PowerShell",
         "commandline": "pwsh.exe",
-        "colorScheme": "OneDark",
-        "source": "Windows.Terminal.PowershellCore"
+        "colorScheme": "OneDark"
       },
       {
         "name": "Nushell",
         "commandline": "nu.exe",
-        "colorScheme": "OneDark",
-        "source": "nu"
+        "colorScheme": "OneDark"
       },
       {
         "name": "WSL",
         "commandline": "wsl.exe",
-        "pathTranslationStyle": "wsl",
-        "source": "Microsoft.WSL"
+        "pathTranslationStyle": "wsl"
       },
       {
         "name": "Windows PowerShell",
