@@ -1,8 +1,6 @@
 [user]
     email = kirasolovey09@gmail.com
     name = Kirill Solovey
-[core]
-    autocrlf = true
 [alias]
     a = add
     d = diff
