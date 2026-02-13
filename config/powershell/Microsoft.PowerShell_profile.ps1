@@ -88,15 +88,15 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
 
 ## Fastfetch
 if (Get-Command -Name fastfetch -ErrorAction Ignore) {
-    function ff { fastfetch --config examples/17.jsonc @args }
-    function fff { fastfetch --config examples/13.jsonc --logo none @args }
+    function ff { fastfetch -c examples/17.jsonc @args }
+    function fff { fastfetch -c examples/13.jsonc --logo none @args }
     function clr { Clear-Host && ff }
 
-    function paleofetch { fastfetch --config paleofetch.jsonc @args }
-    function neofetch { fastfetch --config neofetch.jsonc @args }
+    function paleofetch { fastfetch -c paleofetch.jsonc @args }
+    function neofetch { fastfetch -c neofetch.jsonc @args }
 
-    function ffc ($number_config = 13) {
-        fastfetch --config examples/$number_config.jsonc @args
+    function ffc ($number_config = 17) {
+        fastfetch -c examples/$number_config.jsonc @args
     }
 }
 

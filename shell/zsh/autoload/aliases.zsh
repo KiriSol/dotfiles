@@ -11,17 +11,18 @@ fi
 
 # Fastfetch
 if (( $+commands[fastfetch] )); then
-    alias fetch="fastfetch --load-config examples/8.jsonc"
-    alias ff="fastfetch --load-config examples/17.jsonc"
-    alias fff="fastfetch --load-config examples/13.jsonc --logo none"
+    alias fetch="fastfetch -c examples/8.jsonc"
+    alias ff="fastfetch -c examples/17.jsonc"
+    alias fff="fastfetch -c examples/13.jsonc --logo none"
     function ffc () {
-        if [ $ARGC -eq 0 ]; then
-            $1="17"
+        if [ ! $1 ]; then
+            fastfetch -c "examples/17.jsonc" "${@:2}"
+        else
+            fastfetch -c "examples/$1.jsonc" "${@:2}"
         fi
-        fastfetch --load-config examples/$1.jsonc "${@:2}"
     }
-    alias neofetch="fastfetch --load-config neofetch.jsonc"
-    alias paleofetch="fastfetch --load-config paleofetch.jsonc"
+    alias neofetch="fastfetch -c neofetch.jsonc"
+    alias paleofetch="fastfetch -c paleofetch.jsonc"
     alias clr="clear && ff"
 fi
 

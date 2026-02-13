@@ -103,7 +103,7 @@
   // Spellchecker
   "cSpell.language": "en,ru",
   "cSpell.dictionaries": [],
-  "cSpell.ignorePaths": ["package-lock.json", "node_modules", ".*", "_*"],
+  "cSpell.ignorePaths": ["package-lock.json", "node_modules", ".*", "_*", "*.lock", "*.log"],
 
   // Themes
   "workbench.colorTheme": "Catppuccin Frappé",
