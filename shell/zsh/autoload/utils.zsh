@@ -1,4 +1,4 @@
-### Setup utils
+### Setup utils for zsh
 
 ## Setup fzf
 if (($+commands[fzf])); then

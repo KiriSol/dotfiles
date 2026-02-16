@@ -1,8 +1,14 @@
 #!/bin/env sh
 
+### Environment for shells
+
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]; then
+if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
     export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if ! [[ "$MANPATH" =~ "/usr/local/man" ]]; then
+    export MANPATH="/usr/local/man:$MANPATH"
 fi
 
 export LESS="-Rr --raw-control-chars --quit-if-one-screen --mouse"

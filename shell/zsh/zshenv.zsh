@@ -1,11 +1,20 @@
-. "$HOME/.local/bin/env"
+### Zshenv
 
+# Source User environment
+if [ -f "$HOME/.local/bin/env" ]; then
+    source "$HOME/.local/bin/env"
+fi
+
+# Use XDG base paths
 export HISTFILE="$HOME/.local/share/zsh/zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
 export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
 mkdir -p "$(dirname "$ZSH_COMPDUMP")"
 
-export FZF_PREVIEW=1
+
+## Environment variables
+
+export ENABLE_FZF_PREVIEW=1
 
 export EZA_DEFAULT_OPTS=(
     '--git'
@@ -17,8 +26,6 @@ export EZA_DEFAULT_OPTS=(
     '--time-style=long-iso'
     '--header'
     '--classify=always'
-    # '--colour-scale-mode=gradient'
-    # '--color-scale=all'
 )
 
 # Catppuccin theme for fzf and other options
@@ -31,14 +38,8 @@ export FZF_DEFAULT_OPTS=" \
     --bind='F2:toggle-preview' \
     --bind='shift-up:preview-page-up,shift-down:preview-page-down'"
 
-## Yazi
-function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
-}
+
+## Preview for fzf-tab extension
 
 _fzf_complete_preview_file () {
     local realpath="${1:--}"

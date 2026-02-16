@@ -3,10 +3,22 @@
 alias cls="clear"
 alias e="echo"
 
+# Neovim and vim
 if (( $+commands[vim] )); then alias v="vim"; fi
 if (( $+commands[nvim] )); then
     alias nv="nvim"
     alias v="nvim"
+fi
+
+# Yazi
+if (( $+commands[yazi] )); then
+    function yy() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+        rm -f -- "$tmp"
+    }
 fi
 
 # Fastfetch
