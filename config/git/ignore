@@ -1,27 +1,95 @@
-.cache/
+### OS specific files
 
-# Byte-compiled / optimized / DLL files / Compilations
-__pycache__/
-*.py[cod]
-build/
-dist/
-wheels/
-*.egg
-*.egg-info
-.mypy_cache/
-.ruff_cache/
+## Linux & BSD
+.directory
+.Trash-*
+.fuse_hidden*
+.nfs*
 
-# Packages / Virtual environments
-node_modules/
-.venv/
-venv/
-.env/
+## macOS
+Network Trash Folder
+Temporary Items
+Icon\r
+.AppleDB
+.AppleDesktop
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.DocumentRevisions-V100
+.fseventsd
+.VolumeIcon.icns
+.apdisk
+.smbclnk
+.com.apple.timemachine.donotpresent
 
-# C/C++
-*.so
+## Windows
+[Dd]esktop.ini
+[Tt]humbs.db
+[Tt]humbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+$RECYCLE.BIN/
+$MFT
+*.lnk
+*.URL
 
-# dotenv
+### Temp
+
+*.bak
+*.tmp
+*.temp
+
+## Editors & IDE
+.idea/
+*.iws
+.visualstudio
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+.~*
+*~
+
+
+### Others
+
+# Environment & Secrets
+.direnv/
+.envrc
 .env
+.env.local
+.env.*.local
+*.pem
+*.key
 
-# Logs
+# Archive
+*.gz
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+## Logs & Diagnostics & Dumps
 *.log
+*.err
+*.pid
+*.seed
+*.pid.lock
+*.sql
+*.sqlite
+.crash_report
+*.dmp
+*.dump
+*.stackdump
+core
+
+## Trash & Parts
+*.crdownload
+*.part
