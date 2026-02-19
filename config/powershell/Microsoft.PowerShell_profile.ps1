@@ -61,7 +61,7 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
 
     # Ls with sorting
     function lgit { ls --all --git-ignore @args }
-    function lmod { ls --all --header --long --sort=modified @args }
+    function lmod { ll --sort=modified @args }
     function lcreate { ll --sort=created @args }
     function lsize { ll --sort=size @args }
     function ldirs { ls --only-dirs @args }
@@ -79,8 +79,6 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
     # Others
     function ltt { tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
     function lss { ls --oneline @args }
-    function lxx { ls --across @args }
-    function lrr { ls --recurse @args }
 
     function labs { ls --absolute=on @args }
     function lpwd { labs -d . @args }
@@ -103,10 +101,5 @@ if (Get-Command -Name fastfetch -ErrorAction Ignore) {
 ## Git
 if (Get-Command -Name git -ErrorAction Ignore) {
     Set-Alias -Name g -Value git
-    function ga { git add @args }
-    function gst { git status @args }
-    function gcl { git clone --recurse-submodules @args }
-    function glog { git log --oneline --decorate --graph @args }
-    function gcam { git commit --all --message @args }
 }
 
