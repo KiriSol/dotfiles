@@ -27,7 +27,12 @@
 
     ~/.zshrc: shell/zsh/zshrc.zsh
     ~/.zshenv: shell/zsh/zshenv.zsh
+    ~/.local/share/oh-my-zsh/custom:
+      if: '[ -d "$HOME/.local/share/oh-my-zsh" ]'
+      glob: true
+      path: shell/zsh/autoload/*
     ~/.oh-my-zsh/custom:
+      if: '[ -d "$HOME/.oh-my-zsh" ]'
       glob: true
       path: shell/zsh/autoload/*
 
