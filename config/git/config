@@ -13,3 +13,8 @@
     cam = commit --all --message
 [init]
     defaultBranch = main
+
+[url "git@github.com:KiriSol/"]
+    insteadOf = home:
+[url "https://github.com/KiriSol/"]
+    insteadOf = my:
