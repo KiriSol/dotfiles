@@ -1,12 +1,12 @@
 ### Variables
 
-if (Get-Command -Name nvim -Ignore) {
+if (Get-Command -Name nvim -ErrorAction Ignore) {
     $env:EDITOR = "nvim"
-} elseif (Get-Command -Name vim -Ignore) {
+} elseif (Get-Command -Name vim -ErrorAction Ignore) {
     $env:EDITOR = "vim"
-} elseif (Get-Command -Name nano -Ignore) {
+} elseif (Get-Command -Name nano -ErrorAction Ignore) {
     $env:EDITOR = "nano"
-} elseif (Get-Command -Name edit -Ignore) {
+} elseif (Get-Command -Name edit -ErrorAction Ignore) {
     $env:EDITOR = "edit"
 }
 
