@@ -43,6 +43,9 @@ $MFT
 *.tmp
 *.temp
 
+### Plugs
+!.gitkeep
+
 ## Editors & IDE
 .idea/
 *.iws
