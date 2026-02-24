@@ -56,4 +56,3 @@ Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
 
 ### Keybindings
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
-

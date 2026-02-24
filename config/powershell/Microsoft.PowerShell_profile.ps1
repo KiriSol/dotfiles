@@ -42,7 +42,7 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
         )
     }
     if (-not $EZA_IGNORE_GLOB) {
-        $EZA_IGNORE_GLOB = ".git|.venv|node_modules|__pycache__|.ruff_cache"
+        $EZA_IGNORE_GLOB = ".git|.venv|node_modules"
     }
 
     # Standard aliases
@@ -102,4 +102,3 @@ if (Get-Command -Name fastfetch -ErrorAction Ignore) {
 if (Get-Command -Name git -ErrorAction Ignore) {
     Set-Alias -Name g -Value git
 }
-
