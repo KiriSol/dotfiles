@@ -21,6 +21,6 @@ cd "${BASEDIR}"
 # Termux
 if [ -n "$TERMUX_VERSION" ]; then
     rm -rf ~/.shortcuts
-    cp termux/shortcuts ~/.shortcuts -r
+    cp termux/shortcuts ~/.shortcuts
     ln -s "$SHELL" ~/.termux/shell -f
 fi

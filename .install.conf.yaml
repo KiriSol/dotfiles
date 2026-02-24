@@ -10,16 +10,24 @@
       quiet: true
 
 - clean:
-    ~/:
-    ~/.local/bin:
-    ~/.config:
-      recursive: true
+    [
+      "~",
+      "~/.config",
+      "~/.local/bin",
+      "~/.oh-my-zsh/custom",
+      "~/.local/share/oh-my-zsh/custom",
+    ]
 
 - link:
     # Binaries
     ~/.local/bin:
       glob: true
       path: bin/*
+
+    # Config dir
+    ~/.config:
+      glob: true
+      path: config/*
 
     # Shell
     ~/.local/bin/env: shell/env.sh
@@ -35,11 +43,6 @@
       if: '[ -d "$HOME/.oh-my-zsh" ]'
       glob: true
       path: shell/zsh/autoload/*
-
-    # Config dir
-    ~/.config:
-      glob: true
-      path: config/*
 
     # Termux
     ~/.termux:

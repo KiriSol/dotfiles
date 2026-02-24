@@ -7,7 +7,7 @@
     shell:
       quiet: true
 
-- clean: ["~", "~/.local/bin", "~\\AppData\\Roaming"]
+- clean: ["~", "~/.config", "~/.local/bin", "~\\AppData\\Roaming"]
 
 - link:
     # Binaries
@@ -20,10 +20,10 @@
       glob: true
       path: config/powershell/*
 
+    # Configs
     ~/.config/git: config/git
-    # ~\AppData\Roaming\bottom: config/bottom
-    ~\AppData\Roaming\yazi\config: config/yazi
     ~\AppData\Roaming\bat: config/bat
+    ~\AppData\Roaming\yazi\config: config/yazi
 
 - create:
     - ~/Dev
