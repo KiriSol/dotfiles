@@ -46,7 +46,6 @@ zstyle ':omz:update' mode reminder
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(
     # Standard
-    history
     git
     docker
     fzf
