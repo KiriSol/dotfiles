@@ -33,8 +33,6 @@ if (( $+commands[fastfetch] )); then
             fastfetch -c "examples/$1.jsonc" "${@:2}"
         fi
     }
-    alias neofetch="fastfetch -c neofetch.jsonc"
-    alias paleofetch="fastfetch -c paleofetch.jsonc"
     alias clr="clear && ff"
 fi
 

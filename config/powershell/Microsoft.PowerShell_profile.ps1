@@ -2,16 +2,19 @@
 
 function .. { Set-Location -Path .. }
 function ... { Set-Location -Path ..\.. }
-
-if (Get-Command -Name nvim -ErrorAction Ignore) {
-    Set-Alias -Name nv -Value nvim -Force
-    Set-Alias -Name v -Value nvim -Force
-}
+function .... { Set-Location -Path ..\..\.. }
+function ..... { Set-Location -Path ..\..\..\.. }
 
 function which ($command) { Write-Output -InputObject $(Get-Command $command).Path }
 
 
-### Utils
+### Tools
+
+## Neovim
+if (Get-Command -Name nvim -ErrorAction Ignore) {
+    Set-Alias -Name nv -Value nvim -Force
+    Set-Alias -Name v -Value nvim -Force
+}
 
 ## Yazi
 if (Get-Command -Name yazi -ErrorAction Ignore) {
@@ -45,43 +48,15 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
         $EZA_IGNORE_GLOB = ".git|.venv|node_modules"
     }
 
-    # Standard aliases
-    function ListItems { eza @EZA_DEFAULT_OPTS @args }
-    Set-Alias -Name ls -Value ListItems -Force
-
-    function tree { ls --tree @args }
+    function Eza-ListItems { eza @EZA_DEFAULT_OPTS @args }
+    Set-Alias -Name ls -Value Eza-ListItems -Force
 
     function la { ls --sort=Name --all @args }
     function l { ls --header --long @args }
     function ll { l --all @args }
-
-    # Full information about files
-    function lla { ls -lbhHigUmuSa @args }
-    function llx { ls -lbhHigUmuSa@ @args }
-
-    # Ls with sorting
-    function lgit { ls --all --git-ignore @args }
-    function lmod { ll --sort=modified @args }
-    function lcreate { ll --sort=created @args }
-    function lsize { ll --sort=size @args }
-    function ldirs { ls --only-dirs @args }
-    function lfiles { ls --only-files @args }
-
-    # Tree with level (first argument)
-    function lt ($level = 1) {
-        tree --level=$level @args
-    }
-
-    function ls1 { ls --tree --level=1 @args }
-    function ls2 { ls --tree --level=2 @args }
-    function ls3 { ls --tree --level=3 @args }
-
-    # Others
+    function tree { ls --tree @args }
+    function lt ($level = 1) { tree --level=$level @args }
     function ltt { tree --no-user --all --ignore-glob=$EZA_IGNORE_GLOB @args }
-    function lss { ls --oneline @args }
-
-    function labs { ls --absolute=on @args }
-    function lpwd { labs -d . @args }
 }
 
 ## Fastfetch
@@ -89,13 +64,7 @@ if (Get-Command -Name fastfetch -ErrorAction Ignore) {
     function ff { fastfetch -c examples/17.jsonc @args }
     function fff { fastfetch -c examples/13.jsonc --logo none @args }
     function clr { Clear-Host && ff }
-
-    function paleofetch { fastfetch -c paleofetch.jsonc @args }
-    function neofetch { fastfetch -c neofetch.jsonc @args }
-
-    function ffc ($number_config = 17) {
-        fastfetch -c examples/$number_config.jsonc @args
-    }
+    function ffc ($config = 17) { fastfetch -c examples/config.jsonc @args }
 }
 
 ## Git
