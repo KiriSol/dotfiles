@@ -35,11 +35,3 @@ if (( $+commands[fastfetch] )); then
     }
     alias clr="clear && ff"
 fi
-
-# Neovim configurations
-if [ -d ~/.config/nvchad ]; then
-    alias nvchad="NVIM_APPNAME=nvchad nvim"
-fi
-if [ -d ~/.config/lazyvim ]; then
-    alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-fi

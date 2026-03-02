@@ -5,12 +5,12 @@ unset HISTFILE
 
 ## Source global definitions
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+    source /etc/bashrc
 fi
 
 ## User specific environment
 if [ -f "~/.local/bin/env" ]; then
-    . ~/.local/bin/env
+    source ~/.local/bin/env
 fi
 
 ## Alaises

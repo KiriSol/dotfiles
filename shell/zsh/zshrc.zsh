@@ -11,14 +11,10 @@ else
 fi
 
 # Set name of the theme to load
-if [ -d "$ZSH/custom/themes/powerlevel10k" ]; then
-    # Enable Powerlevel10k instant prompt. Should stay close to the top of ${ZDOTDIR:-$HOME}/.zshrc.
-    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-    fi
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-else
+if [ -n "$TERMUX_VERSION" ]; then
     ZSH_THEME="robbyrussell"
+else
+    ZSH_THEME="bira"
 fi
 
 # Use case-sensitive completion.
@@ -72,6 +68,3 @@ if [ "$ENABLE_FZF_PREVIEW" -ne 0 ]; then
     fzf-preview \
     '_fzf_complete_preview_realpath "$realpath"'
 fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
