@@ -11,11 +11,7 @@ else
 fi
 
 # Set name of the theme to load
-if [ -n "$TERMUX_VERSION" ]; then
-    ZSH_THEME="robbyrussell"
-else
-    ZSH_THEME="bira"
-fi
+ZSH_THEME="robbyrussell"
 
 # Use case-sensitive completion.
 CASE_SENSITIVE="false"
