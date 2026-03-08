@@ -18,13 +18,10 @@ elif command -v nano >/dev/null; then
     export EDITOR='nano'
 fi
 
-# Catppuccin theme for fzf
+# Fzf
 export FZF_DEFAULT_OPTS=" \
-    --color=bg+:#414559,spinner:#8CAAEE,hl:#E78284 \
-    --color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#8CAAEE \
-    --color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284 \
-    --color=selected-bg:#51577D \
-    --color=border:#6C6F85,label:#C6D0F5 \
+    --color=16,pointer:4 \
+    --preview-window=border:rounded \
     --bind='F2:toggle-preview' \
     --bind='shift-up:preview-page-up,shift-down:preview-page-down'"
 
@@ -32,7 +29,8 @@ export FZF_DEFAULT_OPTS=" \
 
 export ENABLE_FZF_PREVIEW=1
 
-export EZA_DEFAULT_OPTS="--git \
+export EZA_DEFAULT_OPTS=" \
+    --git \
     --hyperlink \
     --color=always \
     --icons=always \

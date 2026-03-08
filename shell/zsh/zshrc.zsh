@@ -54,13 +54,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Configuration fzf-tab completion
-zstyle ':completion:*' ignored-patterns '**/.|**/..|**/.git'
-
+# Configuration fzf-tab plugin
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-
+zstyle ':fzf-tab:*' switch-group ',' '.'
 if [ "$ENABLE_FZF_PREVIEW" -ne 0 ]; then
-  zstyle ':fzf-tab:complete:(\\|*/|)(ls|eza|bat|cat|cd|z|rm|rmdir|cp|mv|ln|nano|vi|vim|nvim|open|tail|tree|source):*' \
-    fzf-preview \
-    '_fzf_complete_preview_realpath "$realpath"'
+    zstyle ':fzf-tab:complete:(-tilde-|-subscript-|-command-|-parameter-|-variant-):*' fzf-preview 'echo ${(P)word}'
 fi
