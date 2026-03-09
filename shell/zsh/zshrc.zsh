@@ -57,6 +57,6 @@ source $ZSH/oh-my-zsh.sh
 # Configuration fzf-tab plugin
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group ',' '.'
-if [ "$ENABLE_FZF_PREVIEW" -ne 0 ]; then
+if [ "$FZF_ENABLE_PREVIEW" -ne 0 ]; then
     zstyle ':fzf-tab:complete:(-tilde-|-subscript-|-command-|-parameter-|-variant-):*' fzf-preview 'echo ${(P)word}'
 fi

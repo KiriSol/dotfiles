@@ -27,7 +27,7 @@ export FZF_DEFAULT_OPTS=" \
 
 ## My variables
 
-export ENABLE_FZF_PREVIEW=1
+export FZF_ENABLE_PREVIEW=1
 
 export EZA_DEFAULT_OPTS=" \
     --git \

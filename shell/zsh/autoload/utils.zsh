@@ -3,7 +3,7 @@
 ## Setup fzf
 if (($+commands[fzf])); then
     # Preview configuration
-    if [ "$ENABLE_FZF_PREVIEW" -ne 0 ]; then
+    if [ "$FZF_ENABLE_PREVIEW" -ne 0 ]; then
         export FZF_CTRL_T_OPTS="--preview='fzf-preview.sh {}'"
         export FZF_ALT_C_OPTS="--preview='fzf-preview.sh {}'"
 
