@@ -6,8 +6,6 @@
       type: symlink
     create:
       mode: 0700
-    shell:
-      quiet: true
 
 - clean:
     [
@@ -34,7 +32,7 @@
     ~/.bashrc: shell/bash/bashrc.sh
 
     ~/.zshrc: shell/zsh/zshrc.zsh
-    ~/.zshenv: shell/zsh/zshenv.zsh
+    ~/.zshenv: shell/zsh/zshenv.sh
     ~/.local/share/oh-my-zsh/custom:
       if: '[ -d "$HOME/.local/share/oh-my-zsh" ]'
       glob: true

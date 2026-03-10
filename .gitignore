@@ -1,2 +1,3 @@
-# Ignore local shortcuts
-termux/shortcuts/**
+# Termux local
+termux/termux/*
+termux/shortcuts/*

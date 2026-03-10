@@ -1,4 +1,14 @@
+#!/bin/env pwsh
+
 #Requires -Version 5
+
+# The purpose of this script is to demonstrate how to preview a file or an
+# image in the preview window of fzf.
+
+# Optional dependencies:
+# - https://github.com/eza-community/eza
+# - https://github.com/sharkdp/bat
+# - https://github.com/hpjansson/chafa
 
 param(
     [string]$Path

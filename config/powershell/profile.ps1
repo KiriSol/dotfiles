@@ -27,9 +27,9 @@ if (Get-Command -Name zoxide -ErrorAction Ignore) { Invoke-Expression (& { (zoxi
 # PSReadLine
 Set-PSReadLineOption -PredictionSource History # IntelliSense suggestions
 Set-PSReadlineOption -HistorySearchCursorMovesToEnd # Move cursor to end at search
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete # Completions like zsh
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete # Completions menu
 Set-PSReadLineOption -ExtraPromptLineCount 1 # Menu appearance
-Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
+Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit # Unix quit
 
 
 ### Theme

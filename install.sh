@@ -10,7 +10,7 @@ else
     exit 1
 fi
 
-CONFIG=".install.conf.yaml"
+CONFIG=".unix.conf.yaml"
 
 BASEDIR="$(cd "$(dirname "$0")" && pwd)"
 cd "${BASEDIR}"
