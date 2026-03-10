@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/env sh
 
 # The purpose of this script is to demonstrate how to preview a file or an
 # image in the preview window of fzf.
@@ -8,44 +8,45 @@
 # - https://github.com/sharkdp/bat
 # - https://github.com/hpjansson/chafa
 
-#!/bin/sh
-
-# Usage: fzf-reader "FILENAME[:LINENO]" or pipe text to it
 input="${1:-}"
 
 # 1. Handle stdin if input is empty or "-"
 if [ -z "$input" ] || [ "$input" = "-" ]; then
     stdin_content=$(cat)
     if [ -n "$stdin_content" ]; then
-        echo "$stdin_content" | bat --plain --color=always --terminal-width="${FZF_PREVIEW_COLUMNS:-80}" --line-range :100 2>/dev/null || echo "$stdin_content"
+        bat_cmd=$(command -v batcat || command -v bat)
+        if [ -n "$bat_cmd" ]; then
+            echo "$stdin_content" | "$bat_cmd" --plain --color=always --terminal-width="${FZF_PREVIEW_COLUMNS:-80}" --line-range :100
+        else
+            echo "$stdin_content"
+        fi
     fi
     exit 0
 fi
 
-# 2. Expand Tilde (POSIX way)
+# Expand Tilde
 case "$input" in
     \~*) path="$HOME/${input#\~/}" ;;
     *) path="$input" ;;
 esac
 
-# 3. Parse filename and line number
+# Parse filename and line number
 # Logic: Try to split by ':' and check if the left part is a readable file
 file_path=$(echo "$path" | sed 's/:[0-9]*$//; s/:[0-9]*:[0-9]*$//')
 center=$(echo "$path" | sed -n 's/^.*:\([0-9][0-9]*\).*/\1/p')
 [ -z "$center" ] && center=0
 
-# 4. Directory Preview
+# 2. Directory Preview
 if [ -d "$file_path" ]; then
     if command -v eza >/dev/null 2>&1; then
-        eza --all --oneline --color=always --icons "$file_path"
+        eza --all --oneline --color=always $EZA_DEFAULT_OPTS "$file_path"
     else
         ls -1F --color=always "$file_path"
     fi
 
-# 5. File Preview
+# 3. File Preview
 elif [ -f "$file_path" ]; then
     mime=$(file --brief --dereference --mime -- "$file_path" 2>/dev/null)
-
     case "$mime" in
         *image/*)
             dim="${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}"
@@ -71,7 +72,7 @@ elif [ -f "$file_path" ]; then
             ;;
     esac
 
-# 6. Fallback for strings/environment variables
+# 4. Fallback for strings/environment variables
 else
     echo "$input" | fold -w "${FZF_PREVIEW_COLUMNS:-80}"
 fi
