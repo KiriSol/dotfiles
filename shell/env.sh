@@ -1,5 +1,3 @@
-#!/bin/env sh
-
 ### Environment for posix shells
 
 # User specific environment
