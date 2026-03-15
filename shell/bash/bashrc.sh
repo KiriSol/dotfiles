@@ -4,14 +4,10 @@ export HISTFILESIZE=0
 unset HISTFILE
 
 ## Source global definitions
-if [ -f /etc/bashrc ]; then
-    source /etc/bashrc
-fi
+[ -f /etc/bashrc ] && source /etc/bashrc
 
 ## User specific environment
-if [ -f "~/.local/bin/env" ]; then
-    source ~/.local/bin/env
-fi
+[ -f ~/.local/bin/env ] && source ~/.local/bin/env
 
 ## Alaises
 
@@ -25,16 +21,25 @@ alias e="echo"
 
 # Utils
 alias g="git"
-alias v="vim"
-alias nv="nvim"
 alias ff="fastfetch"
 
-if command -v yazi >/dev/null; then
-    function yy() { # Yazi
-        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+if command -v nvim >/dev/null 2>&1; then
+    alias nv="nvim"
+    alias v="nvim"
+elif command -v vim >/dev/null 2>&1; then
+    alias v="vim"
+fi
+
+if command -v yazi >/dev/null 2>&1; then
+    yy() {
+        local tmp
+        tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
         yazi "$@" --cwd-file="$tmp"
-        IFS= read -r -d '' cwd <"$tmp"
-        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-        rm -f -- "$tmp"
+        if [ -f "$tmp" ]; then
+            local cwd
+            cwd=$(<"$tmp")
+            [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
+            rm -f -- "$tmp"
+        fi
     }
 fi
