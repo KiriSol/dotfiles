@@ -5,25 +5,18 @@
       force: true
       type: symlink
     create:
-      mode: 0700
+      mode: 0755
 
-- clean:
-    [
-      "~",
-      "~/.config",
-      "~/.local/bin",
-      "~/.oh-my-zsh/custom",
-      "~/.local/share/oh-my-zsh/custom",
-    ]
+- clean: ["~", "~/.config", "~/.local/bin", "${ZSH_CUSTOM}", "~/.termux"]
 
 - link:
     # Binaries
-    ~/.local/bin:
+    ~/.local/bin/:
       glob: true
       path: bin/*
 
     # Config dir
-    ~/.config:
+    ~/.config/:
       glob: true
       path: config/*
 
@@ -31,22 +24,22 @@
     ~/.local/bin/env: shell/env.sh
     ~/.bashrc: shell/bash/bashrc.sh
 
-    ~/.zshrc: shell/zsh/zshrc.zsh
-    ~/.zshenv: shell/zsh/zshenv.zsh
-    ~/.local/share/oh-my-zsh/custom:
-      if: '[ -d "$HOME/.local/share/oh-my-zsh" ]'
-      glob: true
+    ~/.zshrc:
+      if: "command -v zsh"
+      path: shell/zsh/zshrc.zsh
+    ~/.zshenv:
+      if: "command -v zsh"
+      path: shell/zsh/zshenv.zsh
+    ${ZSH_CUSTOM}/:
+      if: '[ -n "$ZSH_CUSTOM" ] && [ -d "$ZSH_CUSTOM" ]'
       path: shell/zsh/autoload/*
-    ~/.oh-my-zsh/custom:
-      if: '[ -d "$HOME/.oh-my-zsh" ]'
       glob: true
-      path: shell/zsh/autoload/*
 
     # Termux
-    ~/.termux:
+    ~/.termux/:
       if: '[ -n "$TERMUX_VERSION" ]'
+      path: termux/*
       glob: true
-      path: termux/termux/*
 
 - create:
     - ~/dev

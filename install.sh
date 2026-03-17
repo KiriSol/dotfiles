@@ -17,11 +17,3 @@ cd "${BASEDIR}"
 
 # Run
 "${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
-
-# Termux
-if [ -n "$TERMUX_VERSION" ]; then
-    rm -rf ~/.shortcuts
-    cp termux/shortcuts ~/.shortcuts -r
-    ln -s "$SHELL" ~/.termux/shell -f
-    curl -Lo ~/.termux/font.ttf https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf
-fi
