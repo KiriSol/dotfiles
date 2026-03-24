@@ -1,4 +1,4 @@
-" NOTE: This is a self-contained configuration for bare vim/neovim.
+" NOTE: Independent vim/neovim config
 
 " ========== Appearance ==========
 
@@ -116,4 +116,3 @@ nnoremap <leader>sw :call ToggleWordWrap()<CR>
 nnoremap <leader>ss :setlocal spell!<CR>
 
 nnoremap <leader>w :wa<CR>
-

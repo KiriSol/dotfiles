@@ -1,9 +1,8 @@
 #!/bin/env sh
 
-# The purpose of this script is to demonstrate how to preview a file or an
-# image in the preview window of fzf.
+## The purpose of this script is to preview a file or an image in the preview window of fzf
 
-# Optional dependencies:
+## Optional dependencies:
 # - https://github.com/eza-community/eza
 # - https://github.com/sharkdp/bat
 # - https://github.com/hpjansson/chafa
@@ -31,7 +30,6 @@ case "$input" in
 esac
 
 # Parse filename and line number
-# Logic: Try to split by ':' and check if the left part is a readable file
 file_path=$(echo "$path" | sed 's/:[0-9]*$//; s/:[0-9]*:[0-9]*$//')
 center=$(echo "$path" | sed -n 's/^.*:\([0-9][0-9]*\).*/\1/p')
 [ -z "$center" ] && center=0

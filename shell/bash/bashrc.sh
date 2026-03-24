@@ -3,29 +3,25 @@
 export HISTFILESIZE=0
 unset HISTFILE
 
-## Source global definitions
-[ -f /etc/bashrc ] && source /etc/bashrc
+# Source global definitions
+[[ -f /etc/bashrc ]] && source /etc/bashrc
 
-## User specific environment
-[ -f ~/.local/bin/env ] && source ~/.local/bin/env
+# User specific environment
+[[ -f ~/.local/bin/env ]] && source ~/.local/bin/env
 
 ## Alaises
 
-# Useful
 alias l="ls -l"
 alias la="ls -a"
 alias ll="ls -al"
 alias md="mkdir"
 alias cls="clear"
 alias e="echo"
-
-# Utils
 alias g="git"
 alias ff="fastfetch"
 
 if command -v nvim >/dev/null 2>&1; then
-    alias nv="nvim"
-    alias v="nvim"
+    alias nv="nvim" v="nvim"
 elif command -v vim >/dev/null 2>&1; then
     alias v="vim"
 fi
