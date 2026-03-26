@@ -4,28 +4,15 @@ return {
 	config = function()
 		local servers = {
 			"lua_ls",
-			-- "vimls",
 			"jsonls",
 			"bashls",
-			-- "powershell_es",
 			"clangd",
 			"rust_analyzer",
-			"pyright",
 			"ruff",
 			"ty",
 			"ts_ls",
-			"cspell_ls",
 		}
 		vim.lsp.enable(servers)
-		vim.lsp.config("pyright", {
-			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-					},
-				},
-			},
-		})
 	end,
 	init = function()
 		vim.api.nvim_create_autocmd("LspAttach", {

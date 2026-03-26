@@ -3,14 +3,14 @@ return {
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
 	cmd = "Neotree",
 	---@module "neo-tree"
 	---@type neotree.Config?
 	opts = {
-		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+		close_if_last_window = true,
 		popup_border_style = "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
@@ -22,11 +22,8 @@ return {
 		},
 		default_component_configs = {
 			indent = {
-				-- indent_size = 2,
-				-- padding = 1,
-				-- indent_marker = "│",
 				last_indent_marker = "╰",
-				with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
+				with_expanders = nil,
 			},
 		},
 		window = {

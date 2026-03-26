@@ -12,6 +12,5 @@ return {
 		{ "<leader>grh", "<cmd> Gitsigns reset_hunk <cr>", mode = { "n", "v" } },
 		{ "<leader>gd", "<cmd> Gitsigns diffthis <cr>", mode = { "n", "v" } },
 		{ "<leader>gp", "<cmd> Gitsigns preview_hunk_inline <cr>", mode = { "n", "v" } },
-		-- TODO: настроить клавиши
 	},
 }

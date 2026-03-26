@@ -1,5 +1,4 @@
--- Set options
-vim.g.colors_name = vim.g.colors_name or "default"
+vim.g.colors_name = vim.g.colors_name or "habamax"
 
 SetBackground = {
 	is_transparent = false,
@@ -15,7 +14,6 @@ SetBackground = {
 			local change_bg = {
 				"NormalFloat",
 				"ColorColumn",
-				"NeoTreeFloatTitle",
 			}
 			for _, v in pairs(change_bg) do
 				vim.api.nvim_set_hl(0, v, { bg = "none" })

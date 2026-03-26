@@ -15,10 +15,4 @@ vim.keymap.set("n", "<leader>sw", "<cmd> lua SwitchWrap() <cr>", { noremap = tru
 vim.keymap.set("n", "<leader>w", "<cmd> wa <cr>", { noremap = true })
 vim.keymap.set("n", "<leader>:", ":lua ", { noremap = true })
 
-vim.keymap.set("v", "<localleader>y", '"+y', { noremap = true })
-vim.keymap.set("n", "<localleader>y", '"+y', { noremap = true })
-vim.keymap.set("n", "<localleader>yy", '"+yy', { noremap = true })
-vim.keymap.set("n", "<localleader>p", '"+p', { noremap = true })
-vim.keymap.set("n", "<localleader>P", '"+P', { noremap = true })
-
 vim.keymap.set("n", "<leader>z", "<cmd> Lazy <cr>")

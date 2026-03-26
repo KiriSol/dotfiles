@@ -2,7 +2,7 @@ return {
 	"akinsho/bufferline.nvim",
 	version = "*",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	event = "VeryLazy",
+	lazy = false,
 	opts = {
 		options = {
 			diagnostics = "nvim_lsp",
@@ -11,7 +11,6 @@ return {
 				return " " .. icon .. count
 			end,
 			indicator = { style = "none" },
-			-- separator_style = "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
 			hover = {
 				enabled = true,
 				delay = 100,

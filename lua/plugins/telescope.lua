@@ -8,7 +8,6 @@ return {
 		},
 	},
 	init = function()
-		-- Issue: support 0.11 'winborder' #3436 https://github.com/nvim-telescope/telescope.nvim/issues/3436
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "TelescopeFindPre",
 			callback = function()

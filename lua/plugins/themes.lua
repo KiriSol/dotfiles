@@ -1,42 +1,5 @@
 Themes = {
 	{
-		"navarasu/onedark.nvim",
-		event = { "ColorSchemePre" },
-		opts = {
-			style = "dark", -- dark, darker, cool, deep, warm, warmer, light
-			transparent = true,
-			code_style = {
-				comments = "italic",
-				keywords = "italic",
-				functions = "none",
-			},
-			colors = {
-				bg0 = "#313746",
-				bg1 = "#3b4252",
-				bg_d = "#2e3440",
-			},
-		},
-		init = function()
-			local one = require("onedark")
-			SetBackground.CustomChangeFunc["onedark"] = {
-				enable = function()
-					Themes[1].opts.transparent = true
-					one.setup(Themes[1].opts)
-					vim.cmd.colorscheme("onedark")
-					vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-					vim.api.nvim_set_hl(0, "NeoTreeFloatTitle", { bg = "none" })
-					vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-					vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
-				end,
-				disable = function()
-					Themes[1].opts.transparent = false
-					one.setup(Themes[1].opts)
-					vim.cmd.colorscheme("onedark")
-				end,
-			}
-		end,
-	},
-	{
 		"folke/tokyonight.nvim",
 		event = { "ColorSchemePre" },
 		opts = {
@@ -98,9 +61,6 @@ Themes = {
 						cat.options.transparent_background = true
 						cat.compile()
 						vim.cmd.colorscheme("catppuccin")
-						-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-						-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-						-- vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none" })
 					end,
 					disable = function()
 						cat.options.transparent_background = false
@@ -109,37 +69,6 @@ Themes = {
 					end,
 				}
 			end
-		end,
-	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000,
-		opts = {
-			italic = {
-				strings = false,
-				emphasis = true,
-				comments = true,
-				operators = false,
-				folds = true,
-			},
-			inverse = true, -- invert background for search, diffs, statuslines and errors
-			contrast = "soft", -- can be "hard", "soft" or empty string
-			transparent_mode = true,
-		},
-		init = function()
-			SetBackground.CustomChangeFunc.gruvbox = {
-				enable = function()
-					Themes[4].opts.transparent_mode = true
-					require("gruvbox").setup(Themes[4].opts)
-					vim.cmd.colorscheme("gruvbox")
-					vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
-				end,
-				disable = function()
-					Themes[4].opts.transparent_mode = false
-					require("gruvbox").setup(Themes[4].opts)
-					vim.cmd.colorscheme("gruvbox")
-				end,
-			}
 		end,
 	},
 }

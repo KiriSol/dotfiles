@@ -3,11 +3,6 @@ local TERMINAL_MAPPING = "<c-]>"
 function _G._set_terminal_keymaps()
 	local opts = { buffer = 0 }
 	vim.keymap.set("t", "<Esc>", [[<cmd> stopinsert <cr>]], opts)
-	vim.keymap.set("t", "<C-h>", [[<Cmd> TmuxNavigateLeft <CR>]], opts)
-	vim.keymap.set("t", "<C-j>", [[<Cmd> TmuxNavigateDown <CR>]], opts)
-	vim.keymap.set("t", "<C-k>", [[<Cmd> TmuxNavigateUp <CR>]], opts)
-	vim.keymap.set("t", "<C-l>", [[<Cmd> TmuxNavigateRight <CR>]], opts)
-	vim.keymap.set("t", [[<C-\>]], [[<Cmd> TmuxNavigatePrevios <CR>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
