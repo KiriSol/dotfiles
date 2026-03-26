@@ -1,0 +1,3 @@
+_G.IGNONE_FILETYPES_BY_PATTERN = {
+	".git/",
+}
