@@ -24,10 +24,6 @@ export FZF_DEFAULT_OPTS=" \
     --bind='F2:toggle-preview' \
     --bind='shift-up:preview-page-up,shift-down:preview-page-down'"
 
-# My
-
-export FZF_ENABLE_PREVIEW=1
-
 export EZA_DEFAULT_OPTS=" \
     --git \
     --hyperlink \

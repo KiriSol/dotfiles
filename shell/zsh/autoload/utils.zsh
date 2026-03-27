@@ -1,7 +1,7 @@
 ### Setup utils for zsh
 
 ## Fzf
-if (( ${+commands[fzf]} && ${+FZF_ENABLE_PREVIEW} && FZF_ENABLE_PREVIEW != 0 )); then
+if (( ${+commands[fzf]} )) && [[ "$ENABLE_FZF_PREVIEW" == "true" ]]; then
     export FZF_CTRL_T_OPTS="--preview='fzf-preview.sh {}'"
     export FZF_ALT_C_OPTS="--preview='fzf-preview.sh {}'"
 

@@ -43,9 +43,6 @@ Set-PSReadLineOption -ExtraPromptLineCount 1
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 
 
-### Theme
-
-
 ### Aliases
 
 function .. { Set-Location -Path .. }
@@ -90,9 +87,8 @@ if (Get-Command -Name eza -ErrorAction Ignore) {
 
 # Fastfetch
 if (Get-Command -Name fastfetch -ErrorAction Ignore) {
-    function ffc ($config = 17) { fastfetch -c "examples/$config.jsonc" @args }
-    function ff { ffc 17 @args }
-    function fff { ffc 13 --logo none @args }
+    function ff { fastfetch -c examples/17.jsonc @args }
+    function fff { fastfetch -c examples/13.jsonc --logo none @args }
     function clr { Clear-Host && ff @args }
 }
 

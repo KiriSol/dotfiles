@@ -22,7 +22,7 @@
 
     # Shell
     ~/.local/bin/env: shell/env.sh
-    ~/.bashrc: shell/bash/bashrc.sh
+    ~/.bashrc: shell/bash/bashrc.bash
 
     ~/.zshrc:
       if: "command -v zsh"

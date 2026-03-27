@@ -44,29 +44,32 @@ DISABLE_UNTRACKED_FILES_DIRTY="false"
 # Set the auto-update behavior
 zstyle ':omz:update' mode reminder
 
+# My fzf preview switcher
+ENABLE_FZF_PREVIEW="true"
+
 ## Plugins
 plugins=()
 
 # Standard
-local -A cmd_plugins=(
+local -A std_plugins=(
     git     git
     docker  docker
     fzf     fzf
     zoxide  zoxide
 )
-for cmd plugin in ${(kv)cmd_plugins}; do
+for plugin cmd in ${(kv)std_plugins}; do
     (( ${+commands[$cmd]} )) && plugins+=($plugin)
 done
 
 # Custom
-local custom_plugs=(
-    fzf-tab
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    eza-zsh
+local -A custom_plugins=(
+    fzf-tab                  fzf
+    zsh-autosuggestions      zsh
+    zsh-syntax-highlighting  zsh
+    eza-zsh                  eza
 )
-for p in $custom_plugs; do
-    [[ -d "$ZSH_CUSTOM/plugins/$p" ]] && plugins+=($p)
+for plugin cmd in ${(kv)custom_plugins}; do
+    (( ${+commands[$cmd]} )) && [[ -d "$ZSH_CUSTOM/plugins/$plugin" ]] && plugins+=($plugin)
 done
 
 source $ZSH/oh-my-zsh.sh
@@ -75,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 if (( ${plugins[(I)fzf-tab]} )); then
     zstyle ':fzf-tab:*' use-fzf-default-opts yes
     zstyle ':fzf-tab:*' switch-group ',' '.'
-    if (( ${+FZF_ENABLE_PREVIEW} && FZF_ENABLE_PREVIEW != 0 )); then
+    if [[ "$ENABLE_FZF_PREVIEW" == "true" ]]; then
         zstyle ':fzf-tab:complete:(-tilde-|-subscript-|-command-|-parameter-|-variant-):*' fzf-preview 'echo ${(P)word}'
     fi
 fi
