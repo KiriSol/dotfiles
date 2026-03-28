@@ -22,6 +22,17 @@ if (( ${+commands[yazi]} )); then
     }
 fi
 
+# Eza
+if (( ${+commands[eza]} )) && (( ! ${plugins[(I)eza-zsh]} )); then
+    alias ls="eza $EZA_DEFAULT_OPTS"
+    alias la='ls --sort=Name --all'
+    alias l='ls --header --long'
+    alias ll='l --all'
+    alias tree='ls --tree'
+    lt() { tree --level "${1:-1}" "${@:2}" }
+    alias lT="ls --tree --no-user --no-permissions --all --ignore-glob='$EZA_IGNORE_GLOB'"
+fi
+
 # Fastfetch
 if (( ${+commands[fastfetch]} )); then
     alias ff="fastfetch -c examples/17.jsonc"
