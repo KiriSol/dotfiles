@@ -1,36 +1,22 @@
-### Environment for posix shells
-
-## User specific environment
-case ":$PATH:" in
-    *":$HOME/.local/bin:"*) ;;
-    *) export PATH="$HOME/.local/bin:$PATH" ;;
-esac
+### Environment for POSIX shells
 
 ## Variables
 
+# Add to PATH
+case ":$PATH:" in
+    *":${XDG_BIN_HOME:-$HOME/.local/bin}:"*) ;;
+    *) export PATH="${XDG_BIN_HOME:-$HOME/.local/bin}:$PATH" ;;
+esac
+
+# Tools
 export LESS="--RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
+export FZF_DEFAULT_OPTS="--color=16,pointer:4"
 
-if command -v nvim >/dev/null 2>&1; then
-    export EDITOR='nvim'
-elif command -v vim >/dev/null 2>&1; then
-    export EDITOR='vim'
-elif command -v vi >/dev/null 2>&1; then
-    export EDITOR='vi'
+# Editor
+if command -v nvim >/dev/null; then
+    export EDITOR="nvim"
+elif command -v vim >/dev/null; then
+    export EDITOR="vim"
+elif command -v vi >/dev/null; then
+    export EDITOR="vi"
 fi
-
-export FZF_DEFAULT_OPTS=" \
-    --color=16,pointer:4 \
-    --preview-window=border:rounded \
-    --bind='F2:toggle-preview' \
-    --bind='shift-up:preview-page-up,shift-down:preview-page-down'"
-
-export EZA_DEFAULT_OPTS=" \
-    --git \
-    --hyperlink \
-    --color=always \
-    --icons=always \
-    --group-directories-first \
-    --sort=type \
-    --time-style=long-iso \
-    --header \
-    --classify=always"

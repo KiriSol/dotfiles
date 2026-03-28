@@ -1,7 +1,7 @@
 ### Zshrc
 
 ## Set path to oh-my-zsh
-local omz_paths=( "$HOME/.local/share/oh-my-zsh" "$HOME/.oh-my-zsh" )
+local omz_paths=( "${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh" "$HOME/.oh-my-zsh" )
 
 for p in $omz_paths; do
     if [[ -d $p ]]; then
@@ -44,9 +44,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="false"
 # Set the auto-update behavior
 zstyle ':omz:update' mode reminder
 
-# My fzf preview switcher
-ENABLE_FZF_PREVIEW="true"
-
 ## Plugins
 plugins=()
 
@@ -63,22 +60,11 @@ done
 
 # Custom
 local -A custom_plugins=(
-    fzf-tab                  fzf
     zsh-autosuggestions      zsh
     zsh-syntax-highlighting  zsh
-    eza-zsh                  eza
 )
 for plugin cmd in ${(kv)custom_plugins}; do
     (( ${+commands[$cmd]} )) && [[ -d "$ZSH_CUSTOM/plugins/$plugin" ]] && plugins+=($plugin)
 done
 
 source $ZSH/oh-my-zsh.sh
-
-# Configuration fzf-tab plugin
-if (( ${plugins[(I)fzf-tab]} )); then
-    zstyle ':fzf-tab:*' use-fzf-default-opts yes
-    zstyle ':fzf-tab:*' switch-group ',' '.'
-    if [[ "$ENABLE_FZF_PREVIEW" == "true" ]]; then
-        zstyle ':fzf-tab:complete:(-tilde-|-subscript-|-command-|-parameter-|-variant-):*' fzf-preview 'echo ${(P)word}'
-    fi
-fi

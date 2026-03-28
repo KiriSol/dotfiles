@@ -22,7 +22,9 @@
 
     # Shell
     ~/.local/bin/env: shell/env.sh
-    ~/.bashrc: shell/bash/bashrc.bash
+    ~/.bashrc:
+      if: "command -v bash"
+      path: shell/bashrc.bash
 
     ~/.zshrc:
       if: "command -v zsh"
@@ -31,7 +33,7 @@
       if: "command -v zsh"
       path: shell/zsh/zshenv.zsh
     ${ZSH_CUSTOM}/:
-      if: '[ -n "$ZSH_CUSTOM" ] && [ -d "$ZSH_CUSTOM" ]'
+      if: 'command -v zsh && [ -n "$ZSH_CUSTOM" ] && [ -d "$ZSH_CUSTOM" ]'
       path: shell/zsh/autoload/*
       glob: true
 

@@ -23,14 +23,27 @@ if (( ${+commands[yazi]} )); then
 fi
 
 # Eza
-if (( ${+commands[eza]} )) && (( ! ${plugins[(I)eza-zsh]} )); then
-    alias ls="eza $EZA_DEFAULT_OPTS"
-    alias la='ls --sort=Name --all'
-    alias l='ls --header --long'
-    alias ll='l --all'
-    alias tree='ls --tree'
+if (( ${+commands[eza]} )); then
+    local default_opts=(
+        "--git"
+        "--hyperlink"
+        "--color=always"
+        "--icons=always"
+        "--group-directories-first"
+        "--sort=type"
+        "--time-style=long-iso"
+        "--header"
+        "--classify=always"
+    )
+    local ignore_glob=".git"
+
+    alias ls="eza $default_opts"
+    alias la="ls --sort=Name --all"
+    alias l="ls --header --long"
+    alias ll="l --all"
+    alias tree="ls --tree"
     lt() { tree --level "${1:-1}" "${@:2}" }
-    alias lT="ls --tree --no-user --no-permissions --all --ignore-glob='$EZA_IGNORE_GLOB'"
+    alias lT="ls --tree --no-user --no-permissions --all --ignore-glob='$ignore_glob'"
 fi
 
 # Fastfetch
