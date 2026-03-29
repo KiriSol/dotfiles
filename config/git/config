@@ -8,9 +8,10 @@
     co = checkout
     br = branch
     cm = commit
+    cma = commit --all
+    cam = commit --all --message
     cl = clone --recurse-submodules
     lg = log --oneline --decorate --graph
-    cam = commit --all --message
 [init]
     defaultBranch = main
 

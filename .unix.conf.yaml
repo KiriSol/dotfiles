@@ -7,7 +7,7 @@
     create:
       mode: 0755
 
-- clean: ["~", "~/.config", "~/.local/bin", "${ZSH_CUSTOM}", "~/.termux"]
+- clean: ["~", "~/.config", "~/.local/bin", "~/.termux"]
 
 - link:
     # Binaries
@@ -20,22 +20,10 @@
       glob: true
       path: config/*
 
-    # Shell
-    ~/.local/bin/env: shell/env.sh
+    # Bash
     ~/.bashrc:
       if: "command -v bash"
-      path: shell/bashrc.bash
-
-    ~/.zshrc:
-      if: "command -v zsh"
-      path: shell/zsh/zshrc.zsh
-    ~/.zshenv:
-      if: "command -v zsh"
-      path: shell/zsh/zshenv.zsh
-    ${ZSH_CUSTOM}/:
-      if: 'command -v zsh && [ -n "$ZSH_CUSTOM" ] && [ -d "$ZSH_CUSTOM" ]'
-      path: shell/zsh/autoload/*
-      glob: true
+      path: bashrc.bash
 
     # Termux
     ~/.termux/:
