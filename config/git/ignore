@@ -72,21 +72,12 @@ $MFT
 *.pem
 *.key
 
-# Archive
-*.gz
-*.tar
-*.tar.gz
-*.zip
-*.7z
-
 ## Logs & Diagnostics & Dumps
 *.log
 *.err
 *.pid
 *.seed
 *.pid.lock
-*.sql
-*.sqlite
 .crash_report
 *.dmp
 *.dump
