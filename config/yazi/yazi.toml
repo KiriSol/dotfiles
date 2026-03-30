@@ -1,5 +1,4 @@
 [opener]
 edit = [
     { run = 'cmd /c "if defined EDITOR (%EDITOR% "%*") else (start "" "%*")"', block = true, for = "windows" },
-    { run = '${EDITOR:-vi} "$@"', block = true, for = "unix" }
 ]
