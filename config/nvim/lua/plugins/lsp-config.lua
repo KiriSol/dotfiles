@@ -5,12 +5,10 @@ return {
 		local servers = {
 			"lua_ls",
 			"jsonls",
-			"bashls",
 			"clangd",
 			"rust_analyzer",
 			"ruff",
 			"ty",
-			"ts_ls",
 		}
 		vim.lsp.enable(servers)
 	end,

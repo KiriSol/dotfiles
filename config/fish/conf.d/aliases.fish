@@ -7,6 +7,7 @@ abbr -a e echo
 if type -q nvim
     abbr -a nv nvim
     abbr -a v nvim
+    alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 else if type -q vim
     abbr -a v vim
 end
