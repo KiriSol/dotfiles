@@ -3,7 +3,6 @@ return {
 	event = "BufWritePre",
 	cmd = "ConformInfo",
 	keys = {
-		-- Customize or remove this keymap to your liking
 		{
 			"<leader>lf",
 			function()
@@ -12,52 +11,49 @@ return {
 			desc = "Format buffer (Conform)",
 		},
 	},
-	-- This will provide type hinting with LuaLS
 	---@module "conform"
 	---@type conform.setupOpts
 	opts = {
-		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "ruff_format" },
+			rust = { "rustfmt" },
 			c = { "clang_format" },
 			cpp = { "clang_format" },
 			java = { "clang_format" },
 			cs = { "clang_format" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },
-			json = { "prettierd" },
-			yaml = { "prettierd" },
-			html = { "prettierd" },
-			css = { "prettierd" },
-			javascript = { "prettierd" },
-			typescript = { "prettierd" },
-			markdown = { "prettierd" },
-			rust = { "rustfmt" },
+			toml = { "taplo" },
+			json = { "biome" },
+			jsonc = { "biome" },
+			html = { "biome" },
+			css = { "biome" },
+			javascript = { "biome" },
+			typescript = { "biome" },
+			yaml = { "dprint" },
+			markdown = { "dprint" },
+			typst = { "typstyle" },
 			-- Use the "*" filetype to run formatters on all filetypes.
-			["*"] = { "codespell" },
+			["*"] = { "typos" },
 			-- Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
 			["_"] = { "trim_whitespace", lsp_format = "prefer" },
 		},
-		-- Set default options
 		default_format_opts = {
 			lsp_format = "fallback",
 		},
 		notify_on_error = true,
-		-- Set up format-on-save
-		format_on_save = { timeout_ms = 500 },
-		-- Customize formatters
+		format_on_save = {
+			timeout_ms = 500,
+			lsp_fallback = true,
+		},
 		formatters = {
-			shfmt = {
-				prepend_args = { "-i", "2", "-ci" },
-			},
 			clang_format = {
 				prepend_args = { "--style={BasedOnStyle: LLVM, IndentWidth: 4}" },
 			},
 		},
 	},
 	init = function()
-		-- If you want the formatexpr, here is the place to set it
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
 }

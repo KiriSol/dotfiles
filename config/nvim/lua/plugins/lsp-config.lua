@@ -9,6 +9,7 @@ return {
 			"rust_analyzer",
 			"ruff",
 			"ty",
+			"ts_ls",
 		}
 		vim.lsp.enable(servers)
 	end,

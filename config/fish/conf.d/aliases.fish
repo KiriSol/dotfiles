@@ -12,6 +12,11 @@ else if type -q vim
     abbr -a v vim
 end
 
+# Mise
+if type -q mise
+    abbr -a m mise
+end
+
 # Git
 if type -q git
     alias g=git
