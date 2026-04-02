@@ -1,0 +1,38 @@
+### Languages
+
+[settings]
+python.uv_venv_auto = true
+
+[tools]
+
+rust = "latest"
+go = "latest"
+
+# Lua
+lua = "latest"
+stylua = "latest"
+lua-language-server = "latest"
+
+# Zig/C/C++
+zig = "latest"
+zls = "latest"
+
+# Python
+uv = "latest"
+python = { version = "latest", venv_backend = "uv" }
+ruff = "latest"
+ty = "latest"
+
+# JS/TS
+biome = "latest"
+
+# Typst
+typst = "latest"
+typstyle = "latest"
+tinymist = "latest"
+
+shfmt = "latest" # Shell
+taplo = "latest" # Toml
+
+# Spell
+typos = "latest"

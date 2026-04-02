@@ -5,18 +5,18 @@
 # Local bin
 set -l local_bin_home (set -q XDG_BIN_HOME; and echo $XDG_BIN_HOME; or echo $HOME/.local/bin)
 if test -d $local_bin_home; and not contains $local_bin_home $PATH
-    set -gx PATH $local_bin_home $PATH
+    fish_add_path --global --move --path $local_bin_home
 end
 
 # Cargo
 set -l cargo_bin_home $HOME/.cargo/bin
 if test -d $cargo_bin_home; and not contains $cargo_bin_home $PATH
-    set -gx PATH $cargo_bin_home $PATH
+    fish_add_path --global --move --path $cargo_bin_home
 end
 
 # Mise shims
 if type -q mise
-    mise activate --shims | source
+    mise activate fish --shims | source
 end
 
 ## Tools

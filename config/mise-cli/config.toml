@@ -1,23 +1,6 @@
+[settings]
+experimental = true
+pipx.uvx = true
+
 [tools]
-uv = "latest"
-"pipx:dotbot" = "latest"
-
 usage = "latest" # Mise completions
-
-# Lsp
-lua-language-server = "latest"
-ty = "latest"
-"npm:typescript-language-server" = "latest"
-"npm:vscode-langservers-extracted" = "latest"
-
-# Format & Lint
-stylua = "latest"
-shfmt = "latest"
-biome = "latest"
-taplo = "latest"
-dprint = "latest"
-ruff = "latest"
-typstyle = "latest"
-typst = "latest"
-typos = "latest"
-"npm:clang-format" = "latest"

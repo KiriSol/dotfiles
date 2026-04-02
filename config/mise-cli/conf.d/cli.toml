@@ -1,0 +1,24 @@
+### CLI tools
+
+[tools]
+helix = "latest"
+neovim = "latest"
+gitui = "latest"
+fastfetch = "latest"
+jq = "latest"
+ripgrep = "latest"
+sd = "latest"
+fd = "latest"
+eza = "latest"
+bat = "latest"
+zoxide = "latest"
+yazi = "latest"
+starship = "latest"
+bottom = "latest"
+tokei = "latest"
+tlrc = "latest"
+fzf = "latest"
+television = "latest"
+pandoc = "latest"
+
+"pipx:dotbot" = "latest"

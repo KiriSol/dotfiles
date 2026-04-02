@@ -4,12 +4,9 @@ return {
 	config = function()
 		local servers = {
 			"lua_ls",
-			"jsonls",
-			"clangd",
 			"rust_analyzer",
 			"ruff",
 			"ty",
-			"ts_ls",
 		}
 		vim.lsp.enable(servers)
 	end,
