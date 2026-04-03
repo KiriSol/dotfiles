@@ -1,24 +1,35 @@
 ### CLI tools
 
 [tools]
-helix = "latest"
-neovim = "latest"
-gitui = "latest"
-fastfetch = "latest"
-jq = "latest"
+
+## CLI
 ripgrep = "latest"
 sd = "latest"
 fd = "latest"
+xh = "latest"
 eza = "latest"
 bat = "latest"
 zoxide = "latest"
-yazi = "latest"
-starship = "latest"
-bottom = "latest"
+"github:clux/lq" = "latest"
+dust = "latest"
 tokei = "latest"
 tlrc = "latest"
+just = "latest"
+starship = "latest"
+fastfetch = "latest"
+jq = "latest"
 fzf = "latest"
-television = "latest"
+duf = "latest"
 pandoc = "latest"
 
+## TUI
+neovim = "latest"
+helix = "latest"
+gitui = "latest"
+yazi = "latest"
+gping = "latest"
+television = "latest"
+bottom = "latest"
+
+"github:SuperCuber/dotter" = "latest"
 "pipx:dotbot" = "latest"

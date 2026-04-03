@@ -15,7 +15,7 @@ lua-language-server = "latest"
 
 # Zig/C/C++
 zig = "latest"
-zls = "latest"
+"github:zigtools/zls" = "latest"
 
 # Python
 uv = "latest"
