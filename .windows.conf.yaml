@@ -16,8 +16,11 @@
 
     # Configs
     ~/.config/git: config/git
+    ~/.config/mise: config/mise-cli
     ~/AppData/Roaming/bat: config/bat
     ~/AppData/Roaming/yazi/config: config/yazi
+    ~/AppData/Local/nvim: config/nvim
+    ~/AppData/Local/lazyvim: config/lazyvim
 
 - create:
     - ~/Dev
