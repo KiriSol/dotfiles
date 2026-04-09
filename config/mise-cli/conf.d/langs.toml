@@ -1,17 +1,24 @@
 ### Languages
 
 [settings]
+npm.package_manager = "bun"
+pipx.uvx = true
 python.uv_venv_auto = true
 
 [tools]
 
+# Rust
 rust = "latest"
-go = "latest"
 
 # Lua
 lua = "latest"
 stylua = "latest"
+"aqua:Kampfkarren/selene" = "latest"
 lua-language-server = "latest"
+
+# GO
+go = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
 
 # Zig/C/C++
 zig = "latest"
@@ -24,6 +31,7 @@ ruff = "latest"
 ty = "latest"
 
 # JS/TS
+bun = "latest"
 biome = "latest"
 
 # Typst

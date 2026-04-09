@@ -1,0 +1,9 @@
+### Global settings
+
+[settings]
+experimental = true
+
+[tools]
+
+# Mise completions
+usage = "latest"
