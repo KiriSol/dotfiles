@@ -73,27 +73,27 @@ set smartcase " Ignore register if no capital letters
 " Toggle background transparency
 let t:isTransparent = 1
 function! ToggleBGTransparency()
-    if t:isTransparent
-        hi Normal guibg=NONE ctermbg=NONE
-        hi NonText guibg=NONE ctermbg=NONE
-        hi SignColumn ctermbg=NONE guibg=NONE
-        let t:isTransparent = 0
-    else
-        colorscheme habamax
-        let t:isTransparent = 1
-    endif
+  if t:isTransparent
+    hi Normal guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
+    hi SignColumn ctermbg=NONE guibg=NONE
+    let t:isTransparent = 0
+  else
+    colorscheme habamax
+    let t:isTransparent = 1
+  endif
 endfunction
 
 " Toggle word wrap
 let t:isWordWrap = 1
 function! ToggleWordWrap()
-    if t:isWordWrap
-        set nowrap
-        let t:isWordWrap = 0
-    else
-        set wrap
-        let t:isWordWrap = 1
-    endif
+  if t:isWordWrap
+    set nowrap
+    let t:isWordWrap = 0
+  else
+    set wrap
+    let t:isWordWrap = 1
+  endif
 endfunction
 
 

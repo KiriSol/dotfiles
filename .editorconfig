@@ -1,0 +1,32 @@
+### Global editorconfig
+
+root = true
+
+## All
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+## Changes
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{c,zig,rs,cpp}]
+indent_size = 4
+
+[*.{py,php,java,cs,kt,swift,dart}]
+indent_size = 4
+
+[*.{fish,ps1,psm1,psd1}]
+indent_size = 4
+
+[{*.go,Makefile}]
+indent_size = 4
+indent_style = tab
+
+[{.git*,**/git/*}]
+indent_style = tab

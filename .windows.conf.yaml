@@ -9,10 +9,8 @@
     ["~", "~/.config", "~/.local/bin", "~/AppData/Local", "~/AppData/Roaming"]
 
 - link:
-    # Binaries
-    ~/.local/bin/:
-      path: bin/*
-      glob: true
+    # Editorconfig
+    ~/.editorconfig: .editorconfig
 
     # Configs
     ~/.config/git: config/git

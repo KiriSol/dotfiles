@@ -1,21 +1,21 @@
 [user]
-    email = kirasolovey09@gmail.com
-    name = Kirill Solovey
+	email = kirasolovey09@gmail.com
+	name = Kirill Solovey
 [alias]
-    a = add
-    d = diff
-    st = status
-    co = checkout
-    br = branch
-    cm = commit
-    cma = commit --all
-    cam = commit --all --message
-    cl = clone --recurse-submodules
-    lg = log --oneline --decorate --graph
+	a = add
+	d = diff
+	st = status
+	co = checkout
+	br = branch
+	cm = commit
+	cma = commit --all
+	cam = commit --all --message
+	cl = clone --recurse-submodules
+	lg = log --oneline --decorate --graph
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 [url "git@github.com:KiriSol/"]
-    insteadOf = home:
+	insteadOf = home:
 [url "https://github.com/KiriSol/"]
-    insteadOf = my:
+	insteadOf = my:

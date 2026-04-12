@@ -4,10 +4,10 @@ set -e
 
 # Check dotbot binary
 if command -v dotbot >/dev/null 2>&1; then
-    DOTBOT_BIN="dotbot"
+  DOTBOT_BIN="dotbot"
 else
-    echo "dotbot not found"
-    exit 1
+  echo "dotbot not found"
+  exit 1
 fi
 
 CONFIG=".unix.conf.yaml"

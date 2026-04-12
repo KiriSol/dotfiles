@@ -10,10 +10,8 @@
 - clean: ["~", "~/.config", "~/.local/bin", "~/.termux"]
 
 - link:
-    # Binaries
-    ~/.local/bin/:
-      glob: true
-      path: bin/*
+    # Editorconfig
+    ~/.editorconfig: .editorconfig
 
     # Config dir
     ~/.config/:
