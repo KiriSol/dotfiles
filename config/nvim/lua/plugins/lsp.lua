@@ -22,18 +22,12 @@ return {
       formatters_by_ft = {
         kdl = { "kdlfmt" },
         toml = { "taplo" },
-        astro = { "biome" },
         css = { "biome" },
-        graphql = { "biome" },
         html = { "biome" },
         javascript = { "biome" },
-        javascriptreact = { "biome" },
         json = { "biome" },
         jsonc = { "biome" },
-        svelte = { "biome" },
         typescript = { "biome" },
-        typescriptreact = { "biome" },
-        vue = { "biome" },
       },
     },
   },
@@ -41,6 +35,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        rust_analyzer = {},
         clangd = {},
         zls = {},
         gopls = {},

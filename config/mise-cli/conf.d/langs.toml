@@ -8,7 +8,7 @@ python.uv_venv_auto = true
 [tools]
 
 # Rust
-rust = "latest"
+rust = { version = "latest", components = ["rust-analyzer", "rust-src"] }
 
 # Lua
 lua = "latest"
@@ -41,8 +41,8 @@ typst = "latest"
 typstyle = "latest"
 tinymist = "latest"
 
-shfmt = "latest" # Shell
-taplo = "latest" # Toml
+shfmt = "latest"                    # Shell
+taplo = "latest"                    # Toml
 "github:hougesen/kdlfmt" = "latest" # Kdl
 
 # Spell
