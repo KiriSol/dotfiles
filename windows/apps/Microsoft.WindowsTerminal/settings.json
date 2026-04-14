@@ -1,212 +1,47 @@
 {
   "$help": "https://aka.ms/terminal-documentation",
   "$schema": "https://aka.ms/terminal-profiles-schema",
-  "actions": [
-    {
-      "command": "toggleFocusMode",
-      "id": "User.toggleFocusMode"
-    }
-  ],
   "centerOnLaunch": true,
   "copyFormatting": "none",
-  "initialCols": 124,
-  "initialRows": 29,
-  "keybindings": [
-    {
-      "id": "User.toggleFocusMode",
-      "keys": "ctrl+alt+f"
-    }
-  ],
-  "launchMode": "focus",
+  "copyOnSelect": false,
+  "defaultProfile": "Nushell",
   "newTabMenu": [
     {
       "type": "remainingProfiles"
     }
   ],
-  "defaultProfile": "Nushell",
   "profiles": {
     "defaults": {
-      "adjustIndistinguishableColors": "never",
-      "bellStyle": "taskbar",
-      "closeOnExit": "never",
-      "colorScheme": "Catppuccin Frappe",
+      "colorScheme": "One Half Dark",
       "cursorShape": "filledBox",
       "font": {
         "face": "JetBrainsMono Nerd Font",
         "size": 13
       },
       "hidden": false,
-      "icon": null,
-      "intenseTextStyle": "all",
       "opacity": 60,
-      "padding": "8, 8, 8, 8",
       "scrollbarState": "hidden",
-      "startingDirectory": "~",
       "useAcrylic": true
     },
     "list": [
       {
-        "name": "Nushell",
         "commandline": "nu.exe",
-        "colorScheme": "OneDark"
+        "name": "Nushell"
       },
       {
-        "name": "WSL",
         "commandline": "wsl.exe",
-        "pathTranslationStyle": "wsl"
+        "name": "WSL"
       },
       {
-        "name": "Windows PowerShell",
-        "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        "commandline": "powershell.exe",
+        "name": "Windows PowerShell"
       },
       {
-        "name": "Command Prompt",
-        "commandline": "%SystemRoot%\\System32\\cmd.exe"
+        "commandline": "cmd.exe",
+        "name": "Command Prompt"
       }
     ]
   },
-  "schemes": [
-    {
-      "name": "Catppuccin Frappe",
-      "background": "#303446",
-      "black": "#51576D",
-      "blue": "#8CAAEE",
-      "brightBlack": "#626880",
-      "brightBlue": "#8CAAEE",
-      "brightCyan": "#81C8BE",
-      "brightGreen": "#A6D189",
-      "brightPurple": "#F4B8E4",
-      "brightRed": "#E78284",
-      "brightWhite": "#A5ADCE",
-      "brightYellow": "#E5C890",
-      "cursorColor": "#F2D5CF",
-      "cyan": "#81C8BE",
-      "foreground": "#C6D0F5",
-      "green": "#A6D189",
-      "purple": "#F4B8E4",
-      "red": "#E78284",
-      "selectionBackground": "#626880",
-      "white": "#B5BFE2",
-      "yellow": "#E5C890"
-    },
-    {
-      "name": "Catppuccin Macchiato",
-      "background": "#24273A",
-      "black": "#494D64",
-      "blue": "#8AADF4",
-      "brightBlack": "#5B6078",
-      "brightBlue": "#8AADF4",
-      "brightCyan": "#8BD5CA",
-      "brightGreen": "#A6DA95",
-      "brightPurple": "#F5BDE6",
-      "brightRed": "#ED8796",
-      "brightWhite": "#A5ADCB",
-      "brightYellow": "#EED49F",
-      "cursorColor": "#F4DBD6",
-      "cyan": "#8BD5CA",
-      "foreground": "#CAD3F5",
-      "green": "#A6DA95",
-      "purple": "#F5BDE6",
-      "red": "#ED8796",
-      "selectionBackground": "#5B6078",
-      "white": "#B8C0E0",
-      "yellow": "#EED49F"
-    },
-    {
-      "name": "Catppuccin Mocha",
-      "background": "#1E1E2E",
-      "black": "#45475A",
-      "blue": "#89B4FA",
-      "brightBlack": "#585B70",
-      "brightBlue": "#89B4FA",
-      "brightCyan": "#94E2D5",
-      "brightGreen": "#A6E3A1",
-      "brightPurple": "#F5C2E7",
-      "brightRed": "#F38BA8",
-      "brightWhite": "#A6ADC8",
-      "brightYellow": "#F9E2AF",
-      "cursorColor": "#F5E0DC",
-      "cyan": "#94E2D5",
-      "foreground": "#CDD6F4",
-      "green": "#A6E3A1",
-      "purple": "#F5C2E7",
-      "red": "#F38BA8",
-      "selectionBackground": "#585B70",
-      "white": "#BAC2DE",
-      "yellow": "#F9E2AF"
-    },
-    {
-      "name": "OneHalfDark",
-      "black": "#282c34",
-      "red": "#e06c75",
-      "green": "#98c379",
-      "yellow": "#e5c07b",
-      "blue": "#61afef",
-      "purple": "#c678dd",
-      "cyan": "#56b6c2",
-      "white": "#dcdfe4",
-      "brightBlack": "#282c34",
-      "brightRed": "#e06c75",
-      "brightGreen": "#98c379",
-      "brightYellow": "#e5c07b",
-      "brightBlue": "#61afef",
-      "brightPurple": "#c678dd",
-      "brightCyan": "#56b6c2",
-      "brightWhite": "#dcdfe4",
-      "background": "#282c34",
-      "foreground": "#dcdfe4",
-      "selectionBackground": "#474e5d",
-      "cursorColor": "#a3b3cc"
-    },
-    {
-      "name": "Tokyonight",
-      "black": "#15161e",
-      "red": "#f7768e",
-      "green": "#9ece6a",
-      "yellow": "#e0af68",
-      "blue": "#7aa2f7",
-      "purple": "#bb9af7",
-      "cyan": "#7dcfff",
-      "white": "#a9b1d6",
-      "brightBlack": "#414868",
-      "brightRed": "#f7768e",
-      "brightGreen": "#9ece6a",
-      "brightYellow": "#e0af68",
-      "brightBlue": "#7aa2f7",
-      "brightPurple": "#bb9af7",
-      "brightCyan": "#7dcfff",
-      "brightWhite": "#c0caf5",
-      "background": "#1a1b26",
-      "foreground": "#c0caf5",
-      "selectionBackground": "#33467c",
-      "cursorColor": "#c0caf5"
-    },
-    {
-      "name": "Tokyonight Storm",
-      "black": "#1d202f",
-      "red": "#f7768e",
-      "green": "#9ece6a",
-      "yellow": "#e0af68",
-      "blue": "#7aa2f7",
-      "purple": "#bb9af7",
-      "cyan": "#7dcfff",
-      "white": "#a9b1d6",
-      "brightBlack": "#414868",
-      "brightRed": "#f7768e",
-      "brightGreen": "#9ece6a",
-      "brightYellow": "#e0af68",
-      "brightBlue": "#7aa2f7",
-      "brightPurple": "#bb9af7",
-      "brightCyan": "#7dcfff",
-      "brightWhite": "#c0caf5",
-      "background": "#24283b",
-      "foreground": "#c0caf5",
-      "selectionBackground": "#364a82",
-      "cursorColor": "#c0caf5"
-    }
-  ],
-  "theme": "dark",
-  "themes": [],
   "useAcrylicInTabRow": true,
-  "windowingBehavior": "useAnyExisting"
+  "windowingBehavior": "useExisting"
 }
