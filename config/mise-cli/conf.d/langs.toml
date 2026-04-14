@@ -16,13 +16,15 @@ stylua = "latest"
 "aqua:Kampfkarren/selene" = "latest"
 lua-language-server = "latest"
 
-# GO
+# Go
 go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 
 # Zig/C/C++
 zig = "latest"
 "github:zigtools/zls" = "latest"
+"github:clangd/clangd" = "latest"
+"npm:clang-format" = "latest"
 
 # Python
 uv = "latest"
@@ -41,6 +43,8 @@ tinymist = "latest"
 
 shfmt = "latest" # Shell
 taplo = "latest" # Toml
+"github:hougesen/kdlfmt" = "latest" # Kdl
 
 # Spell
 typos = "latest"
+"github:tekumara/typos-lsp" = "latest"
