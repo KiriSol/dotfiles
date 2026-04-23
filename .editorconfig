@@ -18,7 +18,7 @@ trim_trailing_whitespace = false
 [*.{c,zig,rs,cpp}]
 indent_size = 4
 
-[*.{py,php,java,cs,kt,swift,dart}]
+[*.{py,php,cs,java,kt}]
 indent_size = 4
 
 [*.{fish,ps1,psm1,psd1}]
