@@ -32,7 +32,8 @@ Icon\r
 [Tt]humbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
-$RECYCLE.BIN/
+System Volume Information
+$RECYCLE.BIN
 $MFT
 *.lnk
 *.URL
@@ -64,9 +65,6 @@ $MFT
 ### Others
 
 # Environment & Secrets
-.direnv/
-.envrc
-.env
 .env.local
 .env.*.local
 *.pem
@@ -82,7 +80,6 @@ $MFT
 *.dmp
 *.dump
 *.stackdump
-core
 
 ## Trash & Parts
 *.crdownload
