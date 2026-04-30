@@ -16,6 +16,7 @@
     ~/.config/git: config/git
     ~/.config/mise: config/mise-cli
     ~/AppData/Roaming/bat: config/bat
+    ~/AppData/Roaming/nushell: config/nushell
     ~/AppData/Roaming/yazi/config: config/yazi
     ~/AppData/Local/nvim: config/nvim
 
