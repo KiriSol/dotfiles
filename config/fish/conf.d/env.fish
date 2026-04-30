@@ -1,5 +1,10 @@
 ### Environment
 
+# CC
+if type -q zig
+    set -gx CC "zig cc"
+end
+
 ## Path
 
 # Local bin

@@ -24,6 +24,7 @@ pandoc = "latest"
 
 ## TUI
 neovim = "latest"
+tree-sitter = "latest"
 helix = "latest"
 gitui = "latest"
 yazi = "latest"

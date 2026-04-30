@@ -5,14 +5,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "kdl",
         "fish",
         "nu",
+        "kdl",
+        "typst",
         "rust",
         "zig",
         "go",
         "cpp",
-        "typst",
       },
     },
   },
