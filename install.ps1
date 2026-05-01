@@ -1,12 +1,17 @@
 #!/bin/env pwsh
 
-#Requires -Version 5
+#Requires -Version 7
 
 $ErrorActionPreference = "Stop"
 
 # Set vars
-$CONFIG = ".windows.conf.yaml"
-$BASEDIR = $PSScriptRoot
+
+$Config = ".unix.conf.yaml"
+$BaseDir = $PSScriptRoot
+
+if ($IsWindows) {
+    $Config = ".windows.conf.yaml"
+}
 
 # Run
-& dotbot -d "$BASEDIR" -c "$CONFIG" $args
+& dotbot -d "$BaseDir" -c "$Config" $args

@@ -2,8 +2,13 @@
 
 def main [...args] {
   # Set vars
-  let config = ".unix.conf.yaml"
+
+  mut config = ".unix.conf.yaml"
   let base_dir = ($env.FILE_PWD | path expand)
+
+  if $nu.os-info.name == "windows" {
+    $config = ".windows.conf.yaml"
+  }
 
   # Run
   ^dotbot -d $base_dir -c $config ...$args
