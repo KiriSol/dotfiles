@@ -16,6 +16,11 @@ if type -q mise
     abbr -a m mise
 end
 
+# Just
+if type -q just
+    abbr -a j just
+end
+
 # Git
 if type -q git
     alias g=git

@@ -45,6 +45,10 @@ shfmt = "latest"                    # Shell
 taplo = "latest"                    # Toml
 "github:hougesen/kdlfmt" = "latest" # Kdl
 
+# Just
+just = "latest"
+"github:terror/just-lsp" = "latest"
+
 # Spell
 typos = "latest"
 "github:tekumara/typos-lsp" = "latest"

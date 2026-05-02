@@ -15,13 +15,13 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{c,zig,rs,cpp}]
+[*.{zig,rs,c,cpp}]
 indent_size = 4
 
-[*.{py,php,cs,java,kt}]
+[*.{py,php,kt,java,cs}]
 indent_size = 4
 
-[*.{fish,ps1,psm1,psd1}]
+[{justfile,*.{just,fish,ps1,psm1,psd1}}]
 indent_size = 4
 
 [{*.go,Makefile}]
