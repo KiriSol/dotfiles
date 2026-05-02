@@ -41,9 +41,10 @@ typst = "latest"
 typstyle = "latest"
 tinymist = "latest"
 
-shfmt = "latest"                    # Shell
-taplo = "latest"                    # Toml
-"github:hougesen/kdlfmt" = "latest" # Kdl
+shfmt = "latest"                                    # Shell
+"cargo:https://github.com/nushell/nufmt" = "latest" # Nushell
+taplo = "latest"                                    # Toml
+"github:hougesen/kdlfmt" = "latest"                 # Kdl
 
 # Just
 just = "latest"

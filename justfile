@@ -1,3 +1,5 @@
+set shell := ["nu", "-c"]
+
 base_dir := justfile_directory()
 config := if os() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
 

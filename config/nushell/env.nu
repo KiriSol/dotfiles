@@ -1,24 +1,14 @@
 ### Environment
 
-# CC
-if (which zig | is-not-empty) {
-  $env.CC = "zig cc"
-}
-
 ## Path
 
 # Local bin & Cargo
-let local_bin = ($env | get -i XDG_BIN_HOME | default $"($env.HOME)/.local/bin")
+let local_bin = $env | get -i XDG_BIN_HOME | default $"($env.HOME)/.local/bin"
 let cargo_bin = $"($env.HOME)/.cargo/bin"
 
-[$local_bin, $cargo_bin] |
-  filter { |path| ($path | path exists) } |
-    each {
-      |path|
-      if $path not-in $env.PATH {
-        $env.PATH = ($env.PATH | prepend $path)
-      }
-    }
+[$local_bin, $cargo_bin]
+| filter {|path| ($path | path exists) }
+| each {|path| if $path not-in $env.PATH { $env.PATH = ($env.PATH | prepend $path) } }
 
 ## Tools
 
