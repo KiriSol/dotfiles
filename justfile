@@ -11,4 +11,4 @@ default:
 
 # Dotbot install
 install *args:
-    dotbot -d {{ base_dir }} -c {{ base_dir }}/{{ config }} {{ args }}
+    dotbot -d {{ base_dir }}/src -c {{ base_dir }}/{{ config }} {{ args }}
