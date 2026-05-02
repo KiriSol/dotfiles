@@ -10,7 +10,7 @@
 
 - link:
     # Editorconfig
-    ~/.editorconfig: .editorconfig
+    ~/.editorconfig: editorconfig.ini
 
     # Configs
     ~/.config/git: config/git

@@ -11,7 +11,7 @@
 
 - link:
     # Editorconfig
-    ~/.editorconfig: .editorconfig
+    ~/.editorconfig: editorconfig.ini
 
     # Config dir
     ~/.config/:
