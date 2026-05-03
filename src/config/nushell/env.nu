@@ -17,8 +17,8 @@ $env.FZF_DEFAULT_OPTS = "--color=16,pointer:4"
 
 # Editor
 $env.EDITOR = (
-  if (which nvim | is-not-empty) { "nvim" }
-  else if (which vim | is-not-empty) { "vim" }
-  else if (which vi | is-not-empty) { "vi" }
-  else if (which edit | is-not-empty) { "edit" }
+    if (which nvim | is-not-empty) { "nvim" }
+    else if (which vim | is-not-empty) { "vim" }
+    else if (which vi | is-not-empty) { "vi" }
+    else if (which edit | is-not-empty) { "edit" }
 )
