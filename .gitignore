@@ -1,8 +1,0 @@
-# Local mise config
-src/config/mise-cli/config.toml
-
-# Lazy.nvim lock file
-src/config/nvim/lazy-lock.json
-
-# Nushell history file
-src/config/nushell/history.txt
