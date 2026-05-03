@@ -3,7 +3,7 @@ alias i := install
 default:
     @just --list
 
-config := if os() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
+config := if os_family() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
 
 [group("setup")]
 install *args:
@@ -11,8 +11,8 @@ install *args:
 
 [group("setup")]
 create-work-dirs:
-    -mkdir {{ home_dir() }}/{{ if os() == "windows" { "Dev" } else { "dev" } }}
-    -mkdir {{ home_dir() }}/{{ if os() == "windows" { "Tmp" } else { "tmp" } }}
+    -mkdir {{ home_dir() }}/{{ if os_family() == "windows" { "Dev" } else { "dev" } }}
+    -mkdir {{ home_dir() }}/{{ if os_family() == "windows" { "Tmp" } else { "tmp" } }}
 
 nerd-fonts-url := "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts"
 font-path := "JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf"
