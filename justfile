@@ -1,14 +1,31 @@
-set shell := ["nu", "-c"]
-
-base_dir := justfile_directory()
-config := if os() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
-
 alias i := install
 
-# Show recipes
 default:
-    just --list
+    @just --list
 
-# Dotbot install
+config := if os() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
+
+[group("setup")]
 install *args:
-    dotbot -d {{ base_dir }}/src -c {{ base_dir }}/{{ config }} {{ args }}
+    @dotbot -d {{ justfile_dir() }}/src -c {{ justfile_dir() }}/{{ config }} {{ args }}
+
+[group("setup")]
+create-work-dirs:
+    -mkdir {{ home_dir() }}/{{ if os() == "windows" { "Dev" } else { "dev" } }}
+    -mkdir {{ home_dir() }}/{{ if os() == "windows" { "Tmp" } else { "tmp" } }}
+
+nerd-fonts-url := "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts"
+font-path := "JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf"
+
+[group("setup-termux")]
+[linux]
+install-termux-font:
+    @curl -Lo {{ home_dir() }}/.termux/font.ttf {{ nerd-fonts-url }}/{{ font-path }}
+
+winterm-conf-path := "src/windows/apps/Microsoft.WindowsTerminal/settings.json"
+winterm-conf-target := "AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+
+[group("setup-windows")]
+[windows]
+install-winterm-settings:
+    @cp {{ justfile_dir() }}/{{ winterm-conf-path }} {{ home_dir() }}/{{ winterm-conf-target }}

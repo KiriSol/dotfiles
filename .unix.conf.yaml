@@ -4,8 +4,6 @@
       create: true
       force: true
       type: symlink
-    create:
-      mode: 0755
 
 - clean: ["~", "~/.config", "~/.local/bin", "~/.termux"]
 
@@ -30,7 +28,3 @@
       if: '[ -n "$TERMUX_VERSION" ]'
       path: termux/*
       glob: true
-
-- create:
-    - ~/dev
-    - ~/tmp

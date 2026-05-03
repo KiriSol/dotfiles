@@ -19,7 +19,3 @@
     ~/AppData/Roaming/nushell: config/nushell
     ~/AppData/Roaming/yazi/config: config/yazi
     ~/AppData/Local/nvim: config/nvim
-
-- create:
-    - ~/Dev
-    - ~/Tmp
