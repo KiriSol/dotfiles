@@ -1,3 +1,6 @@
+set shell := ["sh", "-c"]
+set windows-shell := ["cmd.exe", "/c"]
+
 alias i := install
 
 default:
