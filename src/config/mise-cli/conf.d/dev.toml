@@ -41,14 +41,17 @@ typst = "latest"
 typstyle = "latest"
 tinymist = "latest"
 
-shfmt = "latest"                                    # Shell
-"cargo:https://github.com/nushell/nufmt" = "latest" # Nushell
-taplo = "latest"                                    # Toml
-"github:hougesen/kdlfmt" = "latest"                 # Kdl
-
 # Just
 just = "latest"
 "github:terror/just-lsp" = "latest"
+
+# Formatters
+"github:numtide/treefmt" = "latest"                 # All
+shfmt = "latest"                                    # Shell/Bash
+"cargo:https://github.com/nushell/nufmt" = "latest" # Nushell
+"github:tombi-toml/tombi" = "latest"                # Toml
+taplo = "latest"                                    # Toml
+"github:hougesen/kdlfmt" = "latest"                 # Kdl
 
 # Spell
 typos = "latest"
