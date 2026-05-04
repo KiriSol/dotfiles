@@ -33,6 +33,7 @@ ruff = "latest"
 ty = "latest"
 
 # JS/TS
+node = "lts"
 bun = "latest"
 biome = "latest"
 
