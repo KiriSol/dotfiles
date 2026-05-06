@@ -20,7 +20,7 @@ create-work-dirs:
 nerd-fonts-url := "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts"
 font-path := "JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf"
 
-[group("setup-termux")]
+[group("setup")]
 [linux]
 install-termux-font:
     @curl -Lo {{ home_dir() }}/.termux/font.ttf {{ nerd-fonts-url }}/{{ font-path }}
@@ -28,7 +28,7 @@ install-termux-font:
 winterm-conf-path := "src/windows/apps/Microsoft.WindowsTerminal/settings.json"
 winterm-conf-target := "AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
-[group("setup-windows")]
+[group("setup")]
 [windows]
 install-winterm-settings:
     @cp {{ justfile_dir() }}/{{ winterm-conf-path }} {{ home_dir() }}/{{ winterm-conf-target }}
