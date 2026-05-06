@@ -55,12 +55,10 @@ if type -q eza
         --time-style=long-iso \
         --header \
         --classify=always
-    set -l ignore_glob ".git"
-
     alias ls="eza $default_opts"
     alias la="ls --sort=Name --all"
     alias l="ls --header --long"
     alias ll="l --all"
     alias tree="ls --tree"
-    alias lT="ls --tree --no-user --no-permissions --all --ignore-glob='$ignore_glob'"
+    alias ltg="ls --tree --no-user --no-permissions --all --git-ignore"
 end
