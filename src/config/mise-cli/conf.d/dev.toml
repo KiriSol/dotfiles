@@ -6,7 +6,6 @@ pipx.uvx = true
 python.uv_venv_auto = true
 
 [tools]
-
 # Rust
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"] }
 
@@ -47,12 +46,11 @@ just = "latest"
 "github:terror/just-lsp" = "latest"
 
 # Formatters
-"github:numtide/treefmt" = "latest"                 # All
-shfmt = "latest"                                    # Shell/Bash
-"cargo:https://github.com/nushell/nufmt" = "latest" # Nushell
-"github:tombi-toml/tombi" = "latest"                # Toml
-taplo = "latest"                                    # Toml
-"github:hougesen/kdlfmt" = "latest"                 # Kdl
+"github:numtide/treefmt" = "latest"  # All
+shfmt = "latest"  # Shell/Bash
+"cargo:https://github.com/nushell/nufmt" = "latest"  # Nushell
+"github:tombi-toml/tombi" = "latest"  # Toml
+"github:hougesen/kdlfmt" = "latest"  # Kdl
 
 # Spell
 typos = "latest"

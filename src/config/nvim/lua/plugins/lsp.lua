@@ -5,8 +5,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "editorconfig",
         "just",
+        "editorconfig",
+        "ini",
         "kdl",
         "typst",
         "fish",
@@ -22,9 +23,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        just = { "just" },
         kdl = { "kdlfmt" },
-        toml = { "taplo" },
         nu = { "nufmt" },
         css = { "biome" },
         html = { "biome" },
@@ -41,6 +40,7 @@ return {
       servers = {
         typos_lsp = {},
         just = {},
+        tombi = {},
         tinymist = {
           single_file_support = true,
           settings = {
