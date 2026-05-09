@@ -11,7 +11,7 @@ default:
 fmt:
     treefmt
 
-config := if os_family() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
+config := if os_family() == "windows" { "windows.conf.yaml" } else { "unix.conf.yaml" }
 
 [group("setup")]
 install *args:

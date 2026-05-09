@@ -27,7 +27,7 @@ includes = ["*.nu"]
 [formatter.just]
 command = "just"
 options = ["--fmt", "-f"]
-includes = ["**/justfile", "*.just"]
+includes = ["justfile", "**/justfile", "*.just"]
 
 [formatter.stylua]
 command = "stylua"
