@@ -45,8 +45,11 @@ tinymist = "latest"
 just = "latest"
 "github:terror/just-lsp" = "latest"
 
+# Orchestrators of formatters
+"github:numtide/treefmt" = "latest"
+dprint = "latest"
+
 # Formatters
-"github:numtide/treefmt" = "latest"  # All
 shfmt = "latest"  # Shell/Bash
 "cargo:https://github.com/nushell/nufmt" = "latest"  # Nushell
 "github:tombi-toml/tombi" = "latest"  # Toml

@@ -15,7 +15,7 @@
     ~/.config/:
       glob: true
       path: config/*
-      exclude: [ config/mise-cli ]
+      exclude: [config/mise-cli]
     ~/.config/mise: config/mise-cli
 
     # Bash

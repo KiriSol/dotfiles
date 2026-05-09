@@ -1,6 +1,4 @@
 ### Global settings
 
 [tools]
-
-# Mise completions
-usage = "latest"
+usage = "latest"  # Mise completions

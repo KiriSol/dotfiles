@@ -2,9 +2,14 @@ set shell := ["sh", "-c"]
 set windows-shell := ["cmd.exe", "/c"]
 
 alias i := install
+alias f := fmt
 
 default:
     @just --list
+
+[group("dev")]
+fmt:
+    treefmt
 
 config := if os_family() == "windows" { ".windows.conf.yaml" } else { ".unix.conf.yaml" }
 

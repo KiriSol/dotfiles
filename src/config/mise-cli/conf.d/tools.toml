@@ -1,7 +1,6 @@
 ### CLI/TUI tools
 
 [tools]
-
 ## CLI
 ripgrep = "latest"
 sd = "latest"
@@ -15,6 +14,7 @@ tokei = "latest"
 tlrc = "latest"
 starship = "latest"
 "github:abhixdd/ghgrab" = "latest"
+tree-sitter = "latest"
 fastfetch = "latest"
 jq = "latest"
 yq = "latest"
@@ -24,7 +24,6 @@ pandoc = "latest"
 
 ## TUI
 neovim = "latest"
-tree-sitter = "latest"
 helix = "latest"
 gitui = "latest"
 yazi = "latest"
