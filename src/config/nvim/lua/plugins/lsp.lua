@@ -25,6 +25,7 @@ return {
       formatters_by_ft = {
         kdl = { "kdlfmt" },
         nu = { "nufmt" },
+        tmux = { "shfmt" },
         css = { "biome" },
         html = { "biome" },
         javascript = { "biome" },

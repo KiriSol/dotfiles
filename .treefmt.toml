@@ -13,7 +13,7 @@ includes = ["*.toml"]
 [formatter.shfmt]
 command = "shfmt"
 options = ["-w", "-i", "2", "-ci", "-bn", "-sr"]
-includes = ["*.sh", "*.bash"]
+includes = ["*.sh", "*.bash", "*.tmux", "**/tmux.conf"]
 
 [formatter.fish_indent]
 command = "fish_indent"
