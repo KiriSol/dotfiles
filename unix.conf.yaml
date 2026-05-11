@@ -22,9 +22,3 @@
     ~/.bashrc:
       if: "command -v bash"
       path: bashrc.bash
-
-    # Termux
-    ~/.termux/:
-      if: '[ -n "$TERMUX_VERSION" ]'
-      path: termux/*
-      glob: true
