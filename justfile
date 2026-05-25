@@ -11,7 +11,7 @@ default:
 fmt:
     treefmt
 
-config := if os_family() == "windows" { "windows.conf.yaml" } else { "unix.conf.yaml" }
+config := "install.conf.yaml"
 
 [group("setup")]
 install *args:
@@ -19,18 +19,10 @@ install *args:
 
 [group("setup")]
 create-work-dirs:
-    -mkdir {{ home_dir() }}/{{ if os_family() == "windows" { "Dev" } else { "dev" } }}
-    -mkdir {{ home_dir() }}/{{ if os_family() == "windows" { "Tmp" } else { "tmp" } }}
+    -mkdir {{ home_dir() }}/dev
+    -mkdir {{ home_dir() }}/tmp
 
 [group("setup")]
 [linux]
 install-termux-font font-url:
     @curl --create-dirs -Lo {{ home_dir() }}/.termux/font.ttf {{ font-url }}
-
-winterm-conf-path := "src/windows/apps/Microsoft.WindowsTerminal/settings.json"
-winterm-conf-target := "AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
-
-[group("setup")]
-[windows]
-install-winterm-settings:
-    @cp {{ justfile_dir() }}/{{ winterm-conf-path }} {{ home_dir() }}/{{ winterm-conf-target }}

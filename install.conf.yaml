@@ -5,7 +5,14 @@
       force: true
       type: symlink
 
-- clean: ["~", "~/.config", "~/.local/bin", "~/.termux"]
+- clean: [
+    "~",
+    "~/.config",
+    "~/.local/bin",
+    "~/.termux",
+    "~/AppData/Local",
+    "~/AppData/Roaming",
+  ]
 
 - link:
     # Editorconfig
