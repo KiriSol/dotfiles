@@ -1,27 +1,14 @@
 ### Aliases and Abbreviations
-
 abbr -a cls clear
 abbr -a e echo
 
-# Neovim and Vim
-if type -q nvim
-    abbr -a nv nvim
-    abbr -a v nvim
-else if type -q vim
-    abbr -a v vim
-end
+# Editor
+test $EDITOR; and abbr -a v (basename $EDITOR)
 
-# Mise
-if type -q mise
-    abbr -a m mise
-end
+## External
+type -q mise; and abbr -a m mise
+type -q just; and abbr -a j just
 
-# Just
-if type -q just
-    abbr -a j just
-end
-
-# Git
 if type -q git
     alias g=git
     alias ga="g add"
@@ -36,14 +23,12 @@ if type -q git
     alias glg="g log --oneline --decorate --graph"
 end
 
-# Fastfetch
 if type -q fastfetch
     alias ff="fastfetch -c examples/17.jsonc"
     alias fff="fastfetch -c examples/13.jsonc --logo none"
     alias clr="clear; fastfetch -c examples/17.jsonc"
 end
 
-# Eza
 if type -q eza
     set -l default_opts \
         --git \

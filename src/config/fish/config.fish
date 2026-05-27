@@ -1,15 +1,8 @@
 if status is-interactive
-    # Zoxide
-    if type -q zoxide
-        zoxide init fish | source
-    end
+    type -q zoxide; and zoxide init fish | source
+    type -q fzf; and fzf --fish | source
 
-    # Fzf
-    if type -q fzf
-        fzf --fish | source
-    end
-
-    # Starship prompt
+    # Prompt
     if type -q starship
         function starship_transient_prompt_func
             starship module character

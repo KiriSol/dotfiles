@@ -1,15 +1,10 @@
 ### Config
-
 $env.config.show_banner = false
 
-## Aliases
-
+## Aliases & Functions
 alias cls = clear
 alias e = echo
 
-## Functions
-
-# Yazi
 def --env y [...args] {
     let tmp = (mktemp -t "yazi-cwd.XXXXXX")
     ^yazi ...$args --cwd-file $tmp
