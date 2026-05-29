@@ -10,6 +10,11 @@ command = "tombi"
 options = ["format"]
 includes = ["*.toml"]
 
+[formatter.kdlfmt]
+command = "kdlfmt"
+options = ["format"]
+includes = ["*.kdl"]
+
 [formatter.shfmt]
 command = "shfmt"
 options = ["-w", "-i", "2", "-ci", "-bn", "-sr"]
