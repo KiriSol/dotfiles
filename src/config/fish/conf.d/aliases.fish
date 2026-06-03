@@ -8,6 +8,7 @@ test $EDITOR; and abbr -a v (basename $EDITOR)
 ## External
 type -q mise; and abbr -a m mise
 type -q just; and abbr -a j just
+type -q zellij; and abbr -a zj zellij
 
 if type -q git
     alias g=git
