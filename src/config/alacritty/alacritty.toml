@@ -5,7 +5,6 @@ WINIT_X11_SCALE_FACTOR = "1"
 [general]
 import = ["themes/catppuccin-frappe.toml"]
 live_config_reload = true
-working_directory = "None"
 
 [window]
 dynamic_padding = true

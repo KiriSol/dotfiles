@@ -1,0 +1,17 @@
+theme = Catppuccin Frappe
+
+font-size = 13
+
+mouse-hide-while-typing = true
+
+window-padding-balance = true
+window-padding-x = 3
+window-padding-y = 3
+window-height = 32
+window-width = 120
+
+background-opacity = 0.8
+background-blur = true
+
+cursor-style = block
+cursor-style-blink = false
