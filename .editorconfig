@@ -1,4 +1,3 @@
-# Git configs
 [src/config/git/*]
 indent_style = tab
 indent_size = 4
