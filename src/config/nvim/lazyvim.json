@@ -1,7 +1,5 @@
 {
-  "extras": [
-    "lazyvim.plugins.extras.util.mini-hipatterns"
-  ],
+  "extras": ["lazyvim.plugins.extras.util.mini-hipatterns"],
   "install_version": 8,
   "news": {
     "NEWS.md": "11866"

@@ -3,7 +3,12 @@ excludes = []
 [formatter.dprint]
 command = "dprint"
 options = ["fmt"]
-includes = ["*.json", "*.jsonc", "*.yaml", "*.yml", "*.md"]
+includes = ["*.yaml", "*.yml", "*.md"]
+
+[formatter.biome]
+command = "biome"
+options = ["format", "--write"]
+includes = ["*.json", "*.jsonc"]
 
 [formatter.tombi]
 command = "tombi"

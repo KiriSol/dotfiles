@@ -1,0 +1,39 @@
+{
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "markdown": {},
+  "dockerfile": {},
+  "malva": {
+    "trailingComma": true,
+    "formatComments": true,
+    "linebreakInPseudoParens": true,
+    "declarationOrder": "smacss",
+    "singleLineBlockThreshold": 1,
+    "keyframeSelectorNotation": "keyword"
+  },
+  "markup": {
+    "formatComments": true,
+    "closingTagLineBreakForEmpty": "always",
+    "maxAttrsPerLine": 1,
+    "vOnStyle": "short",
+    "vForDelimiterStyle": "in",
+    "vSlotStyle": "vSlot",
+    "vBindSameNameShortHand": true,
+    "vueComponentCase": "pascalCase",
+    "svelteAttrShorthand": true,
+    "svelteDirectiveShorthand": true,
+    "astroAttrShorthand": true
+  },
+  "yaml": {
+    "formatComments": true,
+    "preferSingleLine": true,
+    "proseWrap": "always"
+  },
+  "excludes": ["**/*-lock.json"],
+  "plugins": [
+    "https://plugins.dprint.dev/markdown-latest.wasm",
+    "https://plugins.dprint.dev/dockerfile-latest.wasm",
+    "https://plugins.dprint.dev/g-plane/malva-latest.wasm",
+    "https://plugins.dprint.dev/g-plane/markup_fmt-latest.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-latest.wasm"
+  ]
+}
