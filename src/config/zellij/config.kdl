@@ -583,8 +583,6 @@ load_plugins {
 }
 // Theme
 theme "catppuccin-frappe"
-// theme_dark "catppuccin-frappe"
-// theme_light "catppuccin-latte"
 // Mode
 default_mode "locked"
 default_layout "default"

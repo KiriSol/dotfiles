@@ -1,14 +1,9 @@
-[env]
-TERM = "xterm-256color"
-WINIT_X11_SCALE_FACTOR = "1"
-
 [general]
 import = ["themes/catppuccin-frappe.toml"]
 live_config_reload = true
 
 [window]
 dynamic_padding = true
-blur = true
 opacity = 0.8
 
 [window.padding]
