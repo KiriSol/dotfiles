@@ -1,9 +1,5 @@
 theme = Catppuccin Frappe
 
-font-size = 13
-
-mouse-hide-while-typing = true
-
 window-padding-balance = true
 window-padding-x = 3
 window-padding-y = 3
@@ -12,5 +8,13 @@ window-width = 120
 
 background-opacity = 0.8
 
-cursor-style = block
+bold-color = bright
+
 cursor-style-blink = false
+
+font-size = 13
+font-family = JetBrainsMono Nerd Font
+
+copy-on-select = clipboard
+
+mouse-hide-while-typing = true
