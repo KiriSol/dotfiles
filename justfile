@@ -1,28 +1,25 @@
-set shell := ["sh", "-c"]
-set windows-shell := ["cmd.exe", "/c"]
-
-alias i := install
 alias f := fmt
+alias i := install
 
-default:
-    @just --list
+@default:
+    just --list
 
 [group("dev")]
-fmt:
+@fmt:
     treefmt
 
-config := "install.conf.yaml"
+[group("setup")]
+@install config="dotbot.conf.yaml":
+    dotbot -d {{ justfile_dir() }}/src -c {{ justfile_dir() }}/{{ config }}
 
 [group("setup")]
-install *args:
-    @dotbot -d {{ justfile_dir() }}/src -c {{ justfile_dir() }}/{{ config }} {{ args }}
-
-[group("setup")]
-create-work-dirs:
+@create-dirs:
     -mkdir {{ home_dir() }}/dev
     -mkdir {{ home_dir() }}/tmp
 
 [group("setup")]
 [linux]
-install-termux-font font-url:
-    @curl --create-dirs -Lo {{ home_dir() }}/.termux/font.ttf {{ font-url }}
+@termux-font-install url="https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf":
+    [ -d "{{ home_dir() }}/.termux" ] && \
+        curl -Lo {{ home_dir() }}/.termux/font.ttf {{ url }} || \
+        echo "You are not in Termux"
