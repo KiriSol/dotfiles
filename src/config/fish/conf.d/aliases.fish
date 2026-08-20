@@ -23,6 +23,7 @@ if type -q git
     alias gcam="gc --all --message"
     alias gcl="g clone --recurse-submodules"
     alias glg="g log --oneline --decorate --graph"
+    alias groot="cd (git rev-parse --show-toplevel)"
 end
 
 if type -q fastfetch
