@@ -1,6 +1,6 @@
 ### Environment
 $env.EDITOR = (
-    [nvim vim vi nano edit]
+    [nvim vim vi nano]
     | which ...$in
     | get 0?.name?
     | default $env.EDITOR
