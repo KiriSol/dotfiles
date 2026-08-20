@@ -17,9 +17,10 @@ if type -q git
     alias gst="g status"
     alias gco="g checkout"
     alias gbr="g branch"
-    alias gcm="g commit"
-    alias gcma="gcm --all"
-    alias gcam="gcma --message"
+    alias gc="g commit"
+    alias gca="gc --all"
+    alias gcm="gc --message"
+    alias gcam="gc --all --message"
     alias gcl="g clone --recurse-submodules"
     alias glg="g log --oneline --decorate --graph"
 end
