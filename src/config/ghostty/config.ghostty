@@ -1,4 +1,4 @@
-theme = Catppuccin Frappe
+theme = light:Catppuccin Latte,dark:Catppuccin Frappe
 
 window-padding-balance = true
 window-padding-x = 3

@@ -582,7 +582,8 @@ load_plugins {
     zellij:link
 }
 // Theme
-theme "catppuccin-frappe"
+theme_light "catppuccin-latte"
+theme_dark "catppuccin-frappe"
 // Mode
 default_mode "locked"
 default_layout "default"

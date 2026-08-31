@@ -1,5 +1,8 @@
 [general]
-import = ["themes/catppuccin-frappe.toml"]
+import = [
+  # "themes/catppuccin-latte.toml",
+  "themes/catppuccin-frappe.toml"
+]
 
 [window]
 dynamic_padding = true
