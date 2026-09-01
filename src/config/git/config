@@ -7,8 +7,9 @@
 	st = status
 	co = checkout
 	br = branch
-	cm = commit
-	cma = commit --all
+	c = commit
+	ca = commit --all
+	cm = commit --message
 	cam = commit --all --message
 	cl = clone --recurse-submodules
 	lg = log --oneline --decorate --graph
