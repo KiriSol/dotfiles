@@ -2,6 +2,8 @@
 	email = kirasolovey09@gmail.com
 	name = Kirill Solovey
 [alias]
+	pl = pull
+	ps = push
 	a = add
 	d = diff
 	st = status

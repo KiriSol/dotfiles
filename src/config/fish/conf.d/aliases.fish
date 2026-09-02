@@ -12,6 +12,8 @@ type -q zellij; and abbr -a zj zellij
 
 if type -q git
     alias g=git
+    alias gpl="g pull"
+    alias gps="g push"
     alias ga="g add"
     alias gd="g diff"
     alias gst="g status"
