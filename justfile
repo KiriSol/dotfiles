@@ -18,8 +18,7 @@ alias i := install
     -mkdir {{ home_dir() }}/tmp
 
 [group("setup")]
-[linux]
-@termux-font-install url="https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf":
+@termux-font-install url="https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/JetBrainsMonoNerdFont-Regular.ttf":
     [ -d "{{ home_dir() }}/.termux" ] && \
         curl -Lo {{ home_dir() }}/.termux/font.ttf {{ url }} || \
         echo "You are not in Termux"
