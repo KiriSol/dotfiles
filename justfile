@@ -13,7 +13,7 @@ alias i := install
     dotbot -d {{ justfile_dir() }}/src -c {{ justfile_dir() }}/{{ config }}
 
 [group("setup")]
-@create-dirs:
+@create-work-dirs:
     -mkdir {{ home_dir() }}/dev
     -mkdir {{ home_dir() }}/tmp
 
