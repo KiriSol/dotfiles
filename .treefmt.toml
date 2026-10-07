@@ -3,7 +3,7 @@ excludes = []
 [formatter.dprint]
 command = "dprint"
 options = ["fmt"]
-includes = ["*.yaml", "*.yml", "*.md"]
+includes = ["*.xml", "*.yaml", "*.yml", "*.md"]
 
 [formatter.biome]
 command = "biome"
