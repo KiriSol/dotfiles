@@ -50,6 +50,7 @@ return {
         typos_lsp = {},
         just = {},
         tombi = {},
+        jsonls = {},
         tinymist = {
           single_file_support = true,
           settings = {
