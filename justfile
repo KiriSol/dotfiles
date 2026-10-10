@@ -1,3 +1,6 @@
+[windows]
+set shell := ["powershell", "-Command"]
+
 alias f := fmt
 alias i := install
 
