@@ -51,6 +51,7 @@ return {
         just = {},
         tombi = {},
         jsonls = {},
+        yamlls = {},
         tinymist = {
           single_file_support = true,
           settings = {
