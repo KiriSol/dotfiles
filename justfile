@@ -1,5 +1,5 @@
 [windows]
-set shell := ["powershell", "-Command"]
+set shell := ["cmd", "/c"]
 
 alias f := fmt
 alias i := install
