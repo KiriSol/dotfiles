@@ -8,8 +8,8 @@ alias i := install
     just --list
 
 [group("dev")]
-@fmt:
-    treefmt
+@fmt *args:
+    treefmt {{ args }}
 
 [group("setup")]
 @install config="dotbot.conf.yaml":
