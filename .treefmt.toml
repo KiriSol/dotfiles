@@ -32,7 +32,7 @@ includes = ["*.fish", "**/fish_variables"]
 
 [formatter.nufmt]
 command = "nufmt"
-includes = ["*.nu"]
+includes = ["*.nu", "*.nuon"]
 
 [formatter.just]
 command = "just"
