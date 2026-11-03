@@ -1,5 +1,5 @@
 # Local mise config
-src/config/mise-cli/config.toml
+src/config/mise/config.toml
 
 # Lazy.nvim lock file
 src/config/nvim/lazy-lock.json
