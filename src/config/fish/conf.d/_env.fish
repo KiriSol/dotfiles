@@ -1,6 +1,4 @@
 ### Environment
-set -gx EDITOR (command -s nvim vim vi nano; echo $EDITOR)[1]
-set -gx VISUAL (string match -r '.+' $EDITOR $VISUAL)[1]
 
 ## Path
 fish_add_path --global --move --path \
@@ -13,3 +11,6 @@ type -q mise; and mise activate fish --shims | source
 ## Tools
 set -gx LESS "--RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
 set -gx FZF_DEFAULT_OPTS "--color=16,pointer:4"
+
+set -gx EDITOR (command -s nvim vim vi nano; echo $EDITOR)[1]
+set -gx VISUAL (string match -r '.+' $EDITOR $VISUAL)[1]
