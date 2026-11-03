@@ -7,6 +7,7 @@ fish_add_path --global --move --path \
     (set -q XDG_BIN_HOME; and echo $XDG_BIN_HOME; or echo $HOME/.local/bin) \
     $HOME/.cargo/bin
 
+# External
 type -q mise; and mise activate fish --shims | source
 
 ## Tools

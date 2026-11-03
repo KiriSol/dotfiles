@@ -1,9 +1,9 @@
-### Aliases and Abbreviations
+### Aliases & Abbreviations
 abbr -a cls clear
 abbr -a e echo
 
 # Editor
-test $EDITOR; and abbr -a v (basename $EDITOR)
+test $VISUAL; and abbr -a v (basename $VISUAL)
 
 ## External
 type -q mise; and abbr -a m mise
@@ -11,20 +11,20 @@ type -q just; and abbr -a j just
 type -q zellij; and abbr -a zj zellij
 
 if type -q git
-    alias g=git
-    alias gpl="g pull"
-    alias gps="g push"
-    alias ga="g add"
-    alias gd="g diff"
-    alias gst="g status"
-    alias gco="g checkout"
-    alias gbr="g branch"
-    alias gc="g commit"
-    alias gca="gc --all"
-    alias gcm="gc --message"
-    alias gcam="gc --all --message"
-    alias gcl="g clone --recurse-submodules"
-    alias glg="g log --oneline --decorate --graph"
+    abbr -a g git
+    abbr -a gpl "git pl"
+    abbr -a gps "git ps"
+    abbr -a ga "git a"
+    abbr -a gd "git d"
+    abbr -a gst "git st"
+    abbr -a gco "git co"
+    abbr -a gbr "git br"
+    abbr -a gc "git c"
+    abbr -a gca "git ca"
+    abbr -a gcm "git cm"
+    abbr -a gcam "git cam"
+    abbr -a gcl "git cl"
+    abbr -a glg "git lg"
     alias groot="cd (git rev-parse --show-toplevel)"
 end
 
