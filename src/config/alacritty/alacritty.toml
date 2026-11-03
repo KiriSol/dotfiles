@@ -1,6 +1,6 @@
 [general]
 import = [
-  # "themes/catppuccin-latte.toml",
+  # "themes/catppuccin-latte.toml"
   "themes/catppuccin-frappe.toml"
 ]
 
