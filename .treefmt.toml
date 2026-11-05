@@ -34,6 +34,11 @@ includes = ["*.fish", "**/fish_variables"]
 command = "nufmt"
 includes = ["*.nu", "*.nuon"]
 
+[formatter.psfmt]
+command = "psfmt"
+options = ["--write"]
+includes = ["*.ps1"]
+
 [formatter.just]
 command = "just"
 options = ["--fmt", "-f"]
