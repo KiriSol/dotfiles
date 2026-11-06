@@ -9,7 +9,7 @@ if $nu.is-interactive {
 
     # Prompt
     if (which ^starship | is-not-empty) {
-        $env.TRANSIENT_PROMPT_COMMAND = {|| ^starship module character }
+        $env.TRANSIENT_PROMPT_COMMAND = { ^starship module character }
     }
     activate starship { ^starship init nu }
 }

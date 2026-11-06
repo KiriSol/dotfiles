@@ -11,6 +11,8 @@ use modules/activate.nu
 | each {|path| if $path not-in $env.PATH { $env.PATH = $env.PATH | prepend $path } }
 
 # External
+
+# TODO: fix loading order (aactivate mise before set EDITOR)
 activate mise { ^mise activate nu --shims }
 
 ## Tools
