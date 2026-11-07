@@ -31,24 +31,22 @@ end
 if type -q fastfetch
     alias ff="fastfetch -c examples/17.jsonc"
     alias fff="fastfetch -c examples/13.jsonc --logo none"
-    alias clr="clear; fastfetch -c examples/17.jsonc"
+    alias clr="clear && fastfetch -c examples/17.jsonc"
 end
 
 if type -q eza
     set -l default_opts \
         --git \
-        --hyperlink \
-        --color=always \
-        --icons=always \
-        --group-directories-first \
-        --sort=type \
-        --time-style=long-iso \
         --header \
-        --classify=always
+        --classify \
+        --hyperlink \
+        --sort type \
+        --color auto \
+        --icons auto
     alias ls="eza $default_opts"
-    alias la="ls --sort=Name --all"
-    alias l="ls --header --long"
+    alias la="ls --all"
+    alias l="ls --long"
     alias ll="l --all"
     alias tree="ls --tree"
-    alias ltg="ls --tree --no-user --no-permissions --all --git-ignore"
+    alias gtree="ls --tree --all --git-ignore --no-user --no-permissions"
 end

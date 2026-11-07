@@ -4,10 +4,10 @@ if type -q yazi
     function y
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         command yazi --cwd-file="$tmp" $argv
-        if read -z cwd <"$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+        if read -z cwd <"$tmp"; and [ "$cwd" != "$PWD" ]; and test -d -- "$cwd"
             builtin cd -- "$cwd"
         end
-        command rm -f -- "$tmp"
+        command rm -f "$tmp"
     end
 end
 
