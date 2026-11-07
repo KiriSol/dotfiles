@@ -21,19 +21,20 @@ go = "latest"
 
 # Zig/C/C++
 zig = "latest"
-"github:zigtools/zls" = "latest"
+zls = "latest"
 "github:clangd/clangd" = "latest"
-"npm:clang-format" = "latest"
+clang-format = "latest"
 
 # Python
 uv = "latest"
-python = { version = "latest", venv_backend = "uv" }
+python = "latest"
 ruff = "latest"
 ty = "latest"
 
 # JS/TS
-node = "lts"
+node = "latest"
 bun = "latest"
+deno = "latest"
 biome = "latest"
 
 # Typst
@@ -45,14 +46,17 @@ tinymist = "latest"
 just = "latest"
 "github:terror/just-lsp" = "latest"
 
+# Nushell
+nushell = "latest"
+"cargo:https://github.com/nushell/nufmt" = "latest"
+
 # Orchestrators of formatters
 "github:numtide/treefmt" = "latest"
 dprint = "latest"
 
 # Formatters
 shfmt = "latest"  # Shell/Bash
-"cargo:https://github.com/nushell/nufmt" = "latest"  # Nushell
-"github:tombi-toml/tombi" = "latest"  # Toml
+tombi = "latest"  # Toml
 "github:hougesen/kdlfmt" = "latest"  # Kdl
 
 # Spell

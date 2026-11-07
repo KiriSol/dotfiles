@@ -22,6 +22,8 @@ fzf = "latest"
 duf = "latest"
 pandoc = "latest"
 
+"pipx:dotbot" = "latest"
+
 ## TUI
 neovim = "latest"
 helix = "latest"
@@ -30,5 +32,3 @@ yazi = "latest"
 gping = "latest"
 television = "latest"
 bottom = "latest"
-
-"pipx:dotbot" = "latest"

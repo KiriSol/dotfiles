@@ -66,6 +66,7 @@ return {
         biome = {},
         ruff = {},
         ty = {},
+        mise = {},
       },
     },
   },

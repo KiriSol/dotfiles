@@ -1,4 +1,5 @@
 ### Global settings
 
-[tools]
-usage = "latest"  # Mise completions
+[settings]
+activate_shims = true
+gix = true
