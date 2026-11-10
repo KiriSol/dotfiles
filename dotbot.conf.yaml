@@ -1,22 +1,16 @@
 - defaults:
     link:
-      relink: true
       create: true
       force: true
+      relink: true
       type: symlink
 
-- clean: ["~", "~/.config", "~/.local/bin"]
+- clean: ["~", "~/.config"]
 
 - link:
-    # Editorconfig
-    ~/.editorconfig: editorconfig.ini
-
-    # Config dir
     ~/.config/:
       glob: true
       path: config/*
 
-    # Bash
-    ~/.bashrc:
-      if: "command -v bash"
-      path: bashrc.bash
+    ~/.bashrc: bashrc.bash
+    ~/.editorconfig: editorconfig.ini
