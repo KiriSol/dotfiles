@@ -3,6 +3,11 @@
 allow-missing-formatter = false
 excludes = []
 
+[formatter.typos]
+command = "typos"
+options = ["--write-changes"]
+includes = ["*"]
+
 [formatter.dprint]
 command = "dprint"
 options = ["fmt"]
