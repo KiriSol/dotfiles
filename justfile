@@ -17,8 +17,8 @@ alias i := install
 
 [group("setup")]
 @create-work-dirs:
-    -mkdir {{ home_dir() }}/dev
-    -mkdir {{ home_dir() }}/tmp
+    -mkdir -- {{ home_dir() }}/dev
+    -mkdir -- {{ home_dir() }}/tmp
 
 [group("setup")]
 @termux-font-install url="https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/JetBrainsMonoNerdFont-Regular.ttf":
