@@ -1,15 +1,15 @@
 [windows]
 set shell := ["cmd", "/c"]
 
-alias f := fmt
+alias f := format
 alias i := install
 
 @default:
     just --list
 
 [group("dev")]
-@fmt *args:
-    treefmt {{ args }}
+@format *args:
+    treefmt {{ args }} -- {{ justfile_dir() }}
 
 [group("setup")]
 @install config="dotbot.conf.yaml":

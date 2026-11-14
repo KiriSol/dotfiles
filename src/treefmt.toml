@@ -1,0 +1,131 @@
+#:schema https://schemastore.org/treefmt.json
+
+allow-missing-formatter = true
+excludes = []
+
+[formatter.typos]
+command = "typos"
+options = ["--write-changes"]
+includes = ["*"]
+
+[formatter.dprint]
+command = "dprint"
+options = ["fmt"]
+includes = ["*.kdl", "Dockerfile", "**/Dockerfile"]
+
+[formatter.biome]
+command = "biome"
+options = ["format", "--write"]
+includes = [
+  "*.astro",
+  "*.css",
+  "*.graphql",
+  "*.grit",
+  "*.html",
+  "*.js",
+  "*.json",
+  "*.jsonc",
+  "*.jsx",
+  "*.md",
+  "*.mdx",
+  "*.scss",
+  "*.svelte",
+  "*.svg",
+  "*.ts",
+  "*.tsx",
+  "*.vue",
+  "*.yaml",
+  "*.yml",
+]
+
+[formatter.tombi]
+command = "tombi"
+options = ["format"]
+includes = ["*.toml"]
+
+[formatter.shfmt]
+command = "shfmt"
+options = ["--write"]
+includes = [
+  "*.sh",
+  "*.bash",
+  "*.tmux",
+  "tmux.conf",
+  ".tmux.conf",
+  "**/tmux.conf",
+  "**/.tmux.conf",
+]
+
+[formatter.fish_indent]
+command = "fish_indent"
+options = ["--write"]
+includes = ["*.fish", "fish_variables", "**/fish_variables"]
+
+[formatter.nufmt]
+command = "nufmt"
+includes = ["*.nu", "*.nuon"]
+
+[formatter.psfmt]
+command = "psfmt"
+options = ["--write"]
+includes = ["*.ps1", "*.psd1", "*.psm1"]
+
+[formatter.just]
+command = "just"
+options = ["--format", "--justfile"]
+includes = ["*.just", "justfile", "**/justfile"]
+
+[formatter.clang-format]
+command = "clang-format"
+options = ["-i"]
+includes = [
+  "*.c",
+  "*.cpp",
+  "*.cs",
+  "*.h",
+  "*.hpp",
+  "*.java",
+  "*.m",
+  "*.mm",
+]
+
+[formatter.rustfmt]
+command = "rustfmt"
+includes = ["*.rs"]
+
+[formatter.zig]
+command = "zig"
+options = ["fmt"]
+includes = ["*.zig", "*.zig.zon"]
+
+[formatter.gofmt]
+command = "gofmt"
+options = ["-w"]
+includes = ["*.go", "go.mod"]
+
+[formatter.nixfmt]
+command = "nixfmt"
+includes = ["*.nix"]
+
+[formatter.ruff]
+command = "ruff"
+options = ["format"]
+includes = ["*.py", "*.pyi", "*.ipynb"]
+
+[formatter.stylua]
+command = "stylua"
+includes = ["*.lua", "*.luau"]
+
+[formatter.perltidy]
+command = "perltidy"
+includes = ["*.pl", "*.pm"]
+
+[formatter.sqruff]
+command = "sqruff"
+options = ["fix"]
+includes = ["*.sql", "*.mysql"]
+
+[formatter.typstyle]
+command = "typstyle"
+options = ["--inplace"]
+includes = ["*.typ"]

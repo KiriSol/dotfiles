@@ -1,3 +1,5 @@
+/- kdl-version 1
+-
 // Keybinds
 keybinds clear-defaults=true {
     locked {
@@ -561,6 +563,7 @@ keybinds clear-defaults=true {
         }
     }
 }
+-
 // Plugin aliases - can be used to change the implementation of Zellij
 plugins {
     about location="zellij:about"
@@ -581,12 +584,15 @@ plugins {
 load_plugins {
     zellij:link
 }
+-
 // Theme
 theme_light "catppuccin-latte"
 theme_dark "catppuccin-frappe"
+-
 // Mode
 default_mode "locked"
 default_layout "default"
+-
 // Serialization
 attach_to_session true
 scroll_buffer_size 10000
@@ -594,6 +600,7 @@ session_serialization true
 serialize_pane_viewport true
 scrollback_lines_to_serialize 10000
 serialization_interval 10000
+-
 // Startup info
 show_startup_tips false
 show_release_notes false
