@@ -101,7 +101,7 @@ includes = ["*.zig", "*.zig.zon"]
 [formatter.gofmt]
 command = "gofmt"
 options = ["-w"]
-includes = ["*.go", "go.mod"]
+includes = ["*.go", "go.mod", "**/go.mod"]
 
 [formatter.nixfmt]
 command = "nixfmt"
