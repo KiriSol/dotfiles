@@ -1,6 +1,7 @@
+### Config
+
 use modules/activate.nu
 
-### Config
 $env.config.show_banner = false
 
 if $nu.is-interactive {

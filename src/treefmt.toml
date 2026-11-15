@@ -1,3 +1,5 @@
+### Global treefmt.toml
+
 #:schema https://schemastore.org/treefmt.json
 
 allow-missing-formatter = true
