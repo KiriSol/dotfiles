@@ -1,12 +1,13 @@
 ### Environment
 
 ## Path
-fish_add_path --global --move --path \
-    (set -q XDG_BIN_HOME; and echo $XDG_BIN_HOME; or echo $HOME/.local/bin) \
-    $HOME/.cargo/bin
+set -l path_additions \
+    $HOME/.cargo/bin \
+    (set -q XDG_BIN_HOME; and echo $XDG_BIN_HOME; or echo $HOME/.local/bin)
 
-# External
-type -q mise; and mise activate fish --shims | source
+type -q mise; and set -l path_additions (mise settings get shims_dir 2>/dev/null; or true) $path_additions
+
+fish_add_path --global --move --path $path_additions
 
 ## Tools
 set -gx LESS "--RAW-CONTROL-CHARS --quit-if-one-screen --mouse"

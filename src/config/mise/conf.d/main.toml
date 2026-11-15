@@ -3,3 +3,4 @@
 [settings]
 activate_shims = true
 gix = true
+shims_dir = "~/.local/share/mise/shims"

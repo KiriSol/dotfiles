@@ -1,19 +1,16 @@
-use modules/activate.nu
-
 ### Environment
 
 ## Path
-[
+mut path_additions = [
+    ($env.XDG_BIN_HOME? | default $"($env.HOME)/.local/bin")
     $"($env.HOME)/.cargo/bin"
-    ($env | get -o XDG_BIN_HOME | default $"($env.HOME)/.local/bin")
 ]
+
+if (which ^mise | is-not-empty) { $path_additions = $path_additions | prepend (try { ^mise settings get shims_dir }) }
+
+$path_additions
 | where {|path| $path | path exists }
 | each {|path| if $path not-in $env.PATH { $env.PATH = $env.PATH | prepend $path } }
-
-# External
-
-# TODO: fix loading order (aactivate mise before set EDITOR)
-activate mise { ^mise activate nu --shims }
 
 ## Tools
 $env.LESS = "--RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
