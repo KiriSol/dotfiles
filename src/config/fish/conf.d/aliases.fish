@@ -43,10 +43,19 @@ if type -q eza
         --sort type \
         --color auto \
         --icons auto
+
     alias ls="eza $default_opts"
     alias la="ls --all"
     alias l="ls --long"
     alias ll="l --all"
     alias tree="ls --tree"
     alias gtree="ls --tree --all --git-ignore --no-user --no-permissions"
+
+    function lt
+        set -l level $argv[1]
+        if test -z $level
+            set level 1
+        end
+        tree --level $level $argv[2..-1]
+    end
 end
