@@ -13,8 +13,8 @@ $path_additions
 | each {|path| if $path not-in $env.PATH { $env.PATH = $env.PATH | prepend $path } }
 
 ## Tools
-$env.LESS = "--RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
-$env.FZF_DEFAULT_OPTS = "--color=16,pointer:4"
+$env.LESS = "--mouse --quit-if-one-screen --raw-control-chars"
+$env.FZF_DEFAULT_OPTS = "--color 16"
 
 $env.EDITOR = (
     [nvim vim vi nano]
