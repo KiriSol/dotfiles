@@ -11,7 +11,7 @@ fish_add_path --global --move --path $path_additions
 
 ## Tools
 set -gx LESS "--mouse --quit-if-one-screen --raw-control-chars"
-set -gx FZF_DEFAULT_OPTS "--color 16"
+set -gx FZF_DEFAULT_OPTS "--color base16"
 
 set -gx EDITOR (command -s nvim vim vi nano; echo $EDITOR)[1]
 set -gx VISUAL (string match -r '.+' $EDITOR $VISUAL)[1]

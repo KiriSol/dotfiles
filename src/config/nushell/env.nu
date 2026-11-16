@@ -14,7 +14,7 @@ $path_additions
 
 ## Tools
 $env.LESS = "--mouse --quit-if-one-screen --raw-control-chars"
-$env.FZF_DEFAULT_OPTS = "--color 16"
+$env.FZF_DEFAULT_OPTS = "--color base16"
 
 $env.EDITOR = (
     [nvim vim vi nano]
