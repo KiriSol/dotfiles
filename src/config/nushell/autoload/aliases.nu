@@ -6,6 +6,7 @@ $env.config.abbreviations.e = "echo"
 if $env.VISUAL? != null { $env.config.abbreviations.v = $env.VISUAL | path basename }
 
 ## External
+if (which bat | is-not-empty) { $env.config.abbreviations.b = "bat" }
 if (which mise | is-not-empty) { $env.config.abbreviations.m = "mise" }
 if (which just | is-not-empty) { $env.config.abbreviations.j = "just" }
 if (which zellij | is-not-empty) { $env.config.abbreviations.zj = "zellij" }

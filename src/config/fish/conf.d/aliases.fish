@@ -6,6 +6,7 @@ abbr -a e echo
 test $VISUAL; and abbr -a v (basename $VISUAL)
 
 ## External
+type -q bat; and abbr -a b bat
 type -q mise; and abbr -a m mise
 type -q just; and abbr -a j just
 type -q zellij; and abbr -a zj zellij
