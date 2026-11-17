@@ -6,7 +6,12 @@ mut path_additions = [
     $"($env.HOME)/.cargo/bin"
 ]
 
-if (which ^mise | is-not-empty) { $path_additions = $path_additions | prepend (try { ^mise settings get shims_dir }) }
+if (which ^mise | is-not-empty) { $path_additions = $path_additions | prepend (
+    mise settings get shims_dir
+    | complete
+    | get stdout
+    | str trim
+) }
 
 $path_additions
 | where {|path| $path | path exists }
