@@ -7,7 +7,7 @@ mut path_additions = [
 ]
 
 if (which ^mise | is-not-empty) {
-    $path_additions = $path_additions | prepend (
+    $path_additions = $path_additions | append (
         mise settings get shims_dir
         | complete
         | get stdout
