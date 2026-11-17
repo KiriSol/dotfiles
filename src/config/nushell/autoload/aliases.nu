@@ -2,6 +2,11 @@
 $env.config.abbreviations.cls = "clear"
 $env.config.abbreviations.e = "echo"
 
+# Ls
+$env.config.abbreviations.l = "ls -l"
+$env.config.abbreviations.la = "ls -a"
+$env.config.abbreviations.ll = "ls -la"
+
 # Editor
 if $env.VISUAL? != null { $env.config.abbreviations.v = $env.VISUAL | path basename }
 

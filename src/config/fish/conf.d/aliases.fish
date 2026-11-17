@@ -2,6 +2,11 @@
 abbr -a cls clear
 abbr -a e echo
 
+# Ls
+abbr -a l "ls -l"
+abbr -a la "ls -a"
+abbr -a ll "ls -la"
+
 # Editor
 test $VISUAL; and abbr -a v (basename $VISUAL)
 
@@ -46,9 +51,6 @@ if type -q eza
         --icons auto
 
     alias ls="eza $default_opts"
-    alias la="ls --all"
-    alias l="ls --long"
-    alias ll="l --all"
     alias tree="ls --tree"
     alias gtree="ls --tree --all --git-ignore --no-user --no-permissions"
 
