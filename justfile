@@ -20,8 +20,9 @@ alias i := install
     -mkdir -- {{ home_dir() }}/dev
     -mkdir -- {{ home_dir() }}/tmp
 
+[android]
 [group("setup")]
 @termux-font-install url="https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/JetBrainsMono/Ligatures/JetBrainsMonoNerdFont-Regular.ttf":
-    [ -d "{{ home_dir() }}/.termux" ] && \
-        curl -Lo {{ home_dir() }}/.termux/font.ttf {{ url }} || \
-        echo "You are not in Termux"
+    [ -n "${TERMUX_VERSION:-}" ] && \
+        curl -Lo {{ home_dir() }}/.termux/font.ttf --create-dirs {{ url }} || \
+        (echo "You are not in Termux" && false)
