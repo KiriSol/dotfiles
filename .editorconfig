@@ -22,6 +22,7 @@ indent_size = 4
 indent_size = 4
 
 [{.git{attributes,config,ignore,modules},src/config/git/{attributes,config,ignore}}]
+indent_size = 4
 indent_style = tab
 
 ## Tools
