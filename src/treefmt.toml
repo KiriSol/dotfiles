@@ -1,6 +1,6 @@
 ### Global treefmt.toml
 
-#:schema https://schemastore.org/treefmt.json
+#:schema https://www.schemastore.org/treefmt.json
 
 allow-missing-formatter = true
 excludes = ["*"]
