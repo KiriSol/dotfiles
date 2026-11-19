@@ -3,15 +3,15 @@
 allow-missing-formatter = false
 excludes = []
 
-[formatter.typos]
-command = "typos"
-options = ["--write-changes"]
-includes = ["*"]
-
 [formatter.dprint]
 command = "dprint"
 options = ["fmt"]
 includes = ["*.kdl"]
+
+[formatter.typos]
+command = "typos"
+options = ["--write-changes"]
+includes = ["*"]
 
 [formatter.biome]
 command = "biome"
@@ -22,6 +22,11 @@ includes = ["*.json", "*.jsonc", "*.yaml", "*.md"]
 command = "tombi"
 options = ["format"]
 includes = ["*.toml"]
+
+[formatter.just]
+command = "just"
+options = ["--format", "--justfile"]
+includes = ["*.just", "justfile", "**/justfile"]
 
 [formatter.shfmt]
 command = "shfmt"
@@ -36,11 +41,6 @@ includes = ["*.fish", "fish_variables", "**/fish_variables"]
 [formatter.nufmt]
 command = "nufmt"
 includes = ["*.nu", "*.nuon"]
-
-[formatter.just]
-command = "just"
-options = ["--format", "--justfile"]
-includes = ["*.just", "justfile", "**/justfile"]
 
 [formatter.stylua]
 command = "stylua"
