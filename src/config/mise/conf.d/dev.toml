@@ -12,6 +12,14 @@ dprint = "latest"
 
 shfmt = "latest"
 tombi = "latest"
+"github:Hessesian/kmp-lsp" = "latest"
+"github:cccheng/kconfig-lsp" = "latest"
+"github:igor-prusov/dts-lsp" = "latest"
+"github:jorgsowa/php-lsp" = "latest"
+"github:quarylabs/sqruff" = "latest"
+"github:tree-sitter-perl/perl-lsp" = "latest"
+"cargo:kdl-lsp" = "latest"
+"cargo:psfmt" = "latest"
 
 typos = "latest"
 "github:tekumara/typos-lsp" = "latest"
@@ -20,7 +28,7 @@ just = "latest"
 "github:terror/just-lsp" = "latest"
 
 nushell = "latest"
-"cargo:https://github.com/nushell/nufmt" = "latest"
+"github:nushell/nufmt" = "latest"
 
 zig = "latest"
 zls = "latest"
@@ -41,12 +49,22 @@ bun = "latest"
 deno = "latest"
 node = "latest"
 biome = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
 
 uv = "latest"
 python = "latest"
 ruff = "latest"
 ty = "latest"
 
+perl = "latest"
+
+"github:NixOS/nixfmt" = "latest"
+"cargo:https://github.com/oxalica/nil" = "latest"
+
 typst = "latest"
 typstyle = "latest"
 tinymist = "latest"
+
+"github:Feel-ix-343/markdown-oxide" = "latest"
