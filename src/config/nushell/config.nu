@@ -2,6 +2,7 @@
 
 use modules/activate.nu
 
+$env.config.history.path = $nu.data-dir | path join history.txt
 $env.config.show_banner = false
 
 if $nu.is-interactive {
