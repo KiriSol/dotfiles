@@ -70,6 +70,7 @@ return {
         nil_ls = {},
         nushell = {},
         perl_lsp = {},
+        php_lsp = {},
         rust_analyzer = {},
         tinymist = { single_file_support = true, settings = { formatterMode = "typstyle" } },
         ts_ls = {},
