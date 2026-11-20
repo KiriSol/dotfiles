@@ -12,7 +12,7 @@ alias i := install
     treefmt {{ args }} -- {{ justfile_dir() }}
 
 [group("setup")]
-@install config="dotbot.conf.yaml":
+@install config="dotfiles.conf.yaml":
     dotbot -d {{ justfile_dir() }}/src -c {{ justfile_dir() }}/{{ config }}
 
 [group("setup")]
