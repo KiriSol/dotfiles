@@ -123,6 +123,16 @@ includes = ["*.py", "*.pyi", "*.ipynb"]
 command = "perltidy"
 includes = ["*.pl", "*.pm"]
 
+[formatter.mago]
+command = "mago"
+options = ["format"]
+includes = ["*.php"]
+
+[formatter.mago-twig]
+command = "mago"
+options = ["twig:fmt"]
+includes = ["*.twig"]
+
 [formatter.nixfmt]
 command = "nixfmt"
 includes = ["*.nix"]

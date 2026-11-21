@@ -6,18 +6,13 @@ pipx.uvx = true
 python.uv_venv_auto = true
 
 [tools]
-"github:numtide/treefmt" = "latest"
+"aqua:numtide/treefmt" = "latest"
 
 dprint = "latest"
 
 shfmt = "latest"
 tombi = "latest"
-"github:Hessesian/kmp-lsp" = "latest"
-"github:cccheng/kconfig-lsp" = "latest"
-"github:igor-prusov/dts-lsp" = "latest"
-"github:jorgsowa/php-lsp" = "latest"
-"github:quarylabs/sqruff" = "latest"
-"github:tree-sitter-perl/perl-lsp" = "latest"
+"aqua:quarylabs/sqruff" = "latest"
 "cargo:kdl-lsp" = "latest"
 "cargo:psfmt" = "latest"
 
@@ -40,6 +35,10 @@ rust = { version = "latest", components = ["rust-analyzer", "rust-src"] }
 go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 
+java = "latest"
+kotlin = "latest"
+"github:Hessesian/kmp-lsp" = "latest"
+
 lua = "latest"
 stylua = "latest"
 "aqua:Kampfkarren/selene" = "latest"
@@ -59,12 +58,20 @@ ruff = "latest"
 ty = "latest"
 
 perl = "latest"
+"github:tree-sitter-perl/perl-lsp" = "latest"
 
-"github:NixOS/nixfmt" = "latest"
+php = "latest"
+mago = "latest"
+"github:AJenbo/phpantom_lsp" = "latest"
+
+"aqua:Mic92/nixfmt-rs" = "latest"
 "cargo:https://github.com/oxalica/nil" = "latest"
 
 typst = "latest"
 typstyle = "latest"
 tinymist = "latest"
+
+"github:cccheng/kconfig-lsp" = "latest"
+"github:igor-prusov/dts-lsp" = "latest"
 
 "github:Feel-ix-343/markdown-oxide" = "latest"
